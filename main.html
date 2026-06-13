@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shagun Tyagi | AI/ML Engineer — Portfolio Book</title>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET & ROOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;text-decoration:none;border:none;outline:none;}
+:root{
+  --ink:#1a1a2e;
+  --ink2:#2d3561;
+  --paper:#faf8f3;
+  --paper2:#f3efe6;
+  --paper3:#eae5d8;
+  --accent:#c8922a;
+  --accent2:#e8b84b;
+  --gold:linear-gradient(135deg,#c8922a,#e8b84b,#c8922a);
+  --blue:#1e5799;
+  --blue-lt:#e8f0fb;
+  --red:#9b2335;
+  --green:#1a5c3a;
+  --muted:#6b6b7b;
+  --shadow-book:
+    -6px 0 20px rgba(0,0,0,0.4),
+    0 8px 40px rgba(0,0,0,0.35),
+    inset -3px 0 8px rgba(0,0,0,0.15);
+}
+html,body{width:100%;height:100%;overflow:hidden;}
+body{
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  background:#1a1008;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%,#2d1f0a 0%,transparent 70%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 60px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 60px);
+  font-family:'DM Sans',sans-serif;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESK / TABLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.desk{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.desk-shadow{
+  position:absolute;
+  bottom:-2rem;left:10%;right:10%;height:3rem;
+  background:rgba(0,0,0,0.5);
+  filter:blur(18px);border-radius:50%;
+  z-index:0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK WRAPPER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.book-wrapper{
+  position:relative;
+  width:78rem;height:50rem;
+  perspective:400rem;
+  z-index:1;
+  animation:bookAppear 2s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes bookAppear{
+  0%{opacity:0;transform:translateY(60px) rotateX(6deg) scale(.95);}
+  100%{opacity:1;transform:translateY(0) rotateX(0) scale(1);}
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK COVERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cover{
+  position:absolute;top:0;left:0;
+  width:50%;height:100%;
+  transform-origin:right center;
+  border-radius:3px 0 0 3px;
+}
+
+/* Back cover (always visible under everything) */
+.cover-back{
+  background:linear-gradient(160deg,#0d1b2a 0%,#1a2744 40%,#0a1628 100%);
+  z-index:-2;
+  box-shadow:var(--shadow-book);
+}
+.cover-back::before{
+  content:'';position:absolute;inset:.6rem;
+  border:1px solid rgba(200,146,42,0.2);border-radius:2px;
+}
+
+/* Front cover (flips open) */
+.cover-front{
+  background:linear-gradient(160deg,#0d1b2a 0%,#1a2744 50%,#0a1628 100%);
+  z-index:100;
+  transition:transform 1.4s cubic-bezier(.77,0,.175,1);
+  box-shadow:var(--shadow-book);
+  overflow:hidden;
+}
+.cover-front::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(105deg,transparent 40%,rgba(200,146,42,0.04) 50%,transparent 60%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 4px);
+}
+/* Gold border frame on front cover */
+.cover-front::after{
+  content:'';position:absolute;inset:.9rem;
+  border:2px solid;
+  border-image:linear-gradient(135deg,#c8922a,#e8b84b,#c8922a,#8b6914) 1;
+  opacity:.7;
+}
+.cover-front.turn{transform:rotateY(180deg);}
+
+/* Cover text */
+.cover-content{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:2.5rem;text-align:center;
+  z-index:2;
+}
+.cover-eyebrow{
+  font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(200,146,42,0.7);margin-bottom:1.5rem;
+  font-weight:500;
+}
+.cover-name{
+  font-family:'Playfair Display',serif;
+  font-size:3.4rem;font-weight:900;line-height:1;
+  background:linear-gradient(160deg,#fff 0%,#e8d5a3 50%,#c8922a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.02em;
+  margin-bottom:.4rem;
+}
+.cover-role{
+  font-size:.85rem;color:rgba(255,255,255,.45);
+  letter-spacing:.18em;text-transform:uppercase;font-weight:400;
+}
+.cover-divider{
+  width:5rem;height:1px;
+  background:linear-gradient(90deg,transparent,#c8922a,transparent);
+  margin:1.4rem auto;
+}
+.cover-subtitle{
+  font-size:.78rem;color:rgba(200,146,42,.6);
+  letter-spacing:.1em;text-transform:uppercase;
+}
+/* Cover ornament */
+.cover-ornament{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:.6rem;
+  opacity:.4;
+}
+.cover-ornament span{display:block;width:2rem;height:1px;background:#c8922a;}
+.cover-ornament i{font-size:.9rem;color:#c8922a;}
+
+/* Spine effect */
+.spine{
+  position:absolute;top:0;left:calc(50% - 10px);
+  width:20px;height:100%;
+  background:linear-gradient(90deg,#0a1222 0%,#1a2744 30%,#243560 50%,#1a2744 70%,#0a1222 100%);
+  z-index:150;
+  box-shadow:inset -2px 0 6px rgba(0,0,0,.5),inset 2px 0 6px rgba(0,0,0,.5);
+}
+.spine::before{
+  content:'SHAGUN TYAGI';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(90deg);
+  white-space:nowrap;
+  font-size:.5rem;letter-spacing:.25em;
+  color:rgba(200,146,42,.5);font-weight:600;
+  text-transform:uppercase;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK PAGES CONTAINER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.book{
+  position:relative;width:100%;height:100%;display:flex;
+  perspective:400rem;
+}
+
+/* Page stack effect */
+.page-stack{
+  position:absolute;right:0;top:.3rem;
+  width:calc(50% - 10px);height:calc(100% - .6rem);
+  background:repeating-linear-gradient(
+    90deg,
+    var(--paper3) 0px,var(--paper3) 1px,
+    var(--paper2) 1px,var(--paper2) 3px,
+    var(--paper) 3px,var(--paper) 6px
+  );
+  border-radius:0 3px 3px 0;
+  box-shadow:2px 0 8px rgba(0,0,0,.15);
+}
+
+/* Left page (profile, permanent) */
+.page-left{
+  position:absolute;left:0;top:0;
+  width:calc(50% - 10px);height:100%;
+  background:var(--paper);
+  box-shadow:-3px 0 12px rgba(0,0,0,.2),inset -2px 0 6px rgba(0,0,0,.06);
+  padding:2.5rem 2.8rem;
+  overflow:hidden;
+}
+/* Paper texture lines */
+.page-left::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 27px,rgba(0,0,0,.04) 27px,rgba(0,0,0,.04) 28px
+  );
+  pointer-events:none;
+}
+/* Red margin line */
+.page-left::after{
+  content:'';position:absolute;top:0;left:3.5rem;
+  width:1px;height:100%;
+  background:rgba(180,50,50,.15);
+  pointer-events:none;
+}
+
+/* Right pages (flipable) */
+.page-right{
+  position:absolute;right:0;top:0;
+  width:calc(50% - 10px);height:100%;
+  transform-style:preserve-3d;
+  transform-origin:left center;
+  transition:transform 1.1s cubic-bezier(.645,.045,.355,1);
+}
+.page-right.turn{transform:rotateY(-180deg);}
+
+.page-front,.page-back{
+  position:absolute;inset:0;
+  padding:2.2rem 2.5rem;
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+.page-front{
+  background:var(--paper);
+  transform:rotateY(0deg) translateZ(1px);
+  box-shadow:inset -3px 0 10px rgba(0,0,0,.08);
+}
+.page-back{
+  background:var(--paper2);
+  transform:rotateY(180deg) translateZ(1px);
+  box-shadow:inset 3px 0 10px rgba(0,0,0,.06);
+}
+/* Paper lines on right pages */
+.page-front::before,.page-back::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 27px,rgba(0,0,0,.035) 27px,rgba(0,0,0,.035) 28px
+  );
+  pointer-events:none;z-index:0;
+}
+/* Red margin */
+.page-front::after{
+  content:'';position:absolute;top:0;left:3rem;
+  width:1px;height:100%;background:rgba(180,50,50,.12);pointer-events:none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.pg-num{
+  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+  font-family:'Playfair Display',serif;font-size:.7rem;
+  color:var(--muted);font-style:italic;letter-spacing:.05em;
+  z-index:10;
+}
+.flip-btn{
+  position:absolute;bottom:.7rem;right:1rem;
+  width:2.2rem;height:2.2rem;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1.6rem;color:var(--muted);
+  transition:all .3s;border-radius:50%;z-index:10;
+}
+.flip-btn:hover{color:var(--accent);background:rgba(200,146,42,.08);}
+.flip-btn.back{left:1rem;right:auto;}
+.back-home{
+  position:absolute;bottom:.8rem;right:1rem;
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.72rem;color:var(--accent);
+  padding:.3rem .7rem;border:1px solid rgba(200,146,42,.3);
+  border-radius:.2rem;transition:.3s;z-index:10;
+  background:rgba(200,146,42,.04);
+}
+.back-home:hover{background:rgba(200,146,42,.12);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLLABLE CONTENT AREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.content-scroll{
+  position:relative;z-index:1;
+  height:calc(100% - 2.5rem);
+  overflow-y:auto;
+  padding-right:.4rem;
+  scrollbar-width:thin;scrollbar-color:rgba(200,146,42,.3) transparent;
+}
+.content-scroll::-webkit-scrollbar{width:3px;}
+.content-scroll::-webkit-scrollbar-thumb{background:rgba(200,146,42,.3);border-radius:2px;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY — PAGE HEADINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ch{/* chapter heading */
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:700;
+  color:var(--ink);line-height:1.1;
+  margin-bottom:.2rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.ch i{font-size:1.2rem;color:var(--accent);}
+.ch-line{
+  height:2px;width:2.5rem;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  margin-bottom:1rem;border-radius:1px;
+}
+.section-label{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:.4rem;
+  display:flex;align-items:center;gap:.4rem;
+}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(200,146,42,.2);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROFILE PAGE (LEFT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.profile-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:100%;text-align:center;
+  position:relative;z-index:1;gap:.55rem;
+}
+.avatar-outer{
+  width:110px;height:110px;border-radius:50%;
+  background:linear-gradient(135deg,#c8922a,#e8b84b,#8b6914);
+  padding:3px;margin-bottom:.3rem;
+  box-shadow:0 6px 24px rgba(200,146,42,.3);
+}
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;
+  background:linear-gradient(145deg,#0d1b2a,#1a2744);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;
+  color:#c8922a;letter-spacing:-.02em;
+}
+.prof-name{
+  font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:900;
+  color:var(--ink);line-height:1;letter-spacing:-.02em;
+}
+.prof-role{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;
+}
+.prof-co{font-size:.75rem;color:var(--muted);}
+.gold-line{
+  width:3rem;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin:.1rem auto;
+}
+.socials{display:flex;gap:.45rem;}
+.soc-btn{
+  width:2rem;height:2rem;border-radius:50%;
+  border:1px solid rgba(200,146,42,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--accent);
+  transition:all .3s;background:rgba(200,146,42,.04);
+}
+.soc-btn:hover{background:var(--accent);color:#fff;transform:translateY(-2px);}
+.prof-bio{
+  font-size:.8rem;color:var(--muted);line-height:1.65;
+  max-width:88%;text-align:center;
+}
+/* Stats */
+.stats-row{display:flex;gap:.5rem;width:100%;}
+.stat-cell{
+  flex:1;padding:.5rem .3rem;
+  border:1px solid rgba(200,146,42,.2);border-radius:.3rem;
+  background:rgba(200,146,42,.04);
+  display:flex;flex-direction:column;align-items:center;gap:.08rem;
+}
+.stat-n{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+  color:var(--accent);line-height:1;
+}
+.stat-l{font-size:.58rem;color:var(--muted);text-align:center;letter-spacing:.03em;}
+/* CTA buttons */
+.cta-row{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center;}
+.cta{
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.45rem 1rem;border-radius:.25rem;
+  font-size:.75rem;font-weight:600;
+  transition:all .3s;letter-spacing:.03em;
+}
+.cta-primary{background:var(--accent);color:#fff;}
+.cta-primary:hover{opacity:.85;transform:translateY(-1px);}
+.cta-outline{border:1px solid var(--accent);color:var(--accent);background:transparent;}
+.cta-outline:hover{background:rgba(200,146,42,.08);}
+/* LI badge */
+.li-wrap{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.38rem .9rem;
+  border:1px solid rgba(200,146,42,.25);border-radius:.25rem;
+  color:var(--accent);font-size:.74rem;font-weight:600;
+  background:rgba(200,146,42,.04);transition:.3s;
+}
+.li-wrap:hover{background:rgba(200,146,42,.1);}
+.li-wrap i{font-size:.95rem;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TIMELINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tl{border-left:2px solid rgba(200,146,42,.25);margin-top:.6rem;}
+.tl-item{position:relative;padding:0 0 1.1rem 1.5rem;}
+.tl-item::before{
+  content:'';position:absolute;top:5px;left:-6px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--paper);
+}
+.tl-year{
+  font-size:.65rem;color:var(--accent);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.15rem;
+}
+.tl-title{font-size:.9rem;color:var(--ink);font-weight:600;margin-bottom:.25rem;}
+.tl-body{font-size:.77rem;color:var(--muted);line-height:1.6;}
+.tl-body strong{color:var(--ink2);font-weight:600;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SKILL TAGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem;}
+.tag{
+  display:inline-flex;align-items:center;gap:.2rem;
+  padding:.2rem .65rem;border-radius:2rem;
+  font-size:.68rem;font-weight:600;letter-spacing:.02em;
+}
+.t-gold{background:rgba(200,146,42,.12);color:#8b5e0a;border:1px solid rgba(200,146,42,.25);}
+.t-blue{background:rgba(30,87,153,.1);color:#1a4b8a;border:1px solid rgba(30,87,153,.2);}
+.t-green{background:rgba(26,92,58,.1);color:#1a5c3a;border:1px solid rgba(26,92,58,.2);}
+.t-red{background:rgba(155,35,53,.09);color:#7a1c2c;border:1px solid rgba(155,35,53,.18);}
+.t-gray{background:rgba(107,107,123,.08);color:#4a4a5a;border:1px solid rgba(107,107,123,.18);}
+.t-purple{background:rgba(100,60,170,.1);color:#5a2fa0;border:1px solid rgba(100,60,170,.2);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROJECT CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.proj{
+  border:1px solid rgba(200,146,42,.18);border-radius:.4rem;
+  padding:.9rem 1rem;margin-bottom:.85rem;
+  background:rgba(200,146,42,.02);
+  transition:all .3s;position:relative;
+}
+.proj:hover{border-color:rgba(200,146,42,.4);background:rgba(200,146,42,.05);}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;gap:.5rem;}
+.proj-name{
+  font-family:'Playfair Display',serif;
+  font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.2;
+}
+.proj-link{
+  font-size:.68rem;color:var(--accent);
+  display:flex;align-items:center;gap:.2rem;white-space:nowrap;
+  padding:.2rem .5rem;border:1px solid rgba(200,146,42,.25);border-radius:.2rem;
+  transition:.3s;flex-shrink:0;
+}
+.proj-link:hover{background:rgba(200,146,42,.08);}
+.proj-summary{
+  font-size:.8rem;color:var(--ink2);font-weight:600;
+  margin-bottom:.35rem;line-height:1.4;
+}
+.proj-body{font-size:.76rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.proj-body strong{color:var(--ink2);font-weight:600;}
+/* Achievement bullets */
+.proj-bullets{list-style:none;margin-bottom:.5rem;}
+.proj-bullets li{
+  font-size:.74rem;color:var(--muted);line-height:1.6;
+  padding-left:1rem;position:relative;margin-bottom:.2rem;
+}
+.proj-bullets li::before{
+  content:'→';position:absolute;left:0;color:var(--accent);font-size:.7rem;
+}
+/* Impact badge */
+.impact{
+  display:inline-flex;align-items:center;gap:.25rem;
+  font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.18rem .6rem;border-radius:.2rem;
+  background:rgba(200,146,42,.12);color:#7a5000;
+  border:1px solid rgba(200,146,42,.2);margin-bottom:.45rem;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICE CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.8rem;}
+.svc{
+  border:1px solid rgba(200,146,42,.18);border-radius:.4rem;
+  padding:.8rem;background:rgba(200,146,42,.02);text-align:center;transition:.3s;
+}
+.svc:hover{border-color:rgba(200,146,42,.38);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,146,42,.08);}
+.svc i{font-size:1.7rem;color:var(--accent);display:block;margin-bottom:.4rem;}
+.svc h3{font-size:.82rem;color:var(--ink);font-weight:700;margin-bottom:.25rem;}
+.svc p{font-size:.72rem;color:var(--muted);line-height:1.5;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESEARCH CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.research{
+  border:1px solid rgba(30,87,153,.25);border-radius:.4rem;
+  padding:.85rem 1rem;background:rgba(30,87,153,.04);margin-bottom:.8rem;
+}
+.research-badge{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  color:#1a4b8a;background:rgba(30,87,153,.1);border:1px solid rgba(30,87,153,.2);
+  padding:.15rem .5rem;border-radius:.2rem;display:inline-block;margin-bottom:.45rem;
+}
+.research h3{font-size:.9rem;color:var(--ink);font-weight:700;margin-bottom:.35rem;}
+.research p{font-size:.76rem;color:var(--muted);line-height:1.65;}
+.research p strong{color:var(--ink2);font-weight:600;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTACT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.contact-list{margin-top:.8rem;display:flex;flex-direction:column;gap:.65rem;}
+.contact-row{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.65rem .9rem;border:1px solid rgba(200,146,42,.18);
+  border-radius:.35rem;background:rgba(200,146,42,.03);transition:.3s;color:inherit;
+}
+.contact-row:hover{border-color:rgba(200,146,42,.38);background:rgba(200,146,42,.06);}
+.contact-row i{font-size:1.2rem;color:var(--accent);flex-shrink:0;}
+.c-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.c-val{font-size:.84rem;color:var(--ink);font-weight:500;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SKILL GROUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sk-group{margin-bottom:.9rem;}
+.sk-label{font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:.45rem;padding-bottom:.3rem;border-bottom:1px solid rgba(200,146,42,.15);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE READER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.mob-reader{display:none;}
+
+@media(max-width:900px){
+  body{overflow:hidden;align-items:stretch;}
+  .book-wrapper,.desk-shadow{display:none;}
+  .mob-reader{
+    display:flex;flex-direction:column;
+    width:100vw;height:100vh;overflow:hidden;
+    background:#faf8f3;
+  }
+  .mob-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.7rem 1.1rem;
+    background:linear-gradient(135deg,#0d1b2a,#1a2744);
+    border-bottom:2px solid rgba(200,146,42,.4);
+    flex-shrink:0;
+  }
+  .mob-bar-name{
+    font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+    background:linear-gradient(90deg,#fff,#c8922a);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .mob-bar-pg{font-size:.7rem;color:rgba(200,146,42,.6);letter-spacing:.05em;}
+  .mob-prog{height:2px;background:rgba(200,146,42,.15);flex-shrink:0;}
+  .mob-prog-fill{height:100%;background:linear-gradient(90deg,#c8922a,#e8b84b);transition:width .4s ease;}
+  .mob-track{
+    flex:1;display:flex;
+    transition:transform .4s cubic-bezier(.4,0,.2,1);
+    will-change:transform;
+  }
+  .mob-pg{
+    min-width:100vw;height:100%;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:1.2rem 1.1rem 5.5rem;
+    background:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.03) 27px,rgba(0,0,0,.03) 28px),#faf8f3;
+    position:relative;
+  }
+  .mob-pg:nth-child(even){background:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.03) 27px,rgba(0,0,0,.03) 28px),#f3efe6;}
+  .mob-pg:first-child{background:linear-gradient(160deg,#0d1b2a,#1a2744) !important;}
+  .mob-nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.75rem 1.4rem;
+    background:rgba(13,27,42,.96);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(200,146,42,.2);
+  }
+  .mob-nbtn{
+    width:2.5rem;height:2.5rem;border-radius:50%;
+    border:1px solid rgba(200,146,42,.3);
+    display:flex;align-items:center;justify-content:center;
+    color:#c8922a;font-size:1.5rem;
+    background:rgba(200,146,42,.06);transition:.25s;cursor:pointer;
+  }
+  .mob-nbtn:active{background:rgba(200,146,42,.2);transform:scale(.92);}
+  .mob-nbtn.dis{opacity:.2;pointer-events:none;}
+  .mob-dots{display:flex;gap:.35rem;align-items:center;}
+  .mob-dot{width:.4rem;height:.4rem;border-radius:50%;background:rgba(200,146,42,.25);transition:.3s;}
+  .mob-dot.on{background:#c8922a;width:.8rem;border-radius:.4rem;}
+  .swipe-hint{
+    position:absolute;bottom:4.8rem;left:50%;transform:translateX(-50%);
+    font-size:.68rem;color:rgba(200,146,42,.5);white-space:nowrap;
+    display:flex;align-items:center;gap:.25rem;pointer-events:none;
+    animation:hfade 3s ease 2s forwards;opacity:1;
+  }
+  @keyframes hfade{0%{opacity:1;}100%{opacity:0;}}
+  .mob-ph{display:flex;align-items:center;gap:.4rem;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid rgba(200,146,42,.2);}
+  .mob-ph i{font-size:1.2rem;color:#c8922a;}
+  .mob-ph h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#1a1a2e;}
+  .tl-item::before{border-color:#f3efe6;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ DESKTOP BOOK ════════════════ -->
+<div class="desk">
+  <div class="desk-shadow"></div>
+
+  <div class="book-wrapper">
+
+    <!-- BACK COVER -->
+    <div class="cover cover-back"></div>
+
+    <!-- PAGE STACK VISUAL -->
+    <div class="page-stack"></div>
+
+    <!-- SPINE -->
+    <div class="spine"></div>
+
+    <!-- FRONT COVER (flips open) -->
+    <div class="cover cover-front" id="coverFront">
+      <div class="cover-content">
+        <div class="cover-eyebrow">Portfolio &nbsp;·&nbsp; 2024 – 2025</div>
+        <div class="cover-name">Shagun<br/>Tyagi</div>
+        <div class="cover-role">AI / ML Engineer</div>
+        <div class="cover-divider"></div>
+        <div class="cover-subtitle">Envigo UK &nbsp;·&nbsp; MBA Candidate</div>
+      </div>
+      <div class="cover-ornament">
+        <span></span><i class="bx bx-diamond"></i><span></span>
+      </div>
+    </div>
+
+    <!-- BOOK PAGES -->
+    <div class="book">
+
+      <!-- ══ LEFT PAGE — PROFILE (permanent) ══ -->
+      <div class="page-left">
+        <div class="profile-wrap">
+          <div class="avatar-outer"><div class="avatar-inner">ST</div></div>
+          <div class="prof-name">Shagun Tyagi</div>
+          <div class="prof-role">AI / ML Engineer</div>
+          <div class="prof-co">Envigo · UK AI Consultancy &nbsp;|&nbsp; MBA Candidate</div>
+          <div class="gold-line"></div>
+          <div class="socials">
+            <a class="soc-btn" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i></a>
+            <a class="soc-btn" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i></a>
+            <a class="soc-btn" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i></a>
+            <a class="soc-btn" href="#"><i class="bx bx-file-blank"></i></a>
+          </div>
+          <div class="prof-bio">
+            I build production-grade AI/ML systems that solve real business problems — from LLM-powered automation pipelines and WhatsApp chatbots to computer vision models and full-stack health applications. Published IoT health researcher, Airtel alumni, and MBA candidate.
+          </div>
+          <div class="stats-row">
+            <div class="stat-cell"><span class="stat-n">5+</span><span class="stat-l">Prod Systems</span></div>
+            <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Publication</span></div>
+            <div class="stat-cell"><span class="stat-n">92%</span><span class="stat-l">DR Accuracy</span></div>
+            <div class="stat-cell"><span class="stat-n">3+</span><span class="stat-l">Yrs Exp</span></div>
+          </div>
+          <div class="cta-row">
+            <a href="#" class="cta cta-primary"><i class="bx bx-download"></i> Download CV</a>
+            <a href="#" class="cta cta-outline" id="goContact">Contact Me</a>
+          </div>
+          <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap">
+            <i class="bx bxl-linkedin-square"></i> View Full Profile on LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 1: Work Experience / Education ══ -->
+      <div class="page-right" id="t1" style="z-index:14">
+        <!-- Front: Work Experience -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-briefcase"></i>Work Experience</div>
+            <div class="ch-line"></div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-year">2023 — Present</div>
+                <div class="tl-title">AI / ML Engineer — Envigo (UK Software & AI Consultancy)</div>
+                <div class="tl-body">
+                  Envigo is a UK-based software and AI consultancy delivering intelligent automation solutions for enterprise clients. As an AI/ML Engineer, I architect and ship <strong>end-to-end production AI systems</strong> across diverse domains.<br/><br/>
+                  My work spans <strong>LangChain/FastAPI agentic pipelines</strong>, automated document generation systems, multilingual conversational AI, and computer vision integrations. I own the full lifecycle: requirements, ML design, Python backend, deployment, and client handover. I also lead ML strategy and decision-making for client engagements, translating business requirements into data-driven technical roadmaps.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2021 — 2023</div>
+                <div class="tl-title">Software Engineer — Airtel (Bharti Airtel)</div>
+                <div class="tl-body">
+                  Worked within Airtel's engineering teams building and maintaining <strong>backend services and data pipelines</strong> at telecom scale. Gained deep expertise in <strong>large-scale distributed systems</strong>, high-availability REST APIs, and production software delivery across millions of users.<br/><br/>
+                  Contributed to network automation tools that reduced manual intervention and improved operational efficiency. This role strengthened my engineering fundamentals and instilled a production-first mindset that I apply to all AI/ML work.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2019 — 2021</div>
+                <div class="tl-title">ML Lead — MIET (Undergraduate Research Leadership)</div>
+                <div class="tl-body">
+                  During my B.Tech, served as <strong>ML Lead</strong> for the department's research vertical. Led a team on ECG/PPG-based health monitoring research that resulted in a <strong>published academic paper</strong>. Directed prototype development, managed timelines, mentored junior members, and presented findings. This role built my research methodology, team leadership, and ML engineering foundations from the ground up.
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="pg-num">— 1 —</span>
+          <span class="flip-btn" data-t="t1"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Education -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-book-open"></i>Education</div>
+            <div class="ch-line"></div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-year">2025 — Present</div>
+                <div class="tl-title">Master of Business Administration (MBA)</div>
+                <div class="tl-body">
+                  Pursuing an MBA alongside a full-time engineering career, with focus on <strong>strategic management, product leadership, and entrepreneurship</strong>. The goal is to bridge the gap between cutting-edge AI engineering and business decision-making — enabling me to drive ML initiatives not just technically but strategically, from product definition through commercial outcomes.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2019 — 2023</div>
+                <div class="tl-title">B.Tech in CSE (IoT Specialization) — MIET</div>
+                <div class="tl-body">
+                  Bachelor's in Computer Science Engineering with specialization in <strong>Internet of Things</strong>. Graduated with distinction in ML-related coursework. Served concurrently as <strong>ML Lead</strong> for departmental research.<br/><br/>
+                  Key academic projects included a <strong>Diabetic Retinopathy (DR) classification CNN</strong> achieving 92% accuracy on retinal fundus images, published ECG/PPG health monitoring research, and multiple IoT prototype systems integrating edge sensors with cloud dashboards.
+                </div>
+              </div>
+            </div>
+            <div class="research" style="margin-top:.5rem">
+              <div class="research-badge">📄 Published Research</div>
+              <h3>ECG & PPG Based Health Monitoring System</h3>
+              <p>
+                Co-authored during B.Tech ML leadership. The paper presents a <strong>real-time wearable cardiac monitoring framework</strong> using ECG (electrocardiogram) and PPG (photoplethysmography) sensors on IoT hardware. Key contributions: signal denoising algorithms, R-peak detection for HRV analysis, anomaly detection for arrhythmia, and <strong>embedded ML inference</strong> running on resource-constrained microcontrollers. Demonstrates clinically relevant accuracy on benchmark datasets.
+              </p>
+            </div>
+          </div>
+          <span class="pg-num">— 2 —</span>
+          <span class="flip-btn back" data-t="t1"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 2: Skills / Services ══ -->
+      <div class="page-right" id="t2" style="z-index:13">
+        <!-- Front: Skills -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-code-alt"></i>Technical Skills</div>
+            <div class="ch-line"></div>
+            <div class="sk-group">
+              <div class="sk-label">AI / ML & Large Language Models</div>
+              <div class="tags"><span class="tag t-purple">LangChain</span><span class="tag t-purple">OpenAI API (GPT-4/3.5)</span><span class="tag t-purple">FastAPI</span><span class="tag t-purple">PyTorch</span><span class="tag t-purple">Scikit-learn</span><span class="tag t-purple">CNNs</span><span class="tag t-purple">RAG Pipelines</span><span class="tag t-purple">Prompt Engineering</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Backend & API Engineering</div>
+              <div class="tags"><span class="tag t-blue">Python 3.10+</span><span class="tag t-blue">Node.js</span><span class="tag t-blue">Express 5</span><span class="tag t-blue">Flask</span><span class="tag t-blue">REST APIs</span><span class="tag t-blue">WebSockets</span><span class="tag t-blue">OAuth 2.0</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Cloud, Data & DevOps</div>
+              <div class="tags"><span class="tag t-green">Google Cloud Platform</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">gspread / Sheets API</span><span class="tag t-green">Google Drive API</span><span class="tag t-green">Docker</span><span class="tag t-green">Mongoose</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Frontend & Visualization</div>
+              <div class="tags"><span class="tag t-gold">JavaScript (ES6+)</span><span class="tag t-gold">React.js</span><span class="tag t-gold">HTML5 / CSS3</span><span class="tag t-gold">Canvas API</span><span class="tag t-gold">Chart.js</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Automation, Scraping & Document Tools</div>
+              <div class="tags"><span class="tag t-gray">python-docx</span><span class="tag t-gray">ReportLab PDF</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">pandas</span><span class="tag t-gray">Twilio (Content API)</span><span class="tag t-gray">WhatsApp Business API</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Biomedical & IoT</div>
+              <div class="tags"><span class="tag t-red">ECG Signal Processing</span><span class="tag t-red">PPG Analysis</span><span class="tag t-red">HRV Detection</span><span class="tag t-red">Embedded ML</span><span class="tag t-red">IoT Prototyping</span></div>
+            </div>
+          </div>
+          <span class="pg-num">— 3 —</span>
+          <span class="flip-btn" data-t="t2"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Services -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-layer"></i>What I Build</div>
+            <div class="ch-line"></div>
+            <div class="svc-grid">
+              <div class="svc"><i class="bx bx-brain"></i><h3>AI Automation Pipelines</h3><p>End-to-end LLM systems: document generation, content enhancement, structured output, RAG-based knowledge retrieval.</p></div>
+              <div class="svc"><i class="bx bx-server"></i><h3>Backend APIs & Services</h3><p>Production FastAPI / Flask / Express backends with MongoDB, authentication, and clean RESTful architecture.</p></div>
+              <div class="svc"><i class="bx bx-bot"></i><h3>Chatbots & Agents</h3><p>WhatsApp interactive bots via Twilio, multilingual store assistants, LangChain tool-using agents.</p></div>
+              <div class="svc"><i class="bx bx-chip"></i><h3>ML Model Development</h3><p>Computer vision CNNs (92% DR accuracy), health-signal classifiers, IoT embedded inference.</p></div>
+              <div class="svc"><i class="bx bx-spreadsheet"></i><h3>Document & Data Automation</h3><p>Google Sheets pipelines, branded Word/PDF generation, web scraping, incremental processing.</p></div>
+              <div class="svc"><i class="bx bx-devices"></i><h3>Full-Stack Applications</h3><p>Personal Health OS, AI finance apps, HTML5 arcade games — full frontend-to-database delivery.</p></div>
+            </div>
+          </div>
+          <span class="pg-num">— 4 —</span>
+          <span class="flip-btn back" data-t="t2"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 3: Project 1 & 2 ══ -->
+      <div class="page-right" id="t3" style="z-index:12">
+        <!-- Front: Auto-Proposal Generator -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 01 — Production AI System</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-file-find"></i>Envigo Auto-Proposal Generator</div>
+            <div class="ch-line"></div>
+            <div class="impact">🚀 Live at Envigo · Fully Automated · Client-Facing</div>
+            <div class="proj-summary">
+              An end-to-end Python pipeline that reads client intake data from Google Forms/Sheets, enriches it with OpenAI GPT, and generates branded Word document proposals — zero human writing required.
+            </div>
+            <div class="proj-body">
+              <strong>The Problem:</strong> Envigo's consultants were spending 2–3 hours manually writing each client proposal — personalising the copy, formatting the document, embedding branding assets. This was a direct bottleneck on revenue capacity.<br/><br/>
+              <strong>The Solution:</strong> A fully automated pipeline where a client fills a Google Form → the data lands in Google Sheets → a background Python process detects new rows, calls OpenAI to rewrite and enhance each answer into professional proposal language, then populates a reusable .docx template and saves the branded proposal to Google Drive — ready to send within minutes.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Google Sheets ingestion</strong> via gspread + service account (credentials.json). Reads form responses row by row with <strong>incremental processing</strong> tracked in processed_rows.json to avoid re-running.</li>
+              <li><strong>OpenAI content enhancement</strong> using openai.ChatCompletion.create (v0.28 syntax). Each field gets a targeted prompt that transforms raw client answers into polished consultancy prose.</li>
+              <li><strong>python-docx template engine</strong>: placeholder replacement across paragraphs, tables, and headers. Special XML run-merging logic handles split runs that broke naive find-replace.</li>
+              <li><strong>Google Drive API logo embedding</strong>: downloads the client's logo via Drive API (not raw HTTP requests, which failed on auth-gated files) and inserts it as an image at the correct template position.</li>
+              <li><strong>Error handling & recovery</strong>: graceful JSON parse failures, OpenAI retry logic, and Drive API fallback keep the pipeline running unattended.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">gspread</span><span class="tag t-gray">python-docx</span><span class="tag t-green">Google Drive API</span><span class="tag t-gray">JSON</span></div>
+          </div>
+          <span class="pg-num">— 5 —</span>
+          <span class="flip-btn" data-t="t3"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Stitch / EasyBuy -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 02 — Conversational AI + Automation</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-bot"></i>Stitch — EasyBuy Store Assistant</div>
+            <div class="ch-line"></div>
+            <div class="impact">💬 WhatsApp · 90+ Locations · Multilingual</div>
+            <div class="proj-summary">
+              A multilingual AI-powered WhatsApp store locator and assistant for EasyBuy (Landmark Group), featuring interactive button menus, a ReportLab PDF store directory, and a Selenium web scraper for live data collection.
+            </div>
+            <div class="proj-body">
+              <strong>The Problem:</strong> EasyBuy customers in India needed a quick way to find their nearest store and get product info via WhatsApp — their dominant communication channel. The existing flow was a dead-end text menu with zero AI understanding.<br/><br/>
+              <strong>The Solution:</strong> "Stitch" — a Flask-based WhatsApp chatbot upgraded from static text menus to <strong>Twilio Content API interactive buttons</strong>. Customers see tappable option lists instead of typing responses. An underlying LangChain agent with a multilingual system prompt understands intent in Hindi and English, queries a structured store database, and returns contextual answers.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>WhatsApp Interactive Buttons</strong> via Twilio Content API: migrated from plain text menus to list_picker and button templates, dramatically improving UX and reducing drop-off.</li>
+              <li><strong>Web Scraping</strong> via Selenium (headless Chrome): crawled easybuyindia.com which uses JavaScript rendering — static requests couldn't extract store data. Automated extraction of 90+ store locations, hours, addresses.</li>
+              <li><strong>ReportLab PDF Directory</strong>: generated a branded multi-page store directory PDF covering all 90+ locations with Landmark Group styling — used by the sales team for print distribution.</li>
+              <li><strong>Multilingual LangChain agent</strong>: system prompt handles code-switching between Hindi/English. The agent classifies intent, routes to the right tool (store lookup, product info, FAQ), and returns formatted replies.</li>
+              <li><strong>Flask webhook</strong>: receives Twilio callbacks, maintains session state per user phone number, dispatches to the LangChain agent, and formats the response for WhatsApp delivery.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Flask</span><span class="tag t-purple">LangChain</span><span class="tag t-gray">Twilio Content API</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">ReportLab</span><span class="tag t-green">WhatsApp API</span></div>
+          </div>
+          <span class="pg-num">— 6 —</span>
+          <span class="flip-btn back" data-t="t3"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 4: Project 3 & 4 ══ -->
+      <div class="page-right" id="t4" style="z-index:11">
+        <!-- Front: Health OS -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 03 — Full-Stack Application</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-heart-circle"></i>Personal Health OS</div>
+            <div class="ch-line"></div>
+            <div class="impact">🏥 13 Collections · Full REST API · Real-Time Tracking</div>
+            <div class="proj-summary">
+              A comprehensive personal health management platform built on Express 5 and MongoDB Atlas with 13 data collections, a full REST API, and analytics dashboards for tracking vitals, symptoms, medications, and wellness trends.
+            </div>
+            <div class="proj-body">
+              <strong>The Concept:</strong> A single unified system to replace the fragmented mess of health tracking apps — one platform that connects vitals, symptoms, medications, doctor notes, sleep, diet, and exercise into an intelligent, queryable health record you control.<br/><br/>
+              <strong>The Architecture:</strong> Backend built on <strong>Express 5</strong> (async error handling, new routing API) with <strong>Mongoose</strong> schemas for strict data validation across 13 MongoDB Atlas collections. Every health data type (vitals, symptoms, medications, appointments, sleep logs, diet entries, exercise sessions, lab results, body metrics, mood, water intake, goals, and user profile) has its own model with validation, indexing, and computed fields.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>13-collection MongoDB Atlas schema</strong>: carefully normalised with references between collections (e.g. medications linked to appointments, symptoms linked to vitals readings) to support complex health queries.</li>
+              <li><strong>Full REST API</strong>: 50+ endpoints with CRUD operations, date-range filtering, aggregation pipelines for trend analytics, and paginated responses for large datasets.</li>
+              <li><strong>Express 5 features</strong>: leverages native async/await route handlers with automatic error propagation — no more try-catch boilerplate or wrapping with asyncHandler.</li>
+              <li><strong>Analytics & Insights</strong>: MongoDB aggregation pipelines compute weekly/monthly trends, anomaly flags (e.g. BP outside normal range), and correlation views between sleep and mood scores.</li>
+              <li><strong>Authentication</strong>: JWT-based auth with refresh tokens, role-based access, and secure health data isolation per user.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Express 5</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">Mongoose</span><span class="tag t-blue">Node.js</span><span class="tag t-gray">REST API</span><span class="tag t-purple">JWT Auth</span></div>
+          </div>
+          <span class="pg-num">— 7 —</span>
+          <span class="flip-btn" data-t="t4"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: FinMind -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 04 — AI Finance Application</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-dollar-circle"></i>FinMind — AI Personal Finance App</div>
+            <div class="ch-line"></div>
+            <div class="impact">💰 GitHub Pages · OpenAI Insights · Zero Backend Cost</div>
+            <div class="proj-summary">
+              A fully client-side AI-powered personal finance application hosted on GitHub Pages, using the MongoDB Atlas Data API and localStorage-managed OpenAI keys to deliver AI spending analysis with zero server infrastructure.
+            </div>
+            <div class="proj-body">
+              <strong>The Challenge:</strong> Build a real AI finance app with no monthly hosting costs. No backend server, no paid database tier, no cloud functions — yet still provide real-time data persistence, AI insights, and interactive charts.<br/><br/>
+              <strong>The Innovation:</strong> Use <strong>MongoDB Atlas Data API</strong> (direct HTTP from browser) for persistence, <strong>localStorage</strong> for the OpenAI API key (user-managed, never leaves their device), and <strong>React + Chart.js</strong> for a single-file deployable SPA that runs entirely from GitHub Pages CDN.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>localStorage API key pattern</strong>: User enters their OpenAI key once → stored in localStorage → all AI calls made direct from browser. Key is never transmitted to any third-party server. Clean UX with key-edit modal.</li>
+              <li><strong>MongoDB Atlas Data API</strong>: REST-based database access without a traditional backend. Create, read, update, delete financial transactions via fetch() directly from the React frontend.</li>
+              <li><strong>AI Spending Insights</strong>: Monthly transaction data sent to GPT-4 with a structured prompt → returns categorised spending analysis, savings recommendations, and anomaly flags displayed as readable insights.</li>
+              <li><strong>Budget Goal Tracking</strong>: Set monthly category budgets → real-time progress bars calculated against actual spending → alerts when approaching or exceeding limits.</li>
+              <li><strong>Chart.js Visualisations</strong>: Doughnut chart for category breakdown, line chart for monthly spending trends, bar chart for income vs expense comparison — all computed client-side.</li>
+            </ul>
+            <div class="tags"><span class="tag t-gold">React.js</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">MongoDB Atlas Data API</span><span class="tag t-gray">Chart.js</span><span class="tag t-gray">GitHub Pages</span><span class="tag t-gray">localStorage</span></div>
+          </div>
+          <span class="pg-num">— 8 —</span>
+          <span class="flip-btn back" data-t="t4"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 5: Project 5 & 6 ══ -->
+      <div class="page-right" id="t5" style="z-index:10">
+        <!-- Front: CatchMaster -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 05 — Game Development</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-joystick"></i>CatchMaster — HTML5 Arcade Game</div>
+            <div class="ch-line"></div>
+            <div class="impact">🎮 Zero Dependencies · AI-Adaptive · Pure JavaScript</div>
+            <div class="proj-summary">
+              A zero-dependency HTML5 Canvas arcade game with an AI-adaptive difficulty engine and a miss-streak mechanic — all in vanilla JavaScript, running directly in any browser without a build step.
+            </div>
+            <div class="proj-body">
+              <strong>The Design Philosophy:</strong> Most browser games feel static — the difficulty never adapts to you. CatchMaster uses a real-time adaptive AI system that continuously observes player performance and tunes the game's parameters to keep the player in a <strong>"flow state"</strong> — challenging but not frustrating.<br/><br/>
+              <strong>Core Systems:</strong>
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Adaptive Difficulty Engine</strong>: tracks a rolling hit/miss ratio over the last N frames. If the player is catching everything easily → spawns more objects, increases fall speed, shrinks catch radius. If miss rate spikes → eases up. Parameters update smoothly without jarring jumps.</li>
+              <li><strong>Miss-Streak Mechanic</strong>: consecutive misses trigger visual and audio cues (screen flash, shake effect) and accelerate game-over conditions — adds tension and stakes beyond a simple lives counter.</li>
+              <li><strong>Canvas 2D Rendering</strong>: all game objects (falling items, catcher, particles, score UI) drawn via Canvas 2D API with requestAnimationFrame for a locked 60fps loop. No WebGL, no libraries.</li>
+              <li><strong>Particle System</strong>: catch events spawn a burst of colour-coded particles that decay over time — coded as a lightweight object pool to avoid garbage collection pauses mid-game.</li>
+              <li><strong>High Score Persistence</strong>: scores persisted to localStorage with a leaderboard view showing top 5 sessions, date-stamped.</li>
+            </ul>
+            <div class="tags"><span class="tag t-gold">HTML5 Canvas</span><span class="tag t-gold">Vanilla JavaScript</span><span class="tag t-purple">Adaptive AI</span><span class="tag t-gray">requestAnimationFrame</span><span class="tag t-gray">localStorage</span></div>
+          </div>
+          <span class="pg-num">— 9 —</span>
+          <span class="flip-btn" data-t="t5"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: DR Detector -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 06 — Medical AI / Computer Vision</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-scan"></i>Diabetic Retinopathy Detector</div>
+            <div class="ch-line"></div>
+            <div class="impact">👁️ 92% Accuracy · CNN · Clinical Decision Support</div>
+            <div class="proj-summary">
+              A deep learning model that classifies the severity of diabetic retinopathy from retinal fundus photographs, achieving 92% accuracy — built as a B.Tech final year project with real clinical dataset training.
+            </div>
+            <div class="proj-body">
+              <strong>Clinical Context:</strong> Diabetic Retinopathy (DR) is the leading cause of blindness in working-age adults worldwide. Early detection via retinal imaging is critical but requires specialist ophthalmologists — a bottleneck in under-resourced healthcare settings. This project demonstrates that a CNN can automate the screening step to support clinical workflows.<br/><br/>
+              <strong>Model Architecture & Training:</strong>
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Dataset</strong>: trained on retinal fundus images with 5-class DR severity labels (No DR, Mild, Moderate, Severe, Proliferative DR). Applied class-weighting to handle the severe class imbalance in real clinical datasets.</li>
+              <li><strong>CNN Architecture</strong>: custom convolutional architecture in PyTorch with 6 conv blocks, batch normalisation, dropout regularisation, and global average pooling before the classifier head — designed to balance depth with the limited dataset size.</li>
+              <li><strong>Preprocessing Pipeline</strong>: fundus images resized and normalised, with CLAHE (Contrast Limited Adaptive Histogram Equalisation) applied to enhance the visibility of microaneurysms and haemorrhages before model input.</li>
+              <li><strong>Data Augmentation</strong>: random horizontal/vertical flips, rotation, brightness jitter — critical for a medical dataset where genuine variation is limited and overfitting risk is high.</li>
+              <li><strong>Results</strong>: <strong>92% accuracy</strong> on the held-out test set. Confusion matrix analysis showed strongest performance on No-DR and Proliferative-DR classes; model struggles most with the Mild/Moderate boundary — consistent with published literature.</li>
+              <li><strong>Grad-CAM Visualisation</strong>: implemented gradient-weighted class activation maps to visually verify that the model attends to clinically relevant regions (optic disc, blood vessels) rather than image artefacts.</li>
+            </ul>
+            <div class="tags"><span class="tag t-purple">PyTorch</span><span class="tag t-purple">CNN</span><span class="tag t-blue">Python</span><span class="tag t-red">CLAHE Preprocessing</span><span class="tag t-red">Grad-CAM</span><span class="tag t-gray">Medical Imaging</span></div>
+          </div>
+          <span class="pg-num">— 10 —</span>
+          <span class="flip-btn back" data-t="t5"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 6: Research / Contact ══ -->
+      <div class="page-right" id="t6" style="z-index:9">
+        <!-- Front: Research & Mario -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Published Research</div>
+            <div class="ch"><i class="bx bx-test-tube"></i>Research & Other Work</div>
+            <div class="ch-line"></div>
+            <div class="research">
+              <div class="research-badge">📄 IEEE / Academic Publication</div>
+              <h3>ECG & PPG Based Real-Time Health Monitoring System</h3>
+              <p>
+                <strong>Context:</strong> Co-authored during B.Tech ML Leadership at MIET. The paper presents a complete IoT health monitoring stack for cardiac wellness tracking using wearable biosensors.<br/><br/>
+                <strong>Key Contributions:</strong> (1) Signal acquisition pipeline for ECG and PPG on microcontroller hardware. (2) Bandpass filtering and wavelet-based denoising to clean noisy wearable signals. (3) Pan-Tompkins R-peak detection algorithm for real-time HRV (Heart Rate Variability) computation. (4) Anomaly classification using a lightweight decision-tree model deployable on embedded hardware. (5) Cloud dashboard integration for long-term trend visualisation.<br/><br/>
+                <strong>Significance:</strong> The system demonstrates sub-30ms latency inference on edge hardware — making it viable for real-time wearable health monitoring without constant cloud connectivity.
+              </p>
+            </div>
+            <div class="section-label" style="margin-top:.6rem">Project 07 — Game Dev</div>
+            <div class="proj">
+              <div class="proj-header">
+                <div class="proj-name">🎮 Python Mario Recreation</div>
+                <a href="https://github.com/theshaguntyagi" target="_blank" class="proj-link">GitHub <i class="bx bx-link-external"></i></a>
+              </div>
+              <div class="proj-body">A Pygame-based Mario recreation with custom scrolling levels, enemy AI (patrol + chase behaviours), collectables, coin counters, a lives system, and a sound engine. Built with a clean game-loop architecture (update/draw separation). The project has a redesigned <strong>GitHub Pages landing site</strong> showcasing gameplay screenshots and controls — built as a case study in packaging a Python game for web audiences.</div>
+              <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-gold">Pygame</span><span class="tag t-gray">GitHub Pages</span><span class="tag t-purple">Game AI</span></div>
+            </div>
+          </div>
+          <span class="pg-num">— 11 —</span>
+          <span class="flip-btn" data-t="t6"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Contact -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-send"></i>Get In Touch</div>
+            <div class="ch-line"></div>
+            <div class="proj-body" style="margin-bottom:1rem;font-size:.82rem;color:var(--ink2);">
+              Open to AI/ML engineering roles, consulting projects, and collaboration on impactful systems. Based in Uttar Pradesh, India — available for remote work globally and on-site in the UK.
+            </div>
+            <div class="contact-list">
+              <a class="contact-row" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i><div><div class="c-lbl">LinkedIn</div><div class="c-val">in/theshaguntyagi</div></div></a>
+              <a class="contact-row" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i><div><div class="c-lbl">GitHub</div><div class="c-val">@theshaguntyagi</div></div></a>
+              <a class="contact-row" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i><div><div class="c-lbl">Email</div><div class="c-val">shagun@envigo.co.in</div></div></a>
+              <div class="contact-row"><i class="bx bx-map"></i><div><div class="c-lbl">Location</div><div class="c-val">Uttar Pradesh, India · Remote Global</div></div></div>
+              <div class="contact-row"><i class="bx bx-buildings"></i><div><div class="c-lbl">Current Company</div><div class="c-val">Envigo — UK AI & Software Consultancy</div></div></div>
+            </div>
+            <div style="margin-top:1rem;text-align:center;">
+              <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap">
+                <i class="bx bxl-linkedin-square"></i> Connect with Shagun Tyagi on LinkedIn
+              </a>
+            </div>
+          </div>
+          <span class="pg-num">— 12 —</span>
+          <span class="flip-btn back" data-t="t6"><i class="bx bx-chevron-left"></i></span>
+          <a href="#" class="back-home" id="goHome"><i class="bx bxs-book-open"></i> Back to Profile</a>
+        </div>
+      </div>
+
+    </div><!-- .book -->
+  </div><!-- .book-wrapper -->
+</div><!-- .desk -->
+
+
+<!-- ════════════════ MOBILE READER ════════════════ -->
+<div class="mob-reader" id="mobReader">
+  <div class="mob-bar">
+    <span class="mob-bar-name">Shagun Tyagi</span>
+    <span class="mob-bar-pg" id="mobCtr">1 / 13</span>
+  </div>
+  <div class="mob-prog"><div class="mob-prog-fill" id="mobFill" style="width:7.7%"></div></div>
+  <div class="mob-track" id="mobTrack">
+
+    <!-- Page 0: Profile -->
+    <div class="mob-pg">
+      <div class="profile-wrap" style="min-height:85vh;padding:1rem 0;">
+        <div class="avatar-outer"><div class="avatar-inner">ST</div></div>
+        <div class="prof-name">Shagun Tyagi</div>
+        <div class="prof-role">AI / ML Engineer</div>
+        <div class="prof-co" style="color:rgba(255,255,255,.45)">Envigo UK · MBA Candidate</div>
+        <div class="gold-line"></div>
+        <div class="socials">
+          <a class="soc-btn" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i></a>
+          <a class="soc-btn" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i></a>
+          <a class="soc-btn" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i></a>
+        </div>
+        <div class="prof-bio">I build production AI/ML systems: LLM pipelines, WhatsApp bots, computer vision models, and full-stack applications. Published IoT health researcher.</div>
+        <div class="stats-row" style="width:100%">
+          <div class="stat-cell"><span class="stat-n">5+</span><span class="stat-l">Prod Systems</span></div>
+          <div class="stat-cell"><span class="stat-n">92%</span><span class="stat-l">DR Accuracy</span></div>
+          <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Publication</span></div>
+          <div class="stat-cell"><span class="stat-n">3+</span><span class="stat-l">Yrs Exp</span></div>
+        </div>
+        <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap"><i class="bx bxl-linkedin-square"></i> View on LinkedIn</a>
+      </div>
+      <div class="swipe-hint"><i class="bx bx-right-arrow-alt"></i> Swipe left to turn page</div>
+    </div>
+
+    <!-- Page 1: Work Experience -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-briefcase"></i><h2>Work Experience</h2></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-year">2023 – Present</div><div class="tl-title">AI / ML Engineer — Envigo (UK)</div><div class="tl-body">Builds production LangChain/FastAPI systems, auto-proposal pipelines (OpenAI + python-docx + Google Sheets), WhatsApp chatbots via Twilio, and leads ML strategy for enterprise clients.</div></div>
+        <div class="tl-item"><div class="tl-year">2021 – 2023</div><div class="tl-title">Software Engineer — Airtel</div><div class="tl-body">Backend services and data pipelines at telecom scale. Large-scale distributed systems, high-availability REST APIs, and network automation tools for millions of users.</div></div>
+        <div class="tl-item"><div class="tl-year">2019 – 2021</div><div class="tl-title">ML Lead — MIET</div><div class="tl-body">Led ML research vertical, directed ECG/PPG health monitoring research (published paper), mentored teams, deployed IoT prototypes.</div></div>
+      </div>
+    </div>
+
+    <!-- Page 2: Education -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-book-open"></i><h2>Education</h2></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-year">2025 – Present</div><div class="tl-title">MBA — Business Administration</div><div class="tl-body">Strategic management, product leadership, and entrepreneurship — bridging AI engineering with business decision-making.</div></div>
+        <div class="tl-item"><div class="tl-year">2019 – 2023</div><div class="tl-title">B.Tech CSE (IoT) — MIET</div><div class="tl-body">Specialized in IoT + CS. ML Lead role. Published ECG/PPG paper. Diabetic retinopathy CNN — 92% accuracy.</div></div>
+      </div>
+      <div class="research" style="margin-top:.8rem"><div class="research-badge">📄 Published</div><h3>ECG & PPG Health Monitoring System</h3><p>Real-time cardiac monitoring with wearable sensors. Signal denoising, HRV analysis, anomaly detection, embedded ML on microcontrollers. Sub-30ms inference latency.</p></div>
+    </div>
+
+    <!-- Page 3: Skills -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-code-alt"></i><h2>Technical Skills</h2></div>
+      <div class="sk-group"><div class="sk-label">AI / ML & LLMs</div><div class="tags"><span class="tag t-purple">LangChain</span><span class="tag t-purple">OpenAI API</span><span class="tag t-purple">FastAPI</span><span class="tag t-purple">PyTorch</span><span class="tag t-purple">RAG</span><span class="tag t-purple">Prompt Engineering</span></div></div>
+      <div class="sk-group"><div class="sk-label">Backend</div><div class="tags"><span class="tag t-blue">Python</span><span class="tag t-blue">Node.js</span><span class="tag t-blue">Express 5</span><span class="tag t-blue">Flask</span><span class="tag t-blue">REST APIs</span></div></div>
+      <div class="sk-group"><div class="sk-label">Cloud & Data</div><div class="tags"><span class="tag t-green">Google Cloud</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">gspread</span><span class="tag t-green">Drive API</span><span class="tag t-green">Docker</span></div></div>
+      <div class="sk-group"><div class="sk-label">Frontend</div><div class="tags"><span class="tag t-gold">JavaScript</span><span class="tag t-gold">React</span><span class="tag t-gold">HTML5/CSS3</span><span class="tag t-gold">Canvas API</span></div></div>
+      <div class="sk-group"><div class="sk-label">Automation & Tools</div><div class="tags"><span class="tag t-gray">python-docx</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">pandas</span><span class="tag t-gray">ReportLab</span><span class="tag t-gray">Twilio</span></div></div>
+      <div class="sk-group"><div class="sk-label">Biomedical & IoT</div><div class="tags"><span class="tag t-red">ECG/PPG Processing</span><span class="tag t-red">HRV Analysis</span><span class="tag t-red">Embedded ML</span></div></div>
+    </div>
+
+    <!-- Page 4: Project 1 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-file-find"></i><h2>Auto-Proposal Generator</h2></div>
+      <div class="impact">🚀 Live · Fully Automated · Client-Facing</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Google Forms → OpenAI GPT → branded .docx proposals, fully automated, zero manual writing.</div>
+      <ul class="proj-bullets">
+        <li><strong>Google Sheets ingestion</strong> via gspread service account with incremental row tracking (processed_rows.json)</li>
+        <li><strong>OpenAI content enhancement</strong>: each field gets a targeted prompt transforming raw answers into polished consultancy prose</li>
+        <li><strong>python-docx template engine</strong>: handles split XML runs that break naive find-replace</li>
+        <li><strong>Google Drive API logo embedding</strong>: downloads logos via Drive API (not raw HTTP) and inserts into template</li>
+        <li><strong>Error recovery</strong>: OpenAI retry logic, graceful JSON parse failures, unattended operation</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">gspread</span><span class="tag t-gray">python-docx</span><span class="tag t-green">Drive API</span></div>
+    </div>
+
+    <!-- Page 5: Project 2 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-bot"></i><h2>Stitch — EasyBuy Assistant</h2></div>
+      <div class="impact">💬 WhatsApp · 90+ Locations · Multilingual</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Multilingual AI WhatsApp chatbot for Landmark Group with interactive button menus, PDF store directory, and Selenium scraper.</div>
+      <ul class="proj-bullets">
+        <li><strong>Twilio Content API buttons</strong>: upgraded from plain text menus to list_picker interactive templates — dramatic UX improvement</li>
+        <li><strong>Selenium scraper</strong>: headless Chrome to scrape JS-rendered easybuyindia.com for 90+ store locations</li>
+        <li><strong>ReportLab PDF directory</strong>: branded multi-page store directory for 90+ locations used by sales team</li>
+        <li><strong>Multilingual LangChain agent</strong>: handles Hindi/English code-switching, intent classification, store lookup, FAQ</li>
+        <li><strong>Flask webhook</strong>: receives Twilio callbacks, maintains per-user session state, formats WhatsApp replies</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Flask</span><span class="tag t-purple">LangChain</span><span class="tag t-gray">Twilio</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">ReportLab</span></div>
+    </div>
+
+    <!-- Page 6: Project 3 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-heart-circle"></i><h2>Personal Health OS</h2></div>
+      <div class="impact">🏥 13 Collections · REST API · Real-Time Analytics</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Express 5 + MongoDB Atlas health management platform — vitals, symptoms, medications, sleep, diet, and analytics in one system.</div>
+      <ul class="proj-bullets">
+        <li><strong>13-collection MongoDB schema</strong>: vitals, symptoms, medications, appointments, sleep, diet, exercise, labs, body metrics, mood, water, goals, user profile — fully normalised with cross-references</li>
+        <li><strong>50+ REST endpoints</strong>: CRUD, date-range filters, aggregation pipelines for trends, paginated responses</li>
+        <li><strong>Express 5 async routing</strong>: native async/await without try-catch boilerplate</li>
+        <li><strong>Trend analytics</strong>: MongoDB aggregation computes weekly/monthly health trends, BP anomaly flags, sleep-mood correlations</li>
+        <li><strong>JWT authentication</strong> with refresh tokens and per-user data isolation</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Express 5</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">Mongoose</span><span class="tag t-purple">JWT Auth</span></div>
+    </div>
+
+    <!-- Page 7: Project 4 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-dollar-circle"></i><h2>FinMind — AI Finance App</h2></div>
+      <div class="impact">💰 GitHub Pages · Zero Backend Cost · AI Insights</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Client-side AI finance app with MongoDB Atlas Data API, localStorage API keys, OpenAI spending insights, and Chart.js dashboards — zero hosting cost.</div>
+      <ul class="proj-bullets">
+        <li><strong>localStorage API key pattern</strong>: user's OpenAI key stored locally, never leaves their device — privacy-first</li>
+        <li><strong>MongoDB Atlas Data API</strong>: direct browser-to-database REST calls, no traditional backend server</li>
+        <li><strong>GPT-4 spending analysis</strong>: monthly transactions sent to OpenAI → categorised insights + savings recommendations</li>
+        <li><strong>Budget goal tracking</strong>: real-time progress bars vs. monthly category limits with overspend alerts</li>
+        <li><strong>Chart.js visualisations</strong>: doughnut (categories), line (monthly trends), bar (income vs expense)</li>
+      </ul>
+      <div class="tags"><span class="tag t-gold">React</span><span class="tag t-purple">OpenAI</span><span class="tag t-green">Atlas Data API</span><span class="tag t-gray">Chart.js</span><span class="tag t-gray">GitHub Pages</span></div>
+    </div>
+
+    <!-- Page 8: Project 5 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-joystick"></i><h2>CatchMaster Arcade</h2></div>
+      <div class="impact">🎮 Adaptive AI · Zero Dependencies · 60 FPS</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Vanilla JS HTML5 Canvas arcade game with real-time adaptive difficulty engine keeping players in the "flow state".</div>
+      <ul class="proj-bullets">
+        <li><strong>Adaptive difficulty engine</strong>: rolling hit/miss ratio → dynamically tunes spawn rate, fall speed, catch radius without jarring jumps</li>
+        <li><strong>Miss-streak mechanic</strong>: consecutive misses trigger screen flash + shake + accelerated game-over conditions</li>
+        <li><strong>Canvas 2D at 60fps</strong>: all objects drawn via requestAnimationFrame loop — no libraries needed</li>
+        <li><strong>Particle system</strong>: object-pooled burst particles on catch events to avoid mid-game GC pauses</li>
+        <li><strong>High score board</strong> persisted in localStorage with date-stamped leaderboard view</li>
+      </ul>
+      <div class="tags"><span class="tag t-gold">HTML5 Canvas</span><span class="tag t-gold">Vanilla JS</span><span class="tag t-purple">Adaptive AI</span><span class="tag t-gray">Game Loop</span></div>
+    </div>
+
+    <!-- Page 9: Project 6 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-scan"></i><h2>Diabetic Retinopathy Detector</h2></div>
+      <div class="impact">👁️ 92% Accuracy · CNN · Medical Imaging · PyTorch</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Deep learning CNN that classifies DR severity from retinal fundus photos — 5-class grading, Grad-CAM visualisation, clinically motivated preprocessing.</div>
+      <ul class="proj-bullets">
+        <li><strong>5-class severity classification</strong>: No DR → Mild → Moderate → Severe → Proliferative DR, trained with class-weighting for imbalanced data</li>
+        <li><strong>CLAHE preprocessing</strong>: Contrast Limited Adaptive Histogram Equalisation enhances microaneurysms and haemorrhages before model input</li>
+        <li><strong>Custom CNN in PyTorch</strong>: 6 conv blocks, batch norm, dropout, global average pooling — balanced depth vs. dataset size</li>
+        <li><strong>Data augmentation</strong>: flips, rotation, brightness jitter to prevent overfitting on limited medical data</li>
+        <li><strong>Grad-CAM saliency maps</strong>: verifies model attends to optic disc and blood vessels — not image artefacts</li>
+        <li><strong>92% test accuracy</strong>: strongest on No-DR and Proliferative-DR; Mild/Moderate boundary is the hardest — consistent with ophthalmology literature</li>
+      </ul>
+      <div class="tags"><span class="tag t-purple">PyTorch</span><span class="tag t-purple">CNN</span><span class="tag t-red">CLAHE</span><span class="tag t-red">Grad-CAM</span><span class="tag t-gray">Medical Imaging</span></div>
+    </div>
+
+    <!-- Page 10: Research & Mario -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-test-tube"></i><h2>Research & Extras</h2></div>
+      <div class="research"><div class="research-badge">📄 Published Research</div><h3>ECG & PPG Based Health Monitoring</h3><p>Wearable IoT cardiac monitoring system. Pan-Tompkins R-peak detection, wavelet denoising, HRV computation, lightweight decision-tree for arrhythmia classification on embedded hardware. Sub-30ms latency. Co-authored at MIET.</p></div>
+      <div class="proj"><div class="proj-header"><div class="proj-name">🎮 Python Mario Recreation</div><a href="https://github.com/theshaguntyagi" target="_blank" class="proj-link">GitHub <i class="bx bx-link-external"></i></a></div><div class="proj-body">Pygame Mario with scrolling levels, patrol+chase enemy AI, collectables, lives system, and sound engine. Packaged with a GitHub Pages landing site for web audiences.</div><div class="tags"><span class="tag t-blue">Python</span><span class="tag t-gold">Pygame</span><span class="tag t-purple">Game AI</span></div></div>
+    </div>
+
+    <!-- Page 11: Skills grid / What I Build -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-layer"></i><h2>What I Build</h2></div>
+      <div class="svc-grid">
+        <div class="svc"><i class="bx bx-brain"></i><h3>AI Pipelines</h3><p>End-to-end LLM automation, RAG, document intelligence.</p></div>
+        <div class="svc"><i class="bx bx-server"></i><h3>Backend APIs</h3><p>FastAPI/Flask/Express + MongoDB Atlas.</p></div>
+        <div class="svc"><i class="bx bx-bot"></i><h3>Chatbots</h3><p>WhatsApp bots, multilingual agents, Twilio.</p></div>
+        <div class="svc"><i class="bx bx-chip"></i><h3>ML Models</h3><p>Computer vision, health-signal IoT ML.</p></div>
+        <div class="svc"><i class="bx bx-spreadsheet"></i><h3>Automation</h3><p>Sheets pipelines, PDF generation, scraping.</p></div>
+        <div class="svc"><i class="bx bx-devices"></i><h3>Full-Stack</h3><p>Health OS, finance apps, HTML5 games.</p></div>
+      </div>
+    </div>
+
+    <!-- Page 12: Contact -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-send"></i><h2>Contact Me</h2></div>
+      <div class="proj-body" style="color:#1a2744;font-size:.82rem;margin-bottom:.8rem;">Open to AI/ML roles, consulting, and collaboration. Available remote globally and on-site in the UK.</div>
+      <div class="contact-list">
+        <a class="contact-row" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i><div><div class="c-lbl">LinkedIn</div><div class="c-val">in/theshaguntyagi</div></div></a>
+        <a class="contact-row" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i><div><div class="c-lbl">GitHub</div><div class="c-val">@theshaguntyagi</div></div></a>
+        <a class="contact-row" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i><div><div class="c-lbl">Email</div><div class="c-val">shagun@envigo.co.in</div></div></a>
+        <div class="contact-row"><i class="bx bx-map"></i><div><div class="c-lbl">Location</div><div class="c-val">Uttar Pradesh, India · Remote Global</div></div></div>
+        <div class="contact-row"><i class="bx bx-buildings"></i><div><div class="c-lbl">Company</div><div class="c-val">Envigo — UK AI Consultancy</div></div></div>
+      </div>
+      <div style="margin-top:1rem;text-align:center;">
+        <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap"><i class="bx bxl-linkedin-square"></i> Connect on LinkedIn</a>
+      </div>
+    </div>
+
+  </div><!-- mob-track -->
+
+  <div class="mob-nav">
+    <div class="mob-nbtn dis" id="mPrev"><i class="bx bx-chevron-left"></i></div>
+    <div class="mob-dots" id="mDots"></div>
+    <div class="mob-nbtn" id="mNext"><i class="bx bx-chevron-right"></i></div>
+  </div>
+</div><!-- mob-reader -->
+
+
+<script>
+/* ══ DESKTOP BOOK ══ */
+(function(){
+  const ids = ['t1','t2','t3','t4','t5','t6'];
+
+  // All pages start pre-turned (hidden behind cover)
+  ids.forEach(id => document.getElementById(id).classList.add('turn'));
+
+  // Flip button handler
+  document.querySelectorAll('.flip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.t;
+      const page = document.getElementById(id);
+      if(!page) return;
+      if(page.classList.contains('turn')){
+        page.classList.remove('turn');
+        page.style.zIndex = 20 - ids.indexOf(id);
+      } else {
+        page.classList.add('turn');
+        page.style.zIndex = 9 + ids.indexOf(id);
+      }
+    });
+  });
+
+  // "Contact Me" — jump to last spread
+  document.getElementById('goContact')?.addEventListener('click', e => {
+    e.preventDefault();
+    ids.forEach((id, i) => {
+      setTimeout(() => {
+        const p = document.getElementById(id);
+        p.classList.remove('turn');
+        p.style.zIndex = 20 - i;
+      }, i * 180);
+    });
+  });
+
+  // "Back to Profile" — close all
+  document.getElementById('goHome')?.addEventListener('click', e => {
+    e.preventDefault();
+    [...ids].reverse().forEach((id, i) => {
+      setTimeout(() => {
+        const p = document.getElementById(id);
+        p.classList.add('turn');
+        p.style.zIndex = 9 + ids.indexOf(id);
+      }, i * 180);
+    });
+  });
+
+  // Opening animation — cover flips, then pages unfurl last→first
+  const cover = document.getElementById('coverFront');
+  setTimeout(() => { cover.classList.add('turn'); }, 1500);
+  setTimeout(() => { cover.style.zIndex = -1; }, 2400);
+
+  // Reveal pages in reverse order so page 1 ends on top
+  [...ids].reverse().forEach((id, i) => {
+    setTimeout(() => {
+      const p = document.getElementById(id);
+      p.classList.remove('turn');
+      p.style.zIndex = 20 - ids.indexOf(id);
+    }, 1600 + i * 200);
+  });
+})();
+
+
+/* ══ MOBILE READER ══ */
+(function(){
+  const track = document.getElementById('mobTrack');
+  const ctr   = document.getElementById('mobCtr');
+  const fill  = document.getElementById('mobFill');
+  const prev  = document.getElementById('mPrev');
+  const next  = document.getElementById('mNext');
+  const dots  = document.getElementById('mDots');
+  if(!track) return;
+
+  const pages = track.querySelectorAll('.mob-pg');
+  const N = pages.length;
+  let cur = 0, sx = 0, sy = 0, dragging = false;
+
+  // Build dots (max 13 shown)
+  for(let i=0;i<N;i++){
+    const d = document.createElement('div');
+    d.className = 'mob-dot' + (i===0?' on':'');
+    dots.appendChild(d);
+  }
+
+  function goTo(n, anim=true){
+    if(n<0||n>=N) return;
+    cur = n;
+    track.style.transition = anim ? 'transform .4s cubic-bezier(.4,0,.2,1)' : 'none';
+    track.style.transform = `translateX(-${cur*100}vw)`;
+    ctr.textContent = `${cur+1} / ${N}`;
+    fill.style.width = `${((cur+1)/N)*100}%`;
+    dots.querySelectorAll('.mob-dot').forEach((d,i) => d.classList.toggle('on', i===cur));
+    prev.classList.toggle('dis', cur===0);
+    next.classList.toggle('dis', cur===N-1);
+  }
+
+  prev.addEventListener('click', () => goTo(cur-1));
+  next.addEventListener('click', () => goTo(cur+1));
+
+  track.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; dragging = true;
+  }, {passive:true});
+
+  track.addEventListener('touchmove', e => {
+    if(!dragging) return;
+    const dx = e.touches[0].clientX - sx;
+    const dy = e.touches[0].clientY - sy;
+    if(Math.abs(dy) > Math.abs(dx)) return;
+    e.preventDefault();
+    track.style.transition = 'none';
+    track.style.transform = `translateX(calc(-${cur*100}vw + ${dx*.65}px))`;
+  }, {passive:false});
+
+  track.addEventListener('touchend', e => {
+    if(!dragging){dragging=false;return;}
+    dragging = false;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx)<Math.abs(dy)){goTo(cur);return;}
+    if(dx < -50) goTo(cur+1);
+    else if(dx > 50) goTo(cur-1);
+    else goTo(cur);
+  }, {passive:true});
+
+  document.addEventListener('keydown', e => {
+    if(e.key==='ArrowRight') goTo(cur+1);
+    if(e.key==='ArrowLeft')  goTo(cur-1);
+  });
+
+  goTo(0, false);
+})();
+</script>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</body>
+</html>
