@@ -1,2497 +1,1380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shagun Tyagi | AI/ML Engineer — Portfolio Book</title>
-<meta name="description" content="Shagun Tyagi — AI/ML Engineer building LLM agents, RAG systems & ML pipelines. B.Tech CSE + MBA (Expected 2027).">
-<meta property="og:title" content="Shagun Tyagi | AI/ML Engineer">
-<meta property="og:description" content="Portfolio Book — LLM Agents · RAG Systems · ML Pipelines">
-<meta property="og:url" content="https://theshaguntyagi.github.io/RESUMEBOOK/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://theshaguntyagi.github.io/RESUMEBOOK/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shagun Tyagi | AI/ML Engineer">
-<meta name="twitter:description" content="Portfolio Book — LLM Agents · RAG Systems · ML Pipelines">
-<meta name="twitter:image" content="https://theshaguntyagi.github.io/RESUMEBOOK/og-image.png">
-<link rel="canonical" href="https://theshaguntyagi.github.io/RESUMEBOOK/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Shagun Tyagi",
-  "jobTitle": "AI/ML Engineer",
-  "url": "https://theshaguntyagi.github.io/RESUMEBOOK/",
-  "email": "theshaguntyagi@gmail.com",
-  "sameAs": [
-    "https://linkedin.com/in/theshaguntyagi",
-    "https://github.com/theshaguntyagi"
-  ],
-  "worksFor": { "@type": "Organization", "name": "Envigo" }
-}
-</script>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET & ROOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;text-decoration:none;border:none;outline:none;}
 :root{
-  --ink:#1a1a1a;
-  --ink-mid:#3d3d3d;
-  --ink-muted:#6b6b6b;
-  --paper:#f7f3eb;
-  --paper-dark:#ede8dc;
-  --paper-shadow:#d8d0be;
-  --accent:#8b2e0f;
-  --accent-light:#c4541e;
-  --gold:#b8860b;
-  --gold-bright:#d4a820;
-  --page-w:680px;
-  --page-h:960px;
-  --spine:28px;
-  --ease-page:cubic-bezier(0.77,0,0.18,1);
-  --dm-bg:#0e0c09;
-  --dm-paper:#1a1710;
-  --dm-paper-dark:#22201a;
-  --dm-ink:#e8e0cc;
-  --dm-ink-mid:#c0b898;
-  --dm-ink-muted:#7a7060;
-  --dm-shadow:#0d0b08;
+  --ink:#1a1a2e;
+  --ink2:#2d3561;
+  --paper:#faf8f3;
+  --paper2:#f3efe6;
+  --paper3:#eae5d8;
+  --accent:#c8922a;
+  --accent2:#e8b84b;
+  --gold:linear-gradient(135deg,#c8922a,#e8b84b,#c8922a);
+  --blue:#1e5799;
+  --blue-lt:#e8f0fb;
+  --red:#9b2335;
+  --green:#1a5c3a;
+  --muted:#6b6b7b;
+  --shadow-book:
+    -6px 0 20px rgba(0,0,0,0.4),
+    0 8px 40px rgba(0,0,0,0.35),
+    inset -3px 0 8px rgba(0,0,0,0.15);
 }
-
-[data-theme="dark"]{
-  --paper: var(--dm-paper);
-  --paper-dark: var(--dm-paper-dark);
-  --paper-shadow: var(--dm-shadow);
-  --ink: var(--dm-ink);
-  --ink-mid: var(--dm-ink-mid);
-  --ink-muted: var(--dm-ink-muted);
-}
-
-html,body{
-  width:100%;height:100%;
-  background:#2a2217;
-  font-family:'EB Garamond',Georgia,serif;
-  overflow:hidden;
-  user-select:none;
-  transition: background 0.4s;
-}
-[data-theme="dark"] body { background: var(--dm-bg); }
-
-/* ───── BOOK STAGE ───── */
-#stage{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  perspective:2400px;
-}
-
-#book{
-  position:relative;
-  width:calc(var(--page-w)*2 + var(--spine));
-  height:var(--page-h);
-  transform-style:preserve-3d;
-}
-
-/* ───── BOOK EDGE STACKING EFFECT ───── */
-.book-edge{
-  position:absolute;
-  top:3px;
-  right:-6px;
-  width:var(--page-w);
-  height:var(--page-h);
-  background: linear-gradient(90deg, var(--paper-dark) 0%, var(--paper) 100%);
-  z-index:-1;
-  box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-  border-radius:0 2px 2px 0;
-}
-.book-edge::after{
-  content:'';
-  position:absolute;
-  top:3px;right:-4px;
-  width:100%;height:100%;
-  background: linear-gradient(90deg, #c8bfa8 0%, #d4c9b0 100%);
-  z-index:-2;
-  box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
-  border-radius:0 2px 2px 0;
-}
-
-/* ───── SPINE ───── */
-#spine-bar{
-  position:absolute;
-  left:var(--page-w);
-  top:0;
-  width:var(--spine);
-  height:100%;
-  background:linear-gradient(90deg,#1a1208 0%,#3d2e14 40%,#2a1f0e 60%,#0d0a05 100%);
-  z-index:10;
-  display:flex;align-items:center;justify-content:center;
-}
-#spine-bar span{
-  writing-mode:vertical-rl;
-  text-orientation:mixed;
-  font-family:'EB Garamond',serif;
-  font-size:11px;
-  letter-spacing:0.2em;
-  color:#b8976a;
-  text-transform:uppercase;
-}
-
-/* ───── BOOKMARK RIBBON ───── */
-#bookmark-ribbon {
-  position: absolute;
-  top: -8px;
-  right: 60px;
-  width: 22px;
-  z-index: 200;
-  cursor: pointer;
-  display: none;
-}
-#bookmark-ribbon svg { width: 22px; }
-#bookmark-chapter {
-  position: absolute;
-  top: 60px;
-  right: 52px;
-  font-family: 'Inter', sans-serif;
-  font-size: 8px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(184,150,106,0.6);
-  writing-mode: vertical-rl;
-  z-index: 200;
-  display: none;
-  pointer-events: none;
-}
-
-/* ───── PAGES ───── */
-.page{
-  position:absolute;
-  top:0;
-  width:var(--page-w);
-  height:var(--page-h);
-  background:var(--paper);
-  overflow:hidden;
-  will-change:transform;
-  transition:box-shadow 0.4s ease;
-  /* Paper texture grain */
+html,body{width:100%;height:100%;overflow:hidden;}
+body{
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  background:#1a1008;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 300px 300px;
-  background-color: var(--paper);
+    radial-gradient(ellipse 80% 60% at 50% 0%,#2d1f0a 0%,transparent 70%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 60px),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 60px);
+  font-family:'DM Sans',sans-serif;
 }
 
-.page.right-page{
-  left:calc(var(--page-w) + var(--spine));
-  transform-origin:left center;
-  border-left:1px solid var(--paper-shadow);
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESK / TABLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.desk{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
 }
-.page.left-page{
-  left:0;
+.desk-shadow{
+  position:absolute;
+  bottom:-2rem;left:10%;right:10%;height:3rem;
+  background:rgba(0,0,0,0.5);
+  filter:blur(18px);border-radius:50%;
+  z-index:0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK WRAPPER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.book-wrapper{
+  position:relative;
+  width:78rem;height:50rem;
+  perspective:400rem;
+  z-index:1;
+  animation:bookAppear 2s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes bookAppear{
+  0%{opacity:0;transform:translateY(60px) rotateX(6deg) scale(.95);}
+  100%{opacity:1;transform:translateY(0) rotateX(0) scale(1);}
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK COVERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cover{
+  position:absolute;top:0;left:0;
+  width:50%;height:100%;
   transform-origin:right center;
-  border-right:1px solid var(--paper-shadow);
+  border-radius:3px 0 0 3px;
 }
 
-/* Page curl shadow — realistic effect */
-.page.left-page::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 40px; height: 40px;
-  background: radial-gradient(ellipse at bottom right, rgba(0,0,0,0.15) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 8;
+/* Back cover (always visible under everything) */
+.cover-back{
+  background:linear-gradient(160deg,#0d1b2a 0%,#1a2744 40%,#0a1628 100%);
+  z-index:-2;
+  box-shadow:var(--shadow-book);
+}
+.cover-back::before{
+  content:'';position:absolute;inset:.6rem;
+  border:1px solid rgba(200,146,42,0.2);border-radius:2px;
 }
 
-/* Line texture */
-.page::before{
-  content:'';
-  position:absolute;inset:0;
-  background-image:
-    repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,0.018) 27px,rgba(0,0,0,0.018) 28px);
-  pointer-events:none;z-index:0;
-}
-.page-content{position:relative;z-index:1;height:100%;overflow:hidden;}
-
-/* ───── SHADOW OVERLAYS ───── */
-.page.right-page .page-shadow{
-  position:absolute;
-  top:0;left:0;
-  width:60px;height:100%;
-  background:linear-gradient(90deg,rgba(0,0,0,0.22),rgba(0,0,0,0.05) 60%,transparent);
-  pointer-events:none;z-index:5;
-}
-.page.left-page .page-shadow{
-  position:absolute;
-  top:0;right:0;
-  width:60px;height:100%;
-  background:linear-gradient(270deg,rgba(0,0,0,0.22),rgba(0,0,0,0.05) 60%,transparent);
-  pointer-events:none;z-index:5;
-}
-
-/* Page thickness on fold edge */
-.page.right-page .page-shadow::after,
-.page.left-page .page-shadow::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: rgba(0,0,0,0.12);
-}
-.page.right-page .page-shadow::after { left: 0; }
-.page.left-page .page-shadow::after { right: 0; }
-
-/* ───── BOOK COVER EFFECTS ───── */
-.page-cover{
-  background:linear-gradient(160deg,#1c1207 0%,#2d1f0b 40%,#1a1208 100%) !important;
-  background-image: none !important;
-  border:none;
-}
-.page-cover::before{display:none}
-
-/* Gold emboss cover frame */
-.cover-frame {
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(184,150,106,0.2);
-  pointer-events: none;
-  z-index: 0;
-}
-.cover-frame::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border: 0.5px solid rgba(184,150,106,0.1);
-}
-
-/* ───── NAV ARROWS ───── */
-.nav-arrow{
-  position:fixed;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(247,243,235,0.12);
-  border:1px solid rgba(247,243,235,0.2);
-  color:rgba(247,243,235,0.7);
-  width:44px;height:44px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  font-size:20px;
-  transition:all 0.2s;
+/* Front cover (flips open) */
+.cover-front{
+  background:linear-gradient(160deg,#0d1b2a 0%,#1a2744 50%,#0a1628 100%);
   z-index:100;
-  backdrop-filter:blur(4px);
+  transition:transform 1.4s cubic-bezier(.77,0,.175,1);
+  box-shadow:var(--shadow-book);
+  overflow:hidden;
 }
-.nav-arrow:hover{background:rgba(247,243,235,0.22);color:#f7f3eb;}
-.nav-arrow:active{transform:translateY(-50%) scale(0.94);}
-#prev-btn{left:16px;}
-#next-btn{right:16px;}
-.nav-arrow.hidden{opacity:0;pointer-events:none;}
+.cover-front::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(105deg,transparent 40%,rgba(200,146,42,0.04) 50%,transparent 60%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 4px);
+}
+/* Gold border frame on front cover */
+.cover-front::after{
+  content:'';position:absolute;inset:.9rem;
+  border:2px solid;
+  border-image:linear-gradient(135deg,#c8922a,#e8b84b,#c8922a,#8b6914) 1;
+  opacity:.7;
+}
+.cover-front.turn{transform:rotateY(180deg);}
 
-/* ───── PAGE COUNTER ───── */
-#page-counter{
-  position:fixed;
-  bottom:20px;left:50%;
-  transform:translateX(-50%);
-  font-family:'Inter',sans-serif;
-  font-size:11px;
-  letter-spacing:0.12em;
-  color:rgba(184,150,106,0.7);
-  z-index:100;
-  display:flex;gap:8px;align-items:center;
-}
-#page-counter .dot{
-  width:5px;height:5px;
-  border-radius:50%;
-  background:rgba(184,150,106,0.3);
-  transition:background 0.3s;
-  cursor:pointer;
-}
-#page-counter .dot.active{background:rgba(184,150,106,0.9);}
-#page-num-label {
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  color: rgba(184,150,106,0.6);
-  letter-spacing: 0.08em;
-  margin-left: 6px;
-}
-
-/* ───── READING PROGRESS ───── */
-#reading-progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #b8860b, #c4541e);
-  z-index: 200;
-  transition: width 0.4s ease;
-}
-#reading-pct {
-  position: fixed;
-  top: 6px; right: 14px;
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  color: rgba(184,150,106,0.5);
-  z-index: 200;
-}
-
-/* ───── KEYBOARD HINT ───── */
-#kb-hint{
-  position:fixed;
-  bottom:44px;left:50%;
-  transform:translateX(-50%);
-  font-family:'Inter',sans-serif;
-  font-size:10px;
-  letter-spacing:0.1em;
-  color:rgba(184,150,106,0.4);
-  z-index:100;
-}
-
-/* ───── DARK MODE TOGGLE ───── */
-#dm-toggle {
-  position: fixed;
-  top: 14px; left: 14px;
-  z-index: 200;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid rgba(184,150,106,0.25);
-  color: rgba(184,150,106,0.7);
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: all 0.2s;
-}
-#dm-toggle:hover { color: #d4a820; border-color: rgba(184,150,106,0.5); }
-
-/* ───── QUICK NAV MENU ───── */
-#menu-btn {
-  position: fixed;
-  top: 14px; right: 14px;
-  z-index: 200;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid rgba(184,150,106,0.25);
-  color: rgba(184,150,106,0.7);
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: all 0.2s;
-}
-#menu-btn:hover { color: #d4a820; border-color: rgba(184,150,106,0.5); }
-
-#nav-sidebar {
-  position: fixed;
-  top: 0; right: 0;
-  width: 220px;
-  height: 100%;
-  background: rgba(15,12,8,0.96);
-  backdrop-filter: blur(16px);
-  z-index: 300;
-  display: flex;
-  flex-direction: column;
-  padding: 56px 28px 32px;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.77,0,0.18,1);
-  border-left: 0.5px solid rgba(184,150,106,0.15);
-}
-#nav-sidebar.open { transform: translateX(0); }
-#nav-sidebar h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(184,150,106,0.5);
-  margin-bottom: 20px;
-}
-.nav-link {
-  font-family: 'EB Garamond', serif;
-  font-size: 16px;
-  color: rgba(240,232,212,0.75);
-  padding: 8px 0;
-  border-bottom: 0.5px solid rgba(184,150,106,0.1);
-  cursor: pointer;
-  transition: color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-link:hover { color: #d4a820; }
-.nav-link .nl-num {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  color: rgba(184,150,106,0.4);
-  width: 18px;
-}
-#sidebar-close {
-  position: absolute;
-  top: 14px; right: 14px;
-  background: none; border: none;
-  color: rgba(184,150,106,0.5);
-  font-size: 18px;
-  cursor: pointer;
-}
-#sidebar-close:hover { color: #d4a820; }
-
-/* ───── SEARCH BAR ───── */
-#search-bar {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 0.5px solid rgba(184,150,106,0.15);
-}
-#search-bar label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(184,150,106,0.4);
-  display: block;
-  margin-bottom: 8px;
-}
-#search-input {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 0.5px solid rgba(184,150,106,0.2);
-  color: rgba(240,232,212,0.8);
-  font-family: 'EB Garamond', serif;
-  font-size: 14px;
-  padding: 7px 10px;
-  border-radius: 2px;
-  outline: none;
-}
-#search-input:focus { border-color: rgba(184,150,106,0.5); }
-#search-results {
-  margin-top: 8px;
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  color: rgba(240,232,212,0.5);
-}
-.search-hit {
-  padding: 5px 0;
-  border-bottom: 0.5px solid rgba(184,150,106,0.08);
-  cursor: pointer;
-  color: rgba(240,232,212,0.7);
-  transition: color 0.2s;
-}
-.search-hit:hover { color: #d4a820; }
-
-/* ═══════════════════════════════════════
-   PAGE CONTENT STYLES
-═══════════════════════════════════════ */
-
-.p-pad{padding:48px 44px;}
-.p-pad-sm{padding:36px 40px;}
-
-.running-head{
-  font-family:'Inter',sans-serif;
-  font-size:9px;
-  letter-spacing:0.25em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  margin-bottom:24px;
-  padding-bottom:10px;
-  border-bottom:0.5px solid var(--paper-shadow);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.folio{
-  font-family:'EB Garamond',serif;
-  font-size:12px;
-  letter-spacing:0.05em;
-  color:var(--ink-muted);
-}
-.sec-title{
-  font-family:'EB Garamond',serif;
-  font-size:11px;
-  letter-spacing:0.3em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:16px;
-}
-.chapter-num{
-  font-family:'EB Garamond',serif;
-  font-size:11px;
-  letter-spacing:0.25em;
-  color:var(--ink-muted);
-  margin-bottom:8px;
-}
-h1.display{
-  font-family:'EB Garamond',serif;
-  font-size:42px;
-  font-weight:500;
-  line-height:1.1;
-  color:var(--ink);
-  margin-bottom:8px;
-}
-h2.display{
-  font-family:'EB Garamond',serif;
-  font-size:26px;
-  font-weight:500;
-  line-height:1.2;
-  color:var(--ink);
-  margin-bottom:12px;
-}
-h3.sub{
-  font-family:'EB Garamond',serif;
-  font-size:18px;
-  font-weight:500;
-  color:var(--ink);
-  margin-bottom:4px;
-}
-p.body{
-  font-family:'EB Garamond',serif;
-  font-size:14.5px;
-  line-height:1.75;
-  color:var(--ink-mid);
-}
-p.lead{
-  font-family:'EB Garamond',serif;
-  font-size:16px;
-  line-height:1.75;
-  color:var(--ink-mid);
-  font-style:italic;
-}
-.rule{
-  height:0.5px;
-  background:var(--paper-shadow);
-  margin:20px 0;
-}
-.double-rule{
-  border-top:1px solid var(--paper-shadow);
-  border-bottom:0.5px solid var(--paper-shadow);
-  height:4px;
-  margin:24px 0;
-}
-
-/* Tags / skills */
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.tag{
-  font-family:'Inter',sans-serif;
-  font-size:10px;
-  letter-spacing:0.06em;
-  color:var(--ink-muted);
-  border:0.5px solid var(--paper-shadow);
-  border-radius:2px;
-  padding:3px 8px;
-  background:rgba(0,0,0,0.02);
-}
-
-/* Skill bars */
-.skill-bar-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 9px;
-}
-.skill-bar-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: var(--ink-mid);
-  width: 90px;
-  flex-shrink: 0;
-}
-.skill-bar-track {
-  flex: 1;
-  height: 3px;
-  background: var(--paper-shadow);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-  border-radius: 2px;
-  width: 0;
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-}
-.skill-bar-pct {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  color: var(--ink-muted);
-  letter-spacing: 0.04em;
-  width: 28px;
-  text-align: right;
-}
-
-/* Skill category */
-.skill-cat{margin-bottom:14px;}
-.skill-cat-name{
-  font-family:'Inter',sans-serif;
-  font-size:9px;
-  letter-spacing:0.25em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  margin-bottom:6px;
-}
-
-/* Experience block */
-.exp-block{margin-bottom:22px;}
-.exp-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;}
-.exp-role{font-family:'EB Garamond',serif;font-size:15px;font-weight:600;color:var(--ink);}
-.exp-date{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.06em;color:var(--ink-muted);}
-.exp-company{font-family:'Inter',sans-serif;font-size:11px;color:var(--accent-light);margin-bottom:8px;letter-spacing:0.04em;}
-.exp-bullets{list-style:none;padding:0;}
-.exp-bullets li{
-  font-family:'EB Garamond',serif;
-  font-size:13.5px;
-  line-height:1.6;
-  color:var(--ink-mid);
-  padding-left:14px;
-  position:relative;
-  margin-bottom:5px;
-}
-.exp-bullets li::before{
-  content:'—';
-  position:absolute;left:0;
-  color:var(--paper-shadow);
-}
-
-/* Project card */
-.proj{margin-bottom:22px;padding-bottom:22px;border-bottom:0.5px solid var(--paper-shadow);}
-.proj:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.proj-title{font-family:'EB Garamond',serif;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:2px;}
-.proj-stack{font-family:'Inter',sans-serif;font-size:9.5px;letter-spacing:0.08em;color:var(--accent);margin-bottom:6px;text-transform:uppercase;}
-.proj-body{font-family:'EB Garamond',serif;font-size:13px;line-height:1.62;color:var(--ink-mid);}
-.proj-impact{
-  margin-top:8px;
-  padding:8px 12px;
-  background:rgba(139,46,15,0.06);
-  border-left:2px solid var(--accent);
-  font-family:'Inter',sans-serif;
-  font-size:11px;
-  color:var(--ink-mid);
-  line-height:1.5;
-}
-.proj-impact span{color:var(--accent);font-weight:500;}
-
-/* Project buttons */
-.proj-btns {
-  display: flex;
-  gap: 6px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.proj-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.2s;
-}
-.proj-btn-gh {
-  background: rgba(139,46,15,0.1);
-  border: 0.5px solid var(--accent);
-  color: var(--accent);
-}
-.proj-btn-gh:hover { background: var(--accent); color: #fff; }
-.proj-btn-demo {
-  background: rgba(196,84,30,0.1);
-  border: 0.5px solid var(--accent-light);
-  color: var(--accent-light);
-}
-.proj-btn-demo:hover { background: var(--accent-light); color: #fff; }
-.proj-btn-case {
-  background: rgba(184,134,11,0.08);
-  border: 0.5px solid var(--gold);
-  color: var(--gold);
-}
-.proj-btn-case:hover { background: var(--gold); color: #fff; }
-
-/* Architecture diagram */
-.arch-diagram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  margin: 12px 0;
-}
-.arch-node {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  padding: 5px 14px;
-  border: 0.5px solid var(--paper-shadow);
-  border-radius: 2px;
-  background: rgba(139,46,15,0.05);
-  color: var(--ink-mid);
-  text-align: center;
-  min-width: 120px;
-}
-.arch-arrow {
-  color: var(--paper-shadow);
-  font-size: 12px;
-  line-height: 1;
-  padding: 2px 0;
-}
-
-/* Case study page */
-.case-section { margin-bottom: 16px; }
-.case-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-.case-body {
-  font-family: 'EB Garamond', serif;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--ink-mid);
-}
-.case-impact-box {
-  background: rgba(139,46,15,0.06);
-  border: 0.5px solid rgba(139,46,15,0.2);
-  border-left: 3px solid var(--accent);
-  padding: 10px 14px;
-  margin-top: 8px;
-}
-.case-impact-box .big-num {
-  font-family: 'EB Garamond', serif;
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--accent);
-  line-height: 1;
-}
-.case-impact-box .big-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-}
-
-/* Mock screenshot placeholder */
-.proj-screenshot {
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(135deg, rgba(139,46,15,0.08) 0%, rgba(184,134,11,0.05) 100%);
-  border: 0.5px dashed var(--paper-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 0;
-  position: relative;
-  overflow: hidden;
-}
-.proj-screenshot::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(139,46,15,0.03) 10px,
-    rgba(139,46,15,0.03) 11px
-  );
-}
-.proj-screenshot span {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--paper-shadow);
-  position: relative;
-  z-index: 1;
-}
-
-/* Skill levels progress page */
-.skill-level-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 7px 0;
-  border-bottom: 0.5px solid var(--paper-dark);
-}
-.skill-level-name {
-  font-family: 'EB Garamond', serif;
-  font-size: 14px;
-  color: var(--ink);
-  flex: 1;
-}
-.skill-level-bars {
-  display: flex;
-  gap: 3px;
-}
-.skill-pip {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--paper-shadow);
-}
-.skill-pip.filled {
-  background: var(--accent);
-}
-
-/* Timeline */
-.timeline { position: relative; padding-left: 20px; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 6px;
-  bottom: 6px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--paper-shadow) 100%);
-}
-.tl-item {
-  position: relative;
-  margin-bottom: 18px;
-}
-.tl-dot {
-  position: absolute;
-  left: -17px;
-  top: 6px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 1.5px solid var(--paper);
-}
-.tl-year {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-bottom: 2px;
-}
-.tl-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-}
-.tl-body {
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--ink-mid);
-}
-
-/* Metrics */
-.metric-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 16px 0;
-}
-.metric-box {
-  background: rgba(139,46,15,0.05);
-  border: 0.5px solid var(--paper-shadow);
-  padding: 16px 14px;
-  text-align: center;
-}
-.metric-num {
-  font-family: 'EB Garamond', serif;
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.metric-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-/* Testimonial */
-.testimonial {
-  margin-bottom: 20px;
-  padding: 16px;
-  background: rgba(139,46,15,0.04);
-  border-left: 2px solid var(--accent);
-  position: relative;
-}
-.testimonial::before {
-  content: '\201C';
-  font-family: 'EB Garamond', serif;
-  font-size: 48px;
-  color: rgba(139,46,15,0.15);
-  position: absolute;
-  top: 4px;
-  left: 12px;
-  line-height: 1;
-}
-.testimonial-text {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--ink-mid);
-  font-style: italic;
-  padding-top: 16px;
-}
-.testimonial-attr {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-top: 10px;
-}
-
-/* Why hire me */
-.hire-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 0.5px solid var(--paper-dark);
-}
-.hire-icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  background: rgba(139,46,15,0.1);
-  border: 0.5px solid var(--accent);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: var(--accent);
-}
-.hire-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 3px;
-}
-.hire-body {
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--ink-mid);
-}
-
-/* Cert list */
-.cert-item{
-  font-family:'EB Garamond',serif;
-  font-size:14px;
-  color:var(--ink-mid);
-  padding:7px 0;
-  border-bottom:0.5px solid var(--paper-dark);
-  display:flex;justify-content:space-between;align-items:baseline;
-}
-.cert-org{font-family:'Inter',sans-serif;font-size:10px;color:var(--ink-muted);letter-spacing:0.04em;}
-.cert-count-badge {
-  display: inline-block;
-  padding: 4px 14px;
-  background: rgba(139,46,15,0.1);
-  border: 0.5px solid var(--accent);
-  color: var(--accent);
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  border-radius: 20px;
-  margin-bottom: 14px;
-}
-
-/* Achievement */
-.ach-item{margin-bottom:16px;}
-.ach-title{font-family:'EB Garamond',serif;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.ach-body{font-family:'EB Garamond',serif;font-size:13.5px;line-height:1.6;color:var(--ink-mid);}
-
-/* Contact */
-.contact-row{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:14px;
-}
-.contact-label{
-  font-family:'Inter',sans-serif;
-  font-size:9px;letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  width:60px;flex-shrink:0;
-}
-.contact-val{
-  font-family:'EB Garamond',serif;
-  font-size:14.5px;color:var(--accent-light);
-}
-.contact-icon-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 12px;
-}
-.contact-icon-link {
-  width: 34px;
-  height: 34px;
-  border: 0.5px solid var(--paper-shadow);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--ink-muted);
-  font-size: 14px;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-.contact-icon-link:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(139,46,15,0.06);
-}
-
-/* ───── COVER PAGE ───── */
-#cover-content{
-  position:relative;
-  height:100%;
+/* Cover text */
+.cover-content{
+  position:absolute;top:0;left:0;right:0;bottom:0;
   display:flex;flex-direction:column;
-  justify-content:flex-end;
-  padding:52px 52px 56px;
+  align-items:center;justify-content:center;
+  padding:2.5rem;text-align:center;
+  z-index:2;
 }
-.cover-label{
-  font-family:'Inter',sans-serif;
-  font-size:9px;letter-spacing:0.35em;
-  text-transform:uppercase;
-  color:rgba(184,150,106,0.6);
-  margin-bottom:24px;
+.cover-eyebrow{
+  font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(200,146,42,0.7);margin-bottom:1.5rem;
+  font-weight:500;
 }
 .cover-name{
-  font-family:'EB Garamond',serif;
-  font-size:52px;
-  line-height:1.0;
-  font-weight:500;
-  color:#f0e8d4;
-  margin-bottom:8px;
-  text-shadow: 0 2px 24px rgba(184,150,106,0.15);
+  font-family:'Playfair Display',serif;
+  font-size:3.4rem;font-weight:900;line-height:1;
+  background:linear-gradient(160deg,#fff 0%,#e8d5a3 50%,#c8922a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.02em;
+  margin-bottom:.4rem;
 }
-.cover-title{
-  font-family:'EB Garamond',serif;
-  font-size:18px;
-  font-style:italic;
-  color:rgba(184,150,106,0.85);
-  margin-bottom:32px;
+.cover-role{
+  font-size:.85rem;color:rgba(255,255,255,.45);
+  letter-spacing:.18em;text-transform:uppercase;font-weight:400;
 }
-.cover-rule{
-  width:48px;height:1px;
-  background:linear-gradient(90deg, rgba(184,150,106,0.8), rgba(184,150,106,0.2));
-  margin-bottom:28px;
+.cover-divider{
+  width:5rem;height:1px;
+  background:linear-gradient(90deg,transparent,#c8922a,transparent);
+  margin:1.4rem auto;
 }
-.cover-meta{
-  font-family:'Inter',sans-serif;
-  font-size:10px;letter-spacing:0.12em;
-  color:rgba(184,150,106,0.5);
-  line-height:1.8;
+.cover-subtitle{
+  font-size:.78rem;color:rgba(200,146,42,.6);
+  letter-spacing:.1em;text-transform:uppercase;
 }
-.cover-decoration{
-  position:absolute;
-  top:0;right:0;
-  width:220px;height:100%;
-  background:linear-gradient(180deg,transparent 0%,rgba(184,150,106,0.04) 50%,transparent 100%);
-  border-left:0.5px solid rgba(184,150,106,0.1);
+/* Cover ornament */
+.cover-ornament{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:.6rem;
+  opacity:.4;
 }
-.cover-monogram{
-  position:absolute;
-  top:52px;right:52px;
-  width:64px;height:64px;
-  border:1px solid rgba(184,150,106,0.35);
+.cover-ornament span{display:block;width:2rem;height:1px;background:#c8922a;}
+.cover-ornament i{font-size:.9rem;color:#c8922a;}
+
+/* Spine effect */
+.spine{
+  position:absolute;top:0;left:calc(50% - 10px);
+  width:20px;height:100%;
+  background:linear-gradient(90deg,#0a1222 0%,#1a2744 30%,#243560 50%,#1a2744 70%,#0a1222 100%);
+  z-index:150;
+  box-shadow:inset -2px 0 6px rgba(0,0,0,.5),inset 2px 0 6px rgba(0,0,0,.5);
+}
+.spine::before{
+  content:'SHAGUN TYAGI';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(90deg);
+  white-space:nowrap;
+  font-size:.5rem;letter-spacing:.25em;
+  color:rgba(200,146,42,.5);font-weight:600;
+  text-transform:uppercase;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK PAGES CONTAINER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.book{
+  position:relative;width:100%;height:100%;display:flex;
+  perspective:400rem;
+}
+
+/* Page stack effect */
+.page-stack{
+  position:absolute;right:0;top:.3rem;
+  width:calc(50% - 10px);height:calc(100% - .6rem);
+  background:repeating-linear-gradient(
+    90deg,
+    var(--paper3) 0px,var(--paper3) 1px,
+    var(--paper2) 1px,var(--paper2) 3px,
+    var(--paper) 3px,var(--paper) 6px
+  );
+  border-radius:0 3px 3px 0;
+  box-shadow:2px 0 8px rgba(0,0,0,.15);
+}
+
+/* Left page (profile, permanent) */
+.page-left{
+  position:absolute;left:0;top:0;
+  width:calc(50% - 10px);height:100%;
+  background:var(--paper);
+  box-shadow:-3px 0 12px rgba(0,0,0,.2),inset -2px 0 6px rgba(0,0,0,.06);
+  padding:2.5rem 2.8rem;
+  overflow:hidden;
+}
+/* Paper texture lines */
+.page-left::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 27px,rgba(0,0,0,.04) 27px,rgba(0,0,0,.04) 28px
+  );
+  pointer-events:none;
+}
+/* Red margin line */
+.page-left::after{
+  content:'';position:absolute;top:0;left:3.5rem;
+  width:1px;height:100%;
+  background:rgba(180,50,50,.15);
+  pointer-events:none;
+}
+
+/* Right pages (flipable) */
+.page-right{
+  position:absolute;right:0;top:0;
+  width:calc(50% - 10px);height:100%;
+  transform-style:preserve-3d;
+  transform-origin:left center;
+  transition:transform 1.1s cubic-bezier(.645,.045,.355,1);
+}
+.page-right.turn{transform:rotateY(-180deg);}
+
+.page-front,.page-back{
+  position:absolute;inset:0;
+  padding:2.2rem 2.5rem;
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+.page-front{
+  background:var(--paper);
+  transform:rotateY(0deg) translateZ(1px);
+  box-shadow:inset -3px 0 10px rgba(0,0,0,.08);
+}
+.page-back{
+  background:var(--paper2);
+  transform:rotateY(180deg) translateZ(1px);
+  box-shadow:inset 3px 0 10px rgba(0,0,0,.06);
+}
+/* Paper lines on right pages */
+.page-front::before,.page-back::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 27px,rgba(0,0,0,.035) 27px,rgba(0,0,0,.035) 28px
+  );
+  pointer-events:none;z-index:0;
+}
+/* Red margin */
+.page-front::after{
+  content:'';position:absolute;top:0;left:3rem;
+  width:1px;height:100%;background:rgba(180,50,50,.12);pointer-events:none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.pg-num{
+  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+  font-family:'Playfair Display',serif;font-size:.7rem;
+  color:var(--muted);font-style:italic;letter-spacing:.05em;
+  z-index:10;
+}
+.flip-btn{
+  position:absolute;bottom:.7rem;right:1rem;
+  width:2.2rem;height:2.2rem;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1.6rem;color:var(--muted);
+  transition:all .3s;border-radius:50%;z-index:10;
+}
+.flip-btn:hover{color:var(--accent);background:rgba(200,146,42,.08);}
+.flip-btn.back{left:1rem;right:auto;}
+.back-home{
+  position:absolute;bottom:.8rem;right:1rem;
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.72rem;color:var(--accent);
+  padding:.3rem .7rem;border:1px solid rgba(200,146,42,.3);
+  border-radius:.2rem;transition:.3s;z-index:10;
+  background:rgba(200,146,42,.04);
+}
+.back-home:hover{background:rgba(200,146,42,.12);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLLABLE CONTENT AREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.content-scroll{
+  position:relative;z-index:1;
+  height:calc(100% - 2.5rem);
+  overflow-y:auto;
+  padding-right:.4rem;
+  scrollbar-width:thin;scrollbar-color:rgba(200,146,42,.3) transparent;
+}
+.content-scroll::-webkit-scrollbar{width:3px;}
+.content-scroll::-webkit-scrollbar-thumb{background:rgba(200,146,42,.3);border-radius:2px;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY — PAGE HEADINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ch{/* chapter heading */
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:700;
+  color:var(--ink);line-height:1.1;
+  margin-bottom:.2rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.ch i{font-size:1.2rem;color:var(--accent);}
+.ch-line{
+  height:2px;width:2.5rem;
+  background:linear-gradient(90deg,var(--accent),transparent);
+  margin-bottom:1rem;border-radius:1px;
+}
+.section-label{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:.4rem;
+  display:flex;align-items:center;gap:.4rem;
+}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(200,146,42,.2);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROFILE PAGE (LEFT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.profile-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:100%;text-align:center;
+  position:relative;z-index:1;gap:.55rem;
+}
+.avatar-outer{
+  width:110px;height:110px;border-radius:50%;
+  background:linear-gradient(135deg,#c8922a,#e8b84b,#8b6914);
+  padding:3px;margin-bottom:.3rem;
+  box-shadow:0 6px 24px rgba(200,146,42,.3);
+}
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;
+  background:linear-gradient(145deg,#0d1b2a,#1a2744);
   display:flex;align-items:center;justify-content:center;
-  font-family:'EB Garamond',serif;
-  font-size:28px;
-  color:rgba(184,150,106,0.6);
-  box-shadow: 0 0 20px rgba(184,150,106,0.08), inset 0 0 20px rgba(0,0,0,0.2);
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;
+  color:#c8922a;letter-spacing:-.02em;
 }
-/* Gold emboss glow on cover */
-.cover-monogram::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 0.5px solid rgba(184,150,106,0.12);
+.prof-name{
+  font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:900;
+  color:var(--ink);line-height:1;letter-spacing:-.02em;
+}
+.prof-role{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;
+}
+.prof-co{font-size:.75rem;color:var(--muted);}
+.gold-line{
+  width:3rem;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin:.1rem auto;
+}
+.socials{display:flex;gap:.45rem;}
+.soc-btn{
+  width:2rem;height:2rem;border-radius:50%;
+  border:1px solid rgba(200,146,42,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--accent);
+  transition:all .3s;background:rgba(200,146,42,.04);
+}
+.soc-btn:hover{background:var(--accent);color:#fff;transform:translateY(-2px);}
+.prof-bio{
+  font-size:.8rem;color:var(--muted);line-height:1.65;
+  max-width:88%;text-align:center;
+}
+/* Stats */
+.stats-row{display:flex;gap:.5rem;width:100%;}
+.stat-cell{
+  flex:1;padding:.5rem .3rem;
+  border:1px solid rgba(200,146,42,.2);border-radius:.3rem;
+  background:rgba(200,146,42,.04);
+  display:flex;flex-direction:column;align-items:center;gap:.08rem;
+}
+.stat-n{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+  color:var(--accent);line-height:1;
+}
+.stat-l{font-size:.58rem;color:var(--muted);text-align:center;letter-spacing:.03em;}
+/* CTA buttons */
+.cta-row{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center;}
+.cta{
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.45rem 1rem;border-radius:.25rem;
+  font-size:.75rem;font-weight:600;
+  transition:all .3s;letter-spacing:.03em;
+}
+.cta-primary{background:var(--accent);color:#fff;}
+.cta-primary:hover{opacity:.85;transform:translateY(-1px);}
+.cta-outline{border:1px solid var(--accent);color:var(--accent);background:transparent;}
+.cta-outline:hover{background:rgba(200,146,42,.08);}
+/* LI badge */
+.li-wrap{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.38rem .9rem;
+  border:1px solid rgba(200,146,42,.25);border-radius:.25rem;
+  color:var(--accent);font-size:.74rem;font-weight:600;
+  background:rgba(200,146,42,.04);transition:.3s;
+}
+.li-wrap:hover{background:rgba(200,146,42,.1);}
+.li-wrap i{font-size:.95rem;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TIMELINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tl{border-left:2px solid rgba(200,146,42,.25);margin-top:.6rem;}
+.tl-item{position:relative;padding:0 0 1.1rem 1.5rem;}
+.tl-item::before{
+  content:'';position:absolute;top:5px;left:-6px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--paper);
+}
+.tl-year{
+  font-size:.65rem;color:var(--accent);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.15rem;
+}
+.tl-title{font-size:.9rem;color:var(--ink);font-weight:600;margin-bottom:.25rem;}
+.tl-body{font-size:.77rem;color:var(--muted);line-height:1.6;}
+.tl-body strong{color:var(--ink2);font-weight:600;}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SKILL TAGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.9rem;}
+.tag{
+  display:inline-flex;align-items:center;gap:.2rem;
+  padding:.2rem .65rem;border-radius:2rem;
+  font-size:.68rem;font-weight:600;letter-spacing:.02em;
+}
+.t-gold{background:rgba(200,146,42,.12);color:#8b5e0a;border:1px solid rgba(200,146,42,.25);}
+.t-blue{background:rgba(30,87,153,.1);color:#1a4b8a;border:1px solid rgba(30,87,153,.2);}
+.t-green{background:rgba(26,92,58,.1);color:#1a5c3a;border:1px solid rgba(26,92,58,.2);}
+.t-red{background:rgba(155,35,53,.09);color:#7a1c2c;border:1px solid rgba(155,35,53,.18);}
+.t-gray{background:rgba(107,107,123,.08);color:#4a4a5a;border:1px solid rgba(107,107,123,.18);}
+.t-purple{background:rgba(100,60,170,.1);color:#5a2fa0;border:1px solid rgba(100,60,170,.2);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROJECT CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.proj{
+  border:1px solid rgba(200,146,42,.18);border-radius:.4rem;
+  padding:.9rem 1rem;margin-bottom:.85rem;
+  background:rgba(200,146,42,.02);
+  transition:all .3s;position:relative;
+}
+.proj:hover{border-color:rgba(200,146,42,.4);background:rgba(200,146,42,.05);}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;gap:.5rem;}
+.proj-name{
+  font-family:'Playfair Display',serif;
+  font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.2;
+}
+.proj-link{
+  font-size:.68rem;color:var(--accent);
+  display:flex;align-items:center;gap:.2rem;white-space:nowrap;
+  padding:.2rem .5rem;border:1px solid rgba(200,146,42,.25);border-radius:.2rem;
+  transition:.3s;flex-shrink:0;
+}
+.proj-link:hover{background:rgba(200,146,42,.08);}
+.proj-summary{
+  font-size:.8rem;color:var(--ink2);font-weight:600;
+  margin-bottom:.35rem;line-height:1.4;
+}
+.proj-body{font-size:.76rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.proj-body strong{color:var(--ink2);font-weight:600;}
+/* Achievement bullets */
+.proj-bullets{list-style:none;margin-bottom:.5rem;}
+.proj-bullets li{
+  font-size:.74rem;color:var(--muted);line-height:1.6;
+  padding-left:1rem;position:relative;margin-bottom:.2rem;
+}
+.proj-bullets li::before{
+  content:'→';position:absolute;left:0;color:var(--accent);font-size:.7rem;
+}
+/* Impact badge */
+.impact{
+  display:inline-flex;align-items:center;gap:.25rem;
+  font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.18rem .6rem;border-radius:.2rem;
+  background:rgba(200,146,42,.12);color:#7a5000;
+  border:1px solid rgba(200,146,42,.2);margin-bottom:.45rem;
 }
 
-/* ToC */
-.toc-item {
-  display: flex;
-  align-items: baseline;
-  padding: 9px 0;
-  border-bottom: 0.5px solid var(--paper-dark);
-  cursor: pointer;
-  transition: color 0.2s;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICE CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.8rem;}
+.svc{
+  border:1px solid rgba(200,146,42,.18);border-radius:.4rem;
+  padding:.8rem;background:rgba(200,146,42,.02);text-align:center;transition:.3s;
 }
-.toc-item:hover .toc-title { color: var(--accent); }
-.toc-num {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  color: var(--ink-muted);
-  width: 24px;
-  flex-shrink: 0;
-}
-.toc-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px;
-  color: var(--ink);
-  flex: 1;
-  transition: color 0.2s;
-}
-.toc-dots {
-  flex: 1;
-  border-bottom: 1px dotted var(--paper-shadow);
-  margin: 0 8px;
-  position: relative;
-  top: -3px;
-}
-.toc-page {
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  color: var(--ink-muted);
-}
+.svc:hover{border-color:rgba(200,146,42,.38);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,146,42,.08);}
+.svc i{font-size:1.7rem;color:var(--accent);display:block;margin-bottom:.4rem;}
+.svc h3{font-size:.82rem;color:var(--ink);font-weight:700;margin-bottom:.25rem;}
+.svc p{font-size:.72rem;color:var(--muted);line-height:1.5;}
 
-/* ───── MOBILE OVERRIDES ───── */
-@media(max-width:1100px){
-  :root{--page-w:340px;--page-h:600px;--spine:18px;}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESEARCH CARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.research{
+  border:1px solid rgba(30,87,153,.25);border-radius:.4rem;
+  padding:.85rem 1rem;background:rgba(30,87,153,.04);margin-bottom:.8rem;
 }
-@media(max-width:760px){
-  :root{--page-w:calc(100vw - 24px);--page-h:calc(100vh - 100px);--spine:0px;}
-  #book{width:var(--page-w);height:var(--page-h);}
-  .page.left-page{display:none;}
-  .page.right-page{left:0;border-left:none;}
-  #spine-bar{display:none;}
-  #prev-btn{left:8px;}
-  #next-btn{right:8px;}
-  .p-pad{padding:32px 28px;}
-  .p-pad-sm{padding:24px 24px;}
-  h1.display{font-size:34px;}
-  .cover-name{font-size:38px;}
-  #kb-hint{display:none;}
-  .book-edge{display:none;}
+.research-badge{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  color:#1a4b8a;background:rgba(30,87,153,.1);border:1px solid rgba(30,87,153,.2);
+  padding:.15rem .5rem;border-radius:.2rem;display:inline-block;margin-bottom:.45rem;
 }
-@media(max-width:480px){
-  :root{--page-w:calc(100vw - 16px);}
-  .p-pad{padding:24px 20px;}
-}
+.research h3{font-size:.9rem;color:var(--ink);font-weight:700;margin-bottom:.35rem;}
+.research p{font-size:.76rem;color:var(--muted);line-height:1.65;}
+.research p strong{color:var(--ink2);font-weight:600;}
 
-/* ───── OPENING ANIMATION ───── */
-@keyframes bookOpen {
-  0%   { transform: rotateY(-15deg) scale(0.95); opacity:0; }
-  100% { transform: rotateY(0deg) scale(1); opacity:1; }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTACT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.contact-list{margin-top:.8rem;display:flex;flex-direction:column;gap:.65rem;}
+.contact-row{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.65rem .9rem;border:1px solid rgba(200,146,42,.18);
+  border-radius:.35rem;background:rgba(200,146,42,.03);transition:.3s;color:inherit;
 }
-#book { animation: bookOpen 0.8s cubic-bezier(0.4,0,0.2,1) forwards; }
+.contact-row:hover{border-color:rgba(200,146,42,.38);background:rgba(200,146,42,.06);}
+.contact-row i{font-size:1.2rem;color:var(--accent);flex-shrink:0;}
+.c-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.c-val{font-size:.84rem;color:var(--ink);font-weight:500;}
 
-@keyframes counterUp {
-  from { opacity:0; transform: translateY(6px); }
-  to   { opacity:1; transform: translateY(0); }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SKILL GROUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sk-group{margin-bottom:.9rem;}
+.sk-label{font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:.45rem;padding-bottom:.3rem;border-bottom:1px solid rgba(200,146,42,.15);}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE READER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.mob-reader{display:none;}
+
+@media(max-width:900px){
+  body{overflow:hidden;align-items:stretch;}
+  .book-wrapper,.desk-shadow{display:none;}
+  .mob-reader{
+    display:flex;flex-direction:column;
+    width:100vw;height:100vh;overflow:hidden;
+    background:#faf8f3;
+  }
+  .mob-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.7rem 1.1rem;
+    background:linear-gradient(135deg,#0d1b2a,#1a2744);
+    border-bottom:2px solid rgba(200,146,42,.4);
+    flex-shrink:0;
+  }
+  .mob-bar-name{
+    font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+    background:linear-gradient(90deg,#fff,#c8922a);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .mob-bar-pg{font-size:.7rem;color:rgba(200,146,42,.6);letter-spacing:.05em;}
+  .mob-prog{height:2px;background:rgba(200,146,42,.15);flex-shrink:0;}
+  .mob-prog-fill{height:100%;background:linear-gradient(90deg,#c8922a,#e8b84b);transition:width .4s ease;}
+  .mob-track{
+    flex:1;display:flex;
+    transition:transform .4s cubic-bezier(.4,0,.2,1);
+    will-change:transform;
+  }
+  .mob-pg{
+    min-width:100vw;height:100%;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:1.2rem 1.1rem 5.5rem;
+    background:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.03) 27px,rgba(0,0,0,.03) 28px),#faf8f3;
+    position:relative;
+  }
+  .mob-pg:nth-child(even){background:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,0,.03) 27px,rgba(0,0,0,.03) 28px),#f3efe6;}
+  .mob-pg:first-child{background:linear-gradient(160deg,#0d1b2a,#1a2744) !important;}
+  .mob-nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.75rem 1.4rem;
+    background:rgba(13,27,42,.96);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(200,146,42,.2);
+  }
+  .mob-nbtn{
+    width:2.5rem;height:2.5rem;border-radius:50%;
+    border:1px solid rgba(200,146,42,.3);
+    display:flex;align-items:center;justify-content:center;
+    color:#c8922a;font-size:1.5rem;
+    background:rgba(200,146,42,.06);transition:.25s;cursor:pointer;
+  }
+  .mob-nbtn:active{background:rgba(200,146,42,.2);transform:scale(.92);}
+  .mob-nbtn.dis{opacity:.2;pointer-events:none;}
+  .mob-dots{display:flex;gap:.35rem;align-items:center;}
+  .mob-dot{width:.4rem;height:.4rem;border-radius:50%;background:rgba(200,146,42,.25);transition:.3s;}
+  .mob-dot.on{background:#c8922a;width:.8rem;border-radius:.4rem;}
+  .swipe-hint{
+    position:absolute;bottom:4.8rem;left:50%;transform:translateX(-50%);
+    font-size:.68rem;color:rgba(200,146,42,.5);white-space:nowrap;
+    display:flex;align-items:center;gap:.25rem;pointer-events:none;
+    animation:hfade 3s ease 2s forwards;opacity:1;
+  }
+  @keyframes hfade{0%{opacity:1;}100%{opacity:0;}}
+  .mob-ph{display:flex;align-items:center;gap:.4rem;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid rgba(200,146,42,.2);}
+  .mob-ph i{font-size:1.2rem;color:#c8922a;}
+  .mob-ph h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#1a1a2e;}
+  .tl-item::before{border-color:#f3efe6;}
 }
-.metric-num { animation: counterUp 0.6s ease both; }
 </style>
 </head>
 <body>
 
-<!-- NAV ARROWS -->
-<button class="nav-arrow hidden" id="prev-btn" aria-label="Previous page">&#8249;</button>
-<button class="nav-arrow" id="next-btn" aria-label="Next page">&#8250;</button>
+<!-- ════════════════ DESKTOP BOOK ════════════════ -->
+<div class="desk">
+  <div class="desk-shadow"></div>
 
-<!-- READING PROGRESS -->
-<div id="reading-progress"></div>
-<div id="reading-pct">0% Complete</div>
+  <div class="book-wrapper">
 
-<!-- PAGE COUNTER -->
-<div id="page-counter"></div>
-<div id="kb-hint">← → keys to turn pages</div>
+    <!-- BACK COVER -->
+    <div class="cover cover-back"></div>
 
-<!-- DARK MODE TOGGLE -->
-<button id="dm-toggle">🌙 Dark</button>
+    <!-- PAGE STACK VISUAL -->
+    <div class="page-stack"></div>
 
-<!-- QUICK NAV MENU -->
-<button id="menu-btn">☰ Navigate</button>
+    <!-- SPINE -->
+    <div class="spine"></div>
 
-<!-- NAV SIDEBAR -->
-<div id="nav-sidebar">
-  <button id="sidebar-close">✕</button>
-  <h3>Contents</h3>
-  <div id="nav-links"></div>
-  <div id="search-bar">
-    <label>Search</label>
-    <input type="text" id="search-input" placeholder="PitchIQ, AWS, RAG…">
-    <div id="search-results"></div>
+    <!-- FRONT COVER (flips open) -->
+    <div class="cover cover-front" id="coverFront">
+      <div class="cover-content">
+        <div class="cover-eyebrow">Portfolio &nbsp;·&nbsp; 2024 – 2025</div>
+        <div class="cover-name">Shagun<br/>Tyagi</div>
+        <div class="cover-role">AI / ML Engineer</div>
+        <div class="cover-divider"></div>
+        <div class="cover-subtitle">Envigo UK &nbsp;·&nbsp; MBA Candidate</div>
+      </div>
+      <div class="cover-ornament">
+        <span></span><i class="bx bx-diamond"></i><span></span>
+      </div>
+    </div>
+
+    <!-- BOOK PAGES -->
+    <div class="book">
+
+      <!-- ══ LEFT PAGE — PROFILE (permanent) ══ -->
+      <div class="page-left">
+        <div class="profile-wrap">
+          <div class="avatar-outer"><div class="avatar-inner">ST</div></div>
+          <div class="prof-name">Shagun Tyagi</div>
+          <div class="prof-role">AI / ML Engineer</div>
+          <div class="prof-co">Envigo · UK AI Consultancy &nbsp;|&nbsp; MBA Candidate</div>
+          <div class="gold-line"></div>
+          <div class="socials">
+            <a class="soc-btn" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i></a>
+            <a class="soc-btn" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i></a>
+            <a class="soc-btn" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i></a>
+            <a class="soc-btn" href="#"><i class="bx bx-file-blank"></i></a>
+          </div>
+          <div class="prof-bio">
+            I build production-grade AI/ML systems that solve real business problems — from LLM-powered automation pipelines and WhatsApp chatbots to computer vision models and full-stack health applications. Published IoT health researcher, Airtel alumni, and MBA candidate.
+          </div>
+          <div class="stats-row">
+            <div class="stat-cell"><span class="stat-n">5+</span><span class="stat-l">Prod Systems</span></div>
+            <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Publication</span></div>
+            <div class="stat-cell"><span class="stat-n">92%</span><span class="stat-l">DR Accuracy</span></div>
+            <div class="stat-cell"><span class="stat-n">3+</span><span class="stat-l">Yrs Exp</span></div>
+          </div>
+          <div class="cta-row">
+            <a href="#" class="cta cta-primary"><i class="bx bx-download"></i> Download CV</a>
+            <a href="#" class="cta cta-outline" id="goContact">Contact Me</a>
+          </div>
+          <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap">
+            <i class="bx bxl-linkedin-square"></i> View Full Profile on LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 1: Work Experience / Education ══ -->
+      <div class="page-right" id="t1" style="z-index:14">
+        <!-- Front: Work Experience -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-briefcase"></i>Work Experience</div>
+            <div class="ch-line"></div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-year">2023 — Present</div>
+                <div class="tl-title">AI / ML Engineer — Envigo (UK Software & AI Consultancy)</div>
+                <div class="tl-body">
+                  Envigo is a UK-based software and AI consultancy delivering intelligent automation solutions for enterprise clients. As an AI/ML Engineer, I architect and ship <strong>end-to-end production AI systems</strong> across diverse domains.<br/><br/>
+                  My work spans <strong>LangChain/FastAPI agentic pipelines</strong>, automated document generation systems, multilingual conversational AI, and computer vision integrations. I own the full lifecycle: requirements, ML design, Python backend, deployment, and client handover. I also lead ML strategy and decision-making for client engagements, translating business requirements into data-driven technical roadmaps.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2021 — 2023</div>
+                <div class="tl-title">Software Engineer — Airtel (Bharti Airtel)</div>
+                <div class="tl-body">
+                  Worked within Airtel's engineering teams building and maintaining <strong>backend services and data pipelines</strong> at telecom scale. Gained deep expertise in <strong>large-scale distributed systems</strong>, high-availability REST APIs, and production software delivery across millions of users.<br/><br/>
+                  Contributed to network automation tools that reduced manual intervention and improved operational efficiency. This role strengthened my engineering fundamentals and instilled a production-first mindset that I apply to all AI/ML work.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2019 — 2021</div>
+                <div class="tl-title">ML Lead — MIET (Undergraduate Research Leadership)</div>
+                <div class="tl-body">
+                  During my B.Tech, served as <strong>ML Lead</strong> for the department's research vertical. Led a team on ECG/PPG-based health monitoring research that resulted in a <strong>published academic paper</strong>. Directed prototype development, managed timelines, mentored junior members, and presented findings. This role built my research methodology, team leadership, and ML engineering foundations from the ground up.
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="pg-num">— 1 —</span>
+          <span class="flip-btn" data-t="t1"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Education -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-book-open"></i>Education</div>
+            <div class="ch-line"></div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-year">2025 — Present</div>
+                <div class="tl-title">Master of Business Administration (MBA)</div>
+                <div class="tl-body">
+                  Pursuing an MBA alongside a full-time engineering career, with focus on <strong>strategic management, product leadership, and entrepreneurship</strong>. The goal is to bridge the gap between cutting-edge AI engineering and business decision-making — enabling me to drive ML initiatives not just technically but strategically, from product definition through commercial outcomes.
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-year">2019 — 2023</div>
+                <div class="tl-title">B.Tech in CSE (IoT Specialization) — MIET</div>
+                <div class="tl-body">
+                  Bachelor's in Computer Science Engineering with specialization in <strong>Internet of Things</strong>. Graduated with distinction in ML-related coursework. Served concurrently as <strong>ML Lead</strong> for departmental research.<br/><br/>
+                  Key academic projects included a <strong>Diabetic Retinopathy (DR) classification CNN</strong> achieving 92% accuracy on retinal fundus images, published ECG/PPG health monitoring research, and multiple IoT prototype systems integrating edge sensors with cloud dashboards.
+                </div>
+              </div>
+            </div>
+            <div class="research" style="margin-top:.5rem">
+              <div class="research-badge">📄 Published Research</div>
+              <h3>ECG & PPG Based Health Monitoring System</h3>
+              <p>
+                Co-authored during B.Tech ML leadership. The paper presents a <strong>real-time wearable cardiac monitoring framework</strong> using ECG (electrocardiogram) and PPG (photoplethysmography) sensors on IoT hardware. Key contributions: signal denoising algorithms, R-peak detection for HRV analysis, anomaly detection for arrhythmia, and <strong>embedded ML inference</strong> running on resource-constrained microcontrollers. Demonstrates clinically relevant accuracy on benchmark datasets.
+              </p>
+            </div>
+          </div>
+          <span class="pg-num">— 2 —</span>
+          <span class="flip-btn back" data-t="t1"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 2: Skills / Services ══ -->
+      <div class="page-right" id="t2" style="z-index:13">
+        <!-- Front: Skills -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-code-alt"></i>Technical Skills</div>
+            <div class="ch-line"></div>
+            <div class="sk-group">
+              <div class="sk-label">AI / ML & Large Language Models</div>
+              <div class="tags"><span class="tag t-purple">LangChain</span><span class="tag t-purple">OpenAI API (GPT-4/3.5)</span><span class="tag t-purple">FastAPI</span><span class="tag t-purple">PyTorch</span><span class="tag t-purple">Scikit-learn</span><span class="tag t-purple">CNNs</span><span class="tag t-purple">RAG Pipelines</span><span class="tag t-purple">Prompt Engineering</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Backend & API Engineering</div>
+              <div class="tags"><span class="tag t-blue">Python 3.10+</span><span class="tag t-blue">Node.js</span><span class="tag t-blue">Express 5</span><span class="tag t-blue">Flask</span><span class="tag t-blue">REST APIs</span><span class="tag t-blue">WebSockets</span><span class="tag t-blue">OAuth 2.0</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Cloud, Data & DevOps</div>
+              <div class="tags"><span class="tag t-green">Google Cloud Platform</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">gspread / Sheets API</span><span class="tag t-green">Google Drive API</span><span class="tag t-green">Docker</span><span class="tag t-green">Mongoose</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Frontend & Visualization</div>
+              <div class="tags"><span class="tag t-gold">JavaScript (ES6+)</span><span class="tag t-gold">React.js</span><span class="tag t-gold">HTML5 / CSS3</span><span class="tag t-gold">Canvas API</span><span class="tag t-gold">Chart.js</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Automation, Scraping & Document Tools</div>
+              <div class="tags"><span class="tag t-gray">python-docx</span><span class="tag t-gray">ReportLab PDF</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">pandas</span><span class="tag t-gray">Twilio (Content API)</span><span class="tag t-gray">WhatsApp Business API</span></div>
+            </div>
+            <div class="sk-group">
+              <div class="sk-label">Biomedical & IoT</div>
+              <div class="tags"><span class="tag t-red">ECG Signal Processing</span><span class="tag t-red">PPG Analysis</span><span class="tag t-red">HRV Detection</span><span class="tag t-red">Embedded ML</span><span class="tag t-red">IoT Prototyping</span></div>
+            </div>
+          </div>
+          <span class="pg-num">— 3 —</span>
+          <span class="flip-btn" data-t="t2"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Services -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-layer"></i>What I Build</div>
+            <div class="ch-line"></div>
+            <div class="svc-grid">
+              <div class="svc"><i class="bx bx-brain"></i><h3>AI Automation Pipelines</h3><p>End-to-end LLM systems: document generation, content enhancement, structured output, RAG-based knowledge retrieval.</p></div>
+              <div class="svc"><i class="bx bx-server"></i><h3>Backend APIs & Services</h3><p>Production FastAPI / Flask / Express backends with MongoDB, authentication, and clean RESTful architecture.</p></div>
+              <div class="svc"><i class="bx bx-bot"></i><h3>Chatbots & Agents</h3><p>WhatsApp interactive bots via Twilio, multilingual store assistants, LangChain tool-using agents.</p></div>
+              <div class="svc"><i class="bx bx-chip"></i><h3>ML Model Development</h3><p>Computer vision CNNs (92% DR accuracy), health-signal classifiers, IoT embedded inference.</p></div>
+              <div class="svc"><i class="bx bx-spreadsheet"></i><h3>Document & Data Automation</h3><p>Google Sheets pipelines, branded Word/PDF generation, web scraping, incremental processing.</p></div>
+              <div class="svc"><i class="bx bx-devices"></i><h3>Full-Stack Applications</h3><p>Personal Health OS, AI finance apps, HTML5 arcade games — full frontend-to-database delivery.</p></div>
+            </div>
+          </div>
+          <span class="pg-num">— 4 —</span>
+          <span class="flip-btn back" data-t="t2"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 3: Project 1 & 2 ══ -->
+      <div class="page-right" id="t3" style="z-index:12">
+        <!-- Front: Auto-Proposal Generator -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 01 — Production AI System</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-file-find"></i>Envigo Auto-Proposal Generator</div>
+            <div class="ch-line"></div>
+            <div class="impact">🚀 Live at Envigo · Fully Automated · Client-Facing</div>
+            <div class="proj-summary">
+              An end-to-end Python pipeline that reads client intake data from Google Forms/Sheets, enriches it with OpenAI GPT, and generates branded Word document proposals — zero human writing required.
+            </div>
+            <div class="proj-body">
+              <strong>The Problem:</strong> Envigo's consultants were spending 2–3 hours manually writing each client proposal — personalising the copy, formatting the document, embedding branding assets. This was a direct bottleneck on revenue capacity.<br/><br/>
+              <strong>The Solution:</strong> A fully automated pipeline where a client fills a Google Form → the data lands in Google Sheets → a background Python process detects new rows, calls OpenAI to rewrite and enhance each answer into professional proposal language, then populates a reusable .docx template and saves the branded proposal to Google Drive — ready to send within minutes.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Google Sheets ingestion</strong> via gspread + service account (credentials.json). Reads form responses row by row with <strong>incremental processing</strong> tracked in processed_rows.json to avoid re-running.</li>
+              <li><strong>OpenAI content enhancement</strong> using openai.ChatCompletion.create (v0.28 syntax). Each field gets a targeted prompt that transforms raw client answers into polished consultancy prose.</li>
+              <li><strong>python-docx template engine</strong>: placeholder replacement across paragraphs, tables, and headers. Special XML run-merging logic handles split runs that broke naive find-replace.</li>
+              <li><strong>Google Drive API logo embedding</strong>: downloads the client's logo via Drive API (not raw HTTP requests, which failed on auth-gated files) and inserts it as an image at the correct template position.</li>
+              <li><strong>Error handling & recovery</strong>: graceful JSON parse failures, OpenAI retry logic, and Drive API fallback keep the pipeline running unattended.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">gspread</span><span class="tag t-gray">python-docx</span><span class="tag t-green">Google Drive API</span><span class="tag t-gray">JSON</span></div>
+          </div>
+          <span class="pg-num">— 5 —</span>
+          <span class="flip-btn" data-t="t3"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Stitch / EasyBuy -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 02 — Conversational AI + Automation</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-bot"></i>Stitch — EasyBuy Store Assistant</div>
+            <div class="ch-line"></div>
+            <div class="impact">💬 WhatsApp · 90+ Locations · Multilingual</div>
+            <div class="proj-summary">
+              A multilingual AI-powered WhatsApp store locator and assistant for EasyBuy (Landmark Group), featuring interactive button menus, a ReportLab PDF store directory, and a Selenium web scraper for live data collection.
+            </div>
+            <div class="proj-body">
+              <strong>The Problem:</strong> EasyBuy customers in India needed a quick way to find their nearest store and get product info via WhatsApp — their dominant communication channel. The existing flow was a dead-end text menu with zero AI understanding.<br/><br/>
+              <strong>The Solution:</strong> "Stitch" — a Flask-based WhatsApp chatbot upgraded from static text menus to <strong>Twilio Content API interactive buttons</strong>. Customers see tappable option lists instead of typing responses. An underlying LangChain agent with a multilingual system prompt understands intent in Hindi and English, queries a structured store database, and returns contextual answers.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>WhatsApp Interactive Buttons</strong> via Twilio Content API: migrated from plain text menus to list_picker and button templates, dramatically improving UX and reducing drop-off.</li>
+              <li><strong>Web Scraping</strong> via Selenium (headless Chrome): crawled easybuyindia.com which uses JavaScript rendering — static requests couldn't extract store data. Automated extraction of 90+ store locations, hours, addresses.</li>
+              <li><strong>ReportLab PDF Directory</strong>: generated a branded multi-page store directory PDF covering all 90+ locations with Landmark Group styling — used by the sales team for print distribution.</li>
+              <li><strong>Multilingual LangChain agent</strong>: system prompt handles code-switching between Hindi/English. The agent classifies intent, routes to the right tool (store lookup, product info, FAQ), and returns formatted replies.</li>
+              <li><strong>Flask webhook</strong>: receives Twilio callbacks, maintains session state per user phone number, dispatches to the LangChain agent, and formats the response for WhatsApp delivery.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Flask</span><span class="tag t-purple">LangChain</span><span class="tag t-gray">Twilio Content API</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">ReportLab</span><span class="tag t-green">WhatsApp API</span></div>
+          </div>
+          <span class="pg-num">— 6 —</span>
+          <span class="flip-btn back" data-t="t3"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 4: Project 3 & 4 ══ -->
+      <div class="page-right" id="t4" style="z-index:11">
+        <!-- Front: Health OS -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 03 — Full-Stack Application</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-heart-circle"></i>Personal Health OS</div>
+            <div class="ch-line"></div>
+            <div class="impact">🏥 13 Collections · Full REST API · Real-Time Tracking</div>
+            <div class="proj-summary">
+              A comprehensive personal health management platform built on Express 5 and MongoDB Atlas with 13 data collections, a full REST API, and analytics dashboards for tracking vitals, symptoms, medications, and wellness trends.
+            </div>
+            <div class="proj-body">
+              <strong>The Concept:</strong> A single unified system to replace the fragmented mess of health tracking apps — one platform that connects vitals, symptoms, medications, doctor notes, sleep, diet, and exercise into an intelligent, queryable health record you control.<br/><br/>
+              <strong>The Architecture:</strong> Backend built on <strong>Express 5</strong> (async error handling, new routing API) with <strong>Mongoose</strong> schemas for strict data validation across 13 MongoDB Atlas collections. Every health data type (vitals, symptoms, medications, appointments, sleep logs, diet entries, exercise sessions, lab results, body metrics, mood, water intake, goals, and user profile) has its own model with validation, indexing, and computed fields.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>13-collection MongoDB Atlas schema</strong>: carefully normalised with references between collections (e.g. medications linked to appointments, symptoms linked to vitals readings) to support complex health queries.</li>
+              <li><strong>Full REST API</strong>: 50+ endpoints with CRUD operations, date-range filtering, aggregation pipelines for trend analytics, and paginated responses for large datasets.</li>
+              <li><strong>Express 5 features</strong>: leverages native async/await route handlers with automatic error propagation — no more try-catch boilerplate or wrapping with asyncHandler.</li>
+              <li><strong>Analytics & Insights</strong>: MongoDB aggregation pipelines compute weekly/monthly trends, anomaly flags (e.g. BP outside normal range), and correlation views between sleep and mood scores.</li>
+              <li><strong>Authentication</strong>: JWT-based auth with refresh tokens, role-based access, and secure health data isolation per user.</li>
+            </ul>
+            <div class="tags"><span class="tag t-blue">Express 5</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">Mongoose</span><span class="tag t-blue">Node.js</span><span class="tag t-gray">REST API</span><span class="tag t-purple">JWT Auth</span></div>
+          </div>
+          <span class="pg-num">— 7 —</span>
+          <span class="flip-btn" data-t="t4"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: FinMind -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 04 — AI Finance Application</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-dollar-circle"></i>FinMind — AI Personal Finance App</div>
+            <div class="ch-line"></div>
+            <div class="impact">💰 GitHub Pages · OpenAI Insights · Zero Backend Cost</div>
+            <div class="proj-summary">
+              A fully client-side AI-powered personal finance application hosted on GitHub Pages, using the MongoDB Atlas Data API and localStorage-managed OpenAI keys to deliver AI spending analysis with zero server infrastructure.
+            </div>
+            <div class="proj-body">
+              <strong>The Challenge:</strong> Build a real AI finance app with no monthly hosting costs. No backend server, no paid database tier, no cloud functions — yet still provide real-time data persistence, AI insights, and interactive charts.<br/><br/>
+              <strong>The Innovation:</strong> Use <strong>MongoDB Atlas Data API</strong> (direct HTTP from browser) for persistence, <strong>localStorage</strong> for the OpenAI API key (user-managed, never leaves their device), and <strong>React + Chart.js</strong> for a single-file deployable SPA that runs entirely from GitHub Pages CDN.
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>localStorage API key pattern</strong>: User enters their OpenAI key once → stored in localStorage → all AI calls made direct from browser. Key is never transmitted to any third-party server. Clean UX with key-edit modal.</li>
+              <li><strong>MongoDB Atlas Data API</strong>: REST-based database access without a traditional backend. Create, read, update, delete financial transactions via fetch() directly from the React frontend.</li>
+              <li><strong>AI Spending Insights</strong>: Monthly transaction data sent to GPT-4 with a structured prompt → returns categorised spending analysis, savings recommendations, and anomaly flags displayed as readable insights.</li>
+              <li><strong>Budget Goal Tracking</strong>: Set monthly category budgets → real-time progress bars calculated against actual spending → alerts when approaching or exceeding limits.</li>
+              <li><strong>Chart.js Visualisations</strong>: Doughnut chart for category breakdown, line chart for monthly spending trends, bar chart for income vs expense comparison — all computed client-side.</li>
+            </ul>
+            <div class="tags"><span class="tag t-gold">React.js</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">MongoDB Atlas Data API</span><span class="tag t-gray">Chart.js</span><span class="tag t-gray">GitHub Pages</span><span class="tag t-gray">localStorage</span></div>
+          </div>
+          <span class="pg-num">— 8 —</span>
+          <span class="flip-btn back" data-t="t4"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 5: Project 5 & 6 ══ -->
+      <div class="page-right" id="t5" style="z-index:10">
+        <!-- Front: CatchMaster -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Project 05 — Game Development</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-joystick"></i>CatchMaster — HTML5 Arcade Game</div>
+            <div class="ch-line"></div>
+            <div class="impact">🎮 Zero Dependencies · AI-Adaptive · Pure JavaScript</div>
+            <div class="proj-summary">
+              A zero-dependency HTML5 Canvas arcade game with an AI-adaptive difficulty engine and a miss-streak mechanic — all in vanilla JavaScript, running directly in any browser without a build step.
+            </div>
+            <div class="proj-body">
+              <strong>The Design Philosophy:</strong> Most browser games feel static — the difficulty never adapts to you. CatchMaster uses a real-time adaptive AI system that continuously observes player performance and tunes the game's parameters to keep the player in a <strong>"flow state"</strong> — challenging but not frustrating.<br/><br/>
+              <strong>Core Systems:</strong>
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Adaptive Difficulty Engine</strong>: tracks a rolling hit/miss ratio over the last N frames. If the player is catching everything easily → spawns more objects, increases fall speed, shrinks catch radius. If miss rate spikes → eases up. Parameters update smoothly without jarring jumps.</li>
+              <li><strong>Miss-Streak Mechanic</strong>: consecutive misses trigger visual and audio cues (screen flash, shake effect) and accelerate game-over conditions — adds tension and stakes beyond a simple lives counter.</li>
+              <li><strong>Canvas 2D Rendering</strong>: all game objects (falling items, catcher, particles, score UI) drawn via Canvas 2D API with requestAnimationFrame for a locked 60fps loop. No WebGL, no libraries.</li>
+              <li><strong>Particle System</strong>: catch events spawn a burst of colour-coded particles that decay over time — coded as a lightweight object pool to avoid garbage collection pauses mid-game.</li>
+              <li><strong>High Score Persistence</strong>: scores persisted to localStorage with a leaderboard view showing top 5 sessions, date-stamped.</li>
+            </ul>
+            <div class="tags"><span class="tag t-gold">HTML5 Canvas</span><span class="tag t-gold">Vanilla JavaScript</span><span class="tag t-purple">Adaptive AI</span><span class="tag t-gray">requestAnimationFrame</span><span class="tag t-gray">localStorage</span></div>
+          </div>
+          <span class="pg-num">— 9 —</span>
+          <span class="flip-btn" data-t="t5"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: DR Detector -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="section-label">Project 06 — Medical AI / Computer Vision</div>
+            <div class="ch" style="font-size:1.3rem"><i class="bx bx-scan"></i>Diabetic Retinopathy Detector</div>
+            <div class="ch-line"></div>
+            <div class="impact">👁️ 92% Accuracy · CNN · Clinical Decision Support</div>
+            <div class="proj-summary">
+              A deep learning model that classifies the severity of diabetic retinopathy from retinal fundus photographs, achieving 92% accuracy — built as a B.Tech final year project with real clinical dataset training.
+            </div>
+            <div class="proj-body">
+              <strong>Clinical Context:</strong> Diabetic Retinopathy (DR) is the leading cause of blindness in working-age adults worldwide. Early detection via retinal imaging is critical but requires specialist ophthalmologists — a bottleneck in under-resourced healthcare settings. This project demonstrates that a CNN can automate the screening step to support clinical workflows.<br/><br/>
+              <strong>Model Architecture & Training:</strong>
+            </div>
+            <ul class="proj-bullets">
+              <li><strong>Dataset</strong>: trained on retinal fundus images with 5-class DR severity labels (No DR, Mild, Moderate, Severe, Proliferative DR). Applied class-weighting to handle the severe class imbalance in real clinical datasets.</li>
+              <li><strong>CNN Architecture</strong>: custom convolutional architecture in PyTorch with 6 conv blocks, batch normalisation, dropout regularisation, and global average pooling before the classifier head — designed to balance depth with the limited dataset size.</li>
+              <li><strong>Preprocessing Pipeline</strong>: fundus images resized and normalised, with CLAHE (Contrast Limited Adaptive Histogram Equalisation) applied to enhance the visibility of microaneurysms and haemorrhages before model input.</li>
+              <li><strong>Data Augmentation</strong>: random horizontal/vertical flips, rotation, brightness jitter — critical for a medical dataset where genuine variation is limited and overfitting risk is high.</li>
+              <li><strong>Results</strong>: <strong>92% accuracy</strong> on the held-out test set. Confusion matrix analysis showed strongest performance on No-DR and Proliferative-DR classes; model struggles most with the Mild/Moderate boundary — consistent with published literature.</li>
+              <li><strong>Grad-CAM Visualisation</strong>: implemented gradient-weighted class activation maps to visually verify that the model attends to clinically relevant regions (optic disc, blood vessels) rather than image artefacts.</li>
+            </ul>
+            <div class="tags"><span class="tag t-purple">PyTorch</span><span class="tag t-purple">CNN</span><span class="tag t-blue">Python</span><span class="tag t-red">CLAHE Preprocessing</span><span class="tag t-red">Grad-CAM</span><span class="tag t-gray">Medical Imaging</span></div>
+          </div>
+          <span class="pg-num">— 10 —</span>
+          <span class="flip-btn back" data-t="t5"><i class="bx bx-chevron-left"></i></span>
+        </div>
+      </div>
+
+      <!-- ══ SPREAD 6: Research / Contact ══ -->
+      <div class="page-right" id="t6" style="z-index:9">
+        <!-- Front: Research & Mario -->
+        <div class="page-front">
+          <div class="content-scroll">
+            <div class="section-label">Published Research</div>
+            <div class="ch"><i class="bx bx-test-tube"></i>Research & Other Work</div>
+            <div class="ch-line"></div>
+            <div class="research">
+              <div class="research-badge">📄 IEEE / Academic Publication</div>
+              <h3>ECG & PPG Based Real-Time Health Monitoring System</h3>
+              <p>
+                <strong>Context:</strong> Co-authored during B.Tech ML Leadership at MIET. The paper presents a complete IoT health monitoring stack for cardiac wellness tracking using wearable biosensors.<br/><br/>
+                <strong>Key Contributions:</strong> (1) Signal acquisition pipeline for ECG and PPG on microcontroller hardware. (2) Bandpass filtering and wavelet-based denoising to clean noisy wearable signals. (3) Pan-Tompkins R-peak detection algorithm for real-time HRV (Heart Rate Variability) computation. (4) Anomaly classification using a lightweight decision-tree model deployable on embedded hardware. (5) Cloud dashboard integration for long-term trend visualisation.<br/><br/>
+                <strong>Significance:</strong> The system demonstrates sub-30ms latency inference on edge hardware — making it viable for real-time wearable health monitoring without constant cloud connectivity.
+              </p>
+            </div>
+            <div class="section-label" style="margin-top:.6rem">Project 07 — Game Dev</div>
+            <div class="proj">
+              <div class="proj-header">
+                <div class="proj-name">🎮 Python Mario Recreation</div>
+                <a href="https://github.com/theshaguntyagi" target="_blank" class="proj-link">GitHub <i class="bx bx-link-external"></i></a>
+              </div>
+              <div class="proj-body">A Pygame-based Mario recreation with custom scrolling levels, enemy AI (patrol + chase behaviours), collectables, coin counters, a lives system, and a sound engine. Built with a clean game-loop architecture (update/draw separation). The project has a redesigned <strong>GitHub Pages landing site</strong> showcasing gameplay screenshots and controls — built as a case study in packaging a Python game for web audiences.</div>
+              <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-gold">Pygame</span><span class="tag t-gray">GitHub Pages</span><span class="tag t-purple">Game AI</span></div>
+            </div>
+          </div>
+          <span class="pg-num">— 11 —</span>
+          <span class="flip-btn" data-t="t6"><i class="bx bx-chevron-right"></i></span>
+        </div>
+        <!-- Back: Contact -->
+        <div class="page-back">
+          <div class="content-scroll">
+            <div class="ch"><i class="bx bx-send"></i>Get In Touch</div>
+            <div class="ch-line"></div>
+            <div class="proj-body" style="margin-bottom:1rem;font-size:.82rem;color:var(--ink2);">
+              Open to AI/ML engineering roles, consulting projects, and collaboration on impactful systems. Based in Uttar Pradesh, India — available for remote work globally and on-site in the UK.
+            </div>
+            <div class="contact-list">
+              <a class="contact-row" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i><div><div class="c-lbl">LinkedIn</div><div class="c-val">in/theshaguntyagi</div></div></a>
+              <a class="contact-row" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i><div><div class="c-lbl">GitHub</div><div class="c-val">@theshaguntyagi</div></div></a>
+              <a class="contact-row" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i><div><div class="c-lbl">Email</div><div class="c-val">shagun@envigo.co.in</div></div></a>
+              <div class="contact-row"><i class="bx bx-map"></i><div><div class="c-lbl">Location</div><div class="c-val">Uttar Pradesh, India · Remote Global</div></div></div>
+              <div class="contact-row"><i class="bx bx-buildings"></i><div><div class="c-lbl">Current Company</div><div class="c-val">Envigo — UK AI & Software Consultancy</div></div></div>
+            </div>
+            <div style="margin-top:1rem;text-align:center;">
+              <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap">
+                <i class="bx bxl-linkedin-square"></i> Connect with Shagun Tyagi on LinkedIn
+              </a>
+            </div>
+          </div>
+          <span class="pg-num">— 12 —</span>
+          <span class="flip-btn back" data-t="t6"><i class="bx bx-chevron-left"></i></span>
+          <a href="#" class="back-home" id="goHome"><i class="bx bxs-book-open"></i> Back to Profile</a>
+        </div>
+      </div>
+
+    </div><!-- .book -->
+  </div><!-- .book-wrapper -->
+</div><!-- .desk -->
+
+
+<!-- ════════════════ MOBILE READER ════════════════ -->
+<div class="mob-reader" id="mobReader">
+  <div class="mob-bar">
+    <span class="mob-bar-name">Shagun Tyagi</span>
+    <span class="mob-bar-pg" id="mobCtr">1 / 13</span>
   </div>
-</div>
+  <div class="mob-prog"><div class="mob-prog-fill" id="mobFill" style="width:7.7%"></div></div>
+  <div class="mob-track" id="mobTrack">
 
-<div id="stage">
-  <div id="book">
-    <div id="spine-bar"><span>Shagun Tyagi · Portfolio</span></div>
-    <div class="book-edge"></div>
-    <!-- PAGES GENERATED BY JS -->
+    <!-- Page 0: Profile -->
+    <div class="mob-pg">
+      <div class="profile-wrap" style="min-height:85vh;padding:1rem 0;">
+        <div class="avatar-outer"><div class="avatar-inner">ST</div></div>
+        <div class="prof-name">Shagun Tyagi</div>
+        <div class="prof-role">AI / ML Engineer</div>
+        <div class="prof-co" style="color:rgba(255,255,255,.45)">Envigo UK · MBA Candidate</div>
+        <div class="gold-line"></div>
+        <div class="socials">
+          <a class="soc-btn" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i></a>
+          <a class="soc-btn" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i></a>
+          <a class="soc-btn" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i></a>
+        </div>
+        <div class="prof-bio">I build production AI/ML systems: LLM pipelines, WhatsApp bots, computer vision models, and full-stack applications. Published IoT health researcher.</div>
+        <div class="stats-row" style="width:100%">
+          <div class="stat-cell"><span class="stat-n">5+</span><span class="stat-l">Prod Systems</span></div>
+          <div class="stat-cell"><span class="stat-n">92%</span><span class="stat-l">DR Accuracy</span></div>
+          <div class="stat-cell"><span class="stat-n">1</span><span class="stat-l">Publication</span></div>
+          <div class="stat-cell"><span class="stat-n">3+</span><span class="stat-l">Yrs Exp</span></div>
+        </div>
+        <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap"><i class="bx bxl-linkedin-square"></i> View on LinkedIn</a>
+      </div>
+      <div class="swipe-hint"><i class="bx bx-right-arrow-alt"></i> Swipe left to turn page</div>
+    </div>
+
+    <!-- Page 1: Work Experience -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-briefcase"></i><h2>Work Experience</h2></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-year">2023 – Present</div><div class="tl-title">AI / ML Engineer — Envigo (UK)</div><div class="tl-body">Builds production LangChain/FastAPI systems, auto-proposal pipelines (OpenAI + python-docx + Google Sheets), WhatsApp chatbots via Twilio, and leads ML strategy for enterprise clients.</div></div>
+        <div class="tl-item"><div class="tl-year">2021 – 2023</div><div class="tl-title">Software Engineer — Airtel</div><div class="tl-body">Backend services and data pipelines at telecom scale. Large-scale distributed systems, high-availability REST APIs, and network automation tools for millions of users.</div></div>
+        <div class="tl-item"><div class="tl-year">2019 – 2021</div><div class="tl-title">ML Lead — MIET</div><div class="tl-body">Led ML research vertical, directed ECG/PPG health monitoring research (published paper), mentored teams, deployed IoT prototypes.</div></div>
+      </div>
+    </div>
+
+    <!-- Page 2: Education -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-book-open"></i><h2>Education</h2></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-year">2025 – Present</div><div class="tl-title">MBA — Business Administration</div><div class="tl-body">Strategic management, product leadership, and entrepreneurship — bridging AI engineering with business decision-making.</div></div>
+        <div class="tl-item"><div class="tl-year">2019 – 2023</div><div class="tl-title">B.Tech CSE (IoT) — MIET</div><div class="tl-body">Specialized in IoT + CS. ML Lead role. Published ECG/PPG paper. Diabetic retinopathy CNN — 92% accuracy.</div></div>
+      </div>
+      <div class="research" style="margin-top:.8rem"><div class="research-badge">📄 Published</div><h3>ECG & PPG Health Monitoring System</h3><p>Real-time cardiac monitoring with wearable sensors. Signal denoising, HRV analysis, anomaly detection, embedded ML on microcontrollers. Sub-30ms inference latency.</p></div>
+    </div>
+
+    <!-- Page 3: Skills -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-code-alt"></i><h2>Technical Skills</h2></div>
+      <div class="sk-group"><div class="sk-label">AI / ML & LLMs</div><div class="tags"><span class="tag t-purple">LangChain</span><span class="tag t-purple">OpenAI API</span><span class="tag t-purple">FastAPI</span><span class="tag t-purple">PyTorch</span><span class="tag t-purple">RAG</span><span class="tag t-purple">Prompt Engineering</span></div></div>
+      <div class="sk-group"><div class="sk-label">Backend</div><div class="tags"><span class="tag t-blue">Python</span><span class="tag t-blue">Node.js</span><span class="tag t-blue">Express 5</span><span class="tag t-blue">Flask</span><span class="tag t-blue">REST APIs</span></div></div>
+      <div class="sk-group"><div class="sk-label">Cloud & Data</div><div class="tags"><span class="tag t-green">Google Cloud</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">gspread</span><span class="tag t-green">Drive API</span><span class="tag t-green">Docker</span></div></div>
+      <div class="sk-group"><div class="sk-label">Frontend</div><div class="tags"><span class="tag t-gold">JavaScript</span><span class="tag t-gold">React</span><span class="tag t-gold">HTML5/CSS3</span><span class="tag t-gold">Canvas API</span></div></div>
+      <div class="sk-group"><div class="sk-label">Automation & Tools</div><div class="tags"><span class="tag t-gray">python-docx</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">pandas</span><span class="tag t-gray">ReportLab</span><span class="tag t-gray">Twilio</span></div></div>
+      <div class="sk-group"><div class="sk-label">Biomedical & IoT</div><div class="tags"><span class="tag t-red">ECG/PPG Processing</span><span class="tag t-red">HRV Analysis</span><span class="tag t-red">Embedded ML</span></div></div>
+    </div>
+
+    <!-- Page 4: Project 1 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-file-find"></i><h2>Auto-Proposal Generator</h2></div>
+      <div class="impact">🚀 Live · Fully Automated · Client-Facing</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Google Forms → OpenAI GPT → branded .docx proposals, fully automated, zero manual writing.</div>
+      <ul class="proj-bullets">
+        <li><strong>Google Sheets ingestion</strong> via gspread service account with incremental row tracking (processed_rows.json)</li>
+        <li><strong>OpenAI content enhancement</strong>: each field gets a targeted prompt transforming raw answers into polished consultancy prose</li>
+        <li><strong>python-docx template engine</strong>: handles split XML runs that break naive find-replace</li>
+        <li><strong>Google Drive API logo embedding</strong>: downloads logos via Drive API (not raw HTTP) and inserts into template</li>
+        <li><strong>Error recovery</strong>: OpenAI retry logic, graceful JSON parse failures, unattended operation</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Python</span><span class="tag t-purple">OpenAI GPT-4</span><span class="tag t-green">gspread</span><span class="tag t-gray">python-docx</span><span class="tag t-green">Drive API</span></div>
+    </div>
+
+    <!-- Page 5: Project 2 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-bot"></i><h2>Stitch — EasyBuy Assistant</h2></div>
+      <div class="impact">💬 WhatsApp · 90+ Locations · Multilingual</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Multilingual AI WhatsApp chatbot for Landmark Group with interactive button menus, PDF store directory, and Selenium scraper.</div>
+      <ul class="proj-bullets">
+        <li><strong>Twilio Content API buttons</strong>: upgraded from plain text menus to list_picker interactive templates — dramatic UX improvement</li>
+        <li><strong>Selenium scraper</strong>: headless Chrome to scrape JS-rendered easybuyindia.com for 90+ store locations</li>
+        <li><strong>ReportLab PDF directory</strong>: branded multi-page store directory for 90+ locations used by sales team</li>
+        <li><strong>Multilingual LangChain agent</strong>: handles Hindi/English code-switching, intent classification, store lookup, FAQ</li>
+        <li><strong>Flask webhook</strong>: receives Twilio callbacks, maintains per-user session state, formats WhatsApp replies</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Flask</span><span class="tag t-purple">LangChain</span><span class="tag t-gray">Twilio</span><span class="tag t-gray">Selenium</span><span class="tag t-gray">ReportLab</span></div>
+    </div>
+
+    <!-- Page 6: Project 3 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-heart-circle"></i><h2>Personal Health OS</h2></div>
+      <div class="impact">🏥 13 Collections · REST API · Real-Time Analytics</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Express 5 + MongoDB Atlas health management platform — vitals, symptoms, medications, sleep, diet, and analytics in one system.</div>
+      <ul class="proj-bullets">
+        <li><strong>13-collection MongoDB schema</strong>: vitals, symptoms, medications, appointments, sleep, diet, exercise, labs, body metrics, mood, water, goals, user profile — fully normalised with cross-references</li>
+        <li><strong>50+ REST endpoints</strong>: CRUD, date-range filters, aggregation pipelines for trends, paginated responses</li>
+        <li><strong>Express 5 async routing</strong>: native async/await without try-catch boilerplate</li>
+        <li><strong>Trend analytics</strong>: MongoDB aggregation computes weekly/monthly health trends, BP anomaly flags, sleep-mood correlations</li>
+        <li><strong>JWT authentication</strong> with refresh tokens and per-user data isolation</li>
+      </ul>
+      <div class="tags"><span class="tag t-blue">Express 5</span><span class="tag t-green">MongoDB Atlas</span><span class="tag t-green">Mongoose</span><span class="tag t-purple">JWT Auth</span></div>
+    </div>
+
+    <!-- Page 7: Project 4 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-dollar-circle"></i><h2>FinMind — AI Finance App</h2></div>
+      <div class="impact">💰 GitHub Pages · Zero Backend Cost · AI Insights</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Client-side AI finance app with MongoDB Atlas Data API, localStorage API keys, OpenAI spending insights, and Chart.js dashboards — zero hosting cost.</div>
+      <ul class="proj-bullets">
+        <li><strong>localStorage API key pattern</strong>: user's OpenAI key stored locally, never leaves their device — privacy-first</li>
+        <li><strong>MongoDB Atlas Data API</strong>: direct browser-to-database REST calls, no traditional backend server</li>
+        <li><strong>GPT-4 spending analysis</strong>: monthly transactions sent to OpenAI → categorised insights + savings recommendations</li>
+        <li><strong>Budget goal tracking</strong>: real-time progress bars vs. monthly category limits with overspend alerts</li>
+        <li><strong>Chart.js visualisations</strong>: doughnut (categories), line (monthly trends), bar (income vs expense)</li>
+      </ul>
+      <div class="tags"><span class="tag t-gold">React</span><span class="tag t-purple">OpenAI</span><span class="tag t-green">Atlas Data API</span><span class="tag t-gray">Chart.js</span><span class="tag t-gray">GitHub Pages</span></div>
+    </div>
+
+    <!-- Page 8: Project 5 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-joystick"></i><h2>CatchMaster Arcade</h2></div>
+      <div class="impact">🎮 Adaptive AI · Zero Dependencies · 60 FPS</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Vanilla JS HTML5 Canvas arcade game with real-time adaptive difficulty engine keeping players in the "flow state".</div>
+      <ul class="proj-bullets">
+        <li><strong>Adaptive difficulty engine</strong>: rolling hit/miss ratio → dynamically tunes spawn rate, fall speed, catch radius without jarring jumps</li>
+        <li><strong>Miss-streak mechanic</strong>: consecutive misses trigger screen flash + shake + accelerated game-over conditions</li>
+        <li><strong>Canvas 2D at 60fps</strong>: all objects drawn via requestAnimationFrame loop — no libraries needed</li>
+        <li><strong>Particle system</strong>: object-pooled burst particles on catch events to avoid mid-game GC pauses</li>
+        <li><strong>High score board</strong> persisted in localStorage with date-stamped leaderboard view</li>
+      </ul>
+      <div class="tags"><span class="tag t-gold">HTML5 Canvas</span><span class="tag t-gold">Vanilla JS</span><span class="tag t-purple">Adaptive AI</span><span class="tag t-gray">Game Loop</span></div>
+    </div>
+
+    <!-- Page 9: Project 6 -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-scan"></i><h2>Diabetic Retinopathy Detector</h2></div>
+      <div class="impact">👁️ 92% Accuracy · CNN · Medical Imaging · PyTorch</div>
+      <div class="proj-summary" style="margin:.5rem 0;">Deep learning CNN that classifies DR severity from retinal fundus photos — 5-class grading, Grad-CAM visualisation, clinically motivated preprocessing.</div>
+      <ul class="proj-bullets">
+        <li><strong>5-class severity classification</strong>: No DR → Mild → Moderate → Severe → Proliferative DR, trained with class-weighting for imbalanced data</li>
+        <li><strong>CLAHE preprocessing</strong>: Contrast Limited Adaptive Histogram Equalisation enhances microaneurysms and haemorrhages before model input</li>
+        <li><strong>Custom CNN in PyTorch</strong>: 6 conv blocks, batch norm, dropout, global average pooling — balanced depth vs. dataset size</li>
+        <li><strong>Data augmentation</strong>: flips, rotation, brightness jitter to prevent overfitting on limited medical data</li>
+        <li><strong>Grad-CAM saliency maps</strong>: verifies model attends to optic disc and blood vessels — not image artefacts</li>
+        <li><strong>92% test accuracy</strong>: strongest on No-DR and Proliferative-DR; Mild/Moderate boundary is the hardest — consistent with ophthalmology literature</li>
+      </ul>
+      <div class="tags"><span class="tag t-purple">PyTorch</span><span class="tag t-purple">CNN</span><span class="tag t-red">CLAHE</span><span class="tag t-red">Grad-CAM</span><span class="tag t-gray">Medical Imaging</span></div>
+    </div>
+
+    <!-- Page 10: Research & Mario -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-test-tube"></i><h2>Research & Extras</h2></div>
+      <div class="research"><div class="research-badge">📄 Published Research</div><h3>ECG & PPG Based Health Monitoring</h3><p>Wearable IoT cardiac monitoring system. Pan-Tompkins R-peak detection, wavelet denoising, HRV computation, lightweight decision-tree for arrhythmia classification on embedded hardware. Sub-30ms latency. Co-authored at MIET.</p></div>
+      <div class="proj"><div class="proj-header"><div class="proj-name">🎮 Python Mario Recreation</div><a href="https://github.com/theshaguntyagi" target="_blank" class="proj-link">GitHub <i class="bx bx-link-external"></i></a></div><div class="proj-body">Pygame Mario with scrolling levels, patrol+chase enemy AI, collectables, lives system, and sound engine. Packaged with a GitHub Pages landing site for web audiences.</div><div class="tags"><span class="tag t-blue">Python</span><span class="tag t-gold">Pygame</span><span class="tag t-purple">Game AI</span></div></div>
+    </div>
+
+    <!-- Page 11: Skills grid / What I Build -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-layer"></i><h2>What I Build</h2></div>
+      <div class="svc-grid">
+        <div class="svc"><i class="bx bx-brain"></i><h3>AI Pipelines</h3><p>End-to-end LLM automation, RAG, document intelligence.</p></div>
+        <div class="svc"><i class="bx bx-server"></i><h3>Backend APIs</h3><p>FastAPI/Flask/Express + MongoDB Atlas.</p></div>
+        <div class="svc"><i class="bx bx-bot"></i><h3>Chatbots</h3><p>WhatsApp bots, multilingual agents, Twilio.</p></div>
+        <div class="svc"><i class="bx bx-chip"></i><h3>ML Models</h3><p>Computer vision, health-signal IoT ML.</p></div>
+        <div class="svc"><i class="bx bx-spreadsheet"></i><h3>Automation</h3><p>Sheets pipelines, PDF generation, scraping.</p></div>
+        <div class="svc"><i class="bx bx-devices"></i><h3>Full-Stack</h3><p>Health OS, finance apps, HTML5 games.</p></div>
+      </div>
+    </div>
+
+    <!-- Page 12: Contact -->
+    <div class="mob-pg">
+      <div class="mob-ph"><i class="bx bx-send"></i><h2>Contact Me</h2></div>
+      <div class="proj-body" style="color:#1a2744;font-size:.82rem;margin-bottom:.8rem;">Open to AI/ML roles, consulting, and collaboration. Available remote globally and on-site in the UK.</div>
+      <div class="contact-list">
+        <a class="contact-row" href="https://in.linkedin.com/in/theshaguntyagi" target="_blank"><i class="bx bxl-linkedin-square"></i><div><div class="c-lbl">LinkedIn</div><div class="c-val">in/theshaguntyagi</div></div></a>
+        <a class="contact-row" href="https://github.com/theshaguntyagi" target="_blank"><i class="bx bxl-github"></i><div><div class="c-lbl">GitHub</div><div class="c-val">@theshaguntyagi</div></div></a>
+        <a class="contact-row" href="mailto:shagun@envigo.co.in"><i class="bx bx-envelope"></i><div><div class="c-lbl">Email</div><div class="c-val">shagun@envigo.co.in</div></div></a>
+        <div class="contact-row"><i class="bx bx-map"></i><div><div class="c-lbl">Location</div><div class="c-val">Uttar Pradesh, India · Remote Global</div></div></div>
+        <div class="contact-row"><i class="bx bx-buildings"></i><div><div class="c-lbl">Company</div><div class="c-val">Envigo — UK AI Consultancy</div></div></div>
+      </div>
+      <div style="margin-top:1rem;text-align:center;">
+        <a href="https://in.linkedin.com/in/theshaguntyagi?trk=profile-badge" target="_blank" class="li-wrap"><i class="bx bxl-linkedin-square"></i> Connect on LinkedIn</a>
+      </div>
+    </div>
+
+  </div><!-- mob-track -->
+
+  <div class="mob-nav">
+    <div class="mob-nbtn dis" id="mPrev"><i class="bx bx-chevron-left"></i></div>
+    <div class="mob-dots" id="mDots"></div>
+    <div class="mob-nbtn" id="mNext"><i class="bx bx-chevron-right"></i></div>
   </div>
-</div>
+</div><!-- mob-reader -->
+
 
 <script>
-/* ═══════════════════════════════════════
-   SPREADS DATA
-═══════════════════════════════════════ */
-const SPREADS = [
-
-  /* ── 0: COVER ── */
-  {
-    chapter: 'Cover',
-    left: null,
-    right: {
-      cls: 'page-cover',
-      html: `<div id="cover-content">
-        <div class="cover-frame"></div>
-        <div class="cover-decoration"></div>
-        <div class="cover-monogram">ST</div>
-        <div class="cover-label">Portfolio Book · 2026</div>
-        <div class="cover-name">Shagun<br>Tyagi</div>
-        <div class="cover-title">AI / ML Engineer</div>
-        <div class="cover-rule"></div>
-        <div class="cover-meta">
-          LLM Agents &amp; ML Pipelines<br>
-          B.Tech CSE + MBA (Expected 2027)<br>
-          Envigo · Gurugram, India
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 1: TABLE OF CONTENTS ── */
-  {
-    chapter: 'Contents',
-    left: null,
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Table of Contents</span><span class="folio">01</span></div>
-        <div class="chapter-num">Preface</div>
-        <h2 class="display">Contents</h2>
-        <div class="double-rule"></div>
-        <div class="toc-item" onclick="goTo(2)"><span class="toc-num">I</span><span class="toc-title">About</span><span class="toc-dots"></span><span class="toc-page">02</span></div>
-        <div class="toc-item" onclick="goTo(3)"><span class="toc-num">II</span><span class="toc-title">Why Hire Me</span><span class="toc-dots"></span><span class="toc-page">04</span></div>
-        <div class="toc-item" onclick="goTo(4)"><span class="toc-num">III</span><span class="toc-title">Career Timeline</span><span class="toc-dots"></span><span class="toc-page">06</span></div>
-        <div class="toc-item" onclick="goTo(5)"><span class="toc-num">IV</span><span class="toc-title">Experience</span><span class="toc-dots"></span><span class="toc-page">08</span></div>
-        <div class="toc-item" onclick="goTo(6)"><span class="toc-num">V</span><span class="toc-title">Impact Metrics</span><span class="toc-dots"></span><span class="toc-page">10</span></div>
-        <div class="toc-item" onclick="goTo(7)"><span class="toc-num">VI</span><span class="toc-title">PitchIQ Case Study</span><span class="toc-dots"></span><span class="toc-page">12</span></div>
-        <div class="toc-item" onclick="goTo(8)"><span class="toc-num">VII</span><span class="toc-title">LeadGen Case Study</span><span class="toc-dots"></span><span class="toc-page">14</span></div>
-        <div class="toc-item" onclick="goTo(9)"><span class="toc-num">VIII</span><span class="toc-title">Enterprise RAG Case Study</span><span class="toc-dots"></span><span class="toc-page">16</span></div>
-        <div class="toc-item" onclick="goTo(10)"><span class="toc-num">IX</span><span class="toc-title">Other Projects</span><span class="toc-dots"></span><span class="toc-page">18</span></div>
-        <div class="toc-item" onclick="goTo(12)"><span class="toc-num">X</span><span class="toc-title">Skills</span><span class="toc-dots"></span><span class="toc-page">22</span></div>
-        <div class="toc-item" onclick="goTo(13)"><span class="toc-num">XI</span><span class="toc-title">Education &amp; Certifications</span><span class="toc-dots"></span><span class="toc-page">24</span></div>
-        <div class="toc-item" onclick="goTo(14)"><span class="toc-num">XII</span><span class="toc-title">Achievements &amp; Research</span><span class="toc-dots"></span><span class="toc-page">26</span></div>
-        <div class="toc-item" onclick="goTo(15)"><span class="toc-num">XIII</span><span class="toc-title">Testimonials</span><span class="toc-dots"></span><span class="toc-page">28</span></div>
-        <div class="toc-item" onclick="goTo(16)"><span class="toc-num">XIV</span><span class="toc-title">Contact</span><span class="toc-dots"></span><span class="toc-page">30</span></div>
-      </div>`
-    }
-  },
-
-  /* ── 2: ABOUT ── */
-  {
-    chapter: 'About',
-    left: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Shagun Tyagi</span><span class="folio">02</span></div>
-        <div class="chapter-num">Chapter I</div>
-        <h2 class="display">About</h2>
-        <div class="double-rule"></div>
-        <p class="lead" style="margin-bottom:18px;">AI/ML Engineer with 1+ year of production experience building LLM agents, RAG systems, ML pipelines, and FastAPI microservices at scale.</p>
-        <p class="body" style="margin-bottom:14px;">Currently architecting AI-driven SEO intelligence systems at Envigo (LangChain · AWS · Azure · Docker). Previously at Airtel, shipped FastAPI microservices cutting API latency by 30% and Python automation eliminating 10+ hours/week of manual ops.</p>
-        <p class="body" style="margin-bottom:14px;">Portfolio spans OpenAI-powered applications, browser automation, computer vision, IoT health monitoring, and full-stack AI products. Published researcher in ECG/PPG-based health monitoring.</p>
-        <p class="body">Pursuing an MBA to combine engineering depth with business-outcomes thinking.</p>
-        <div class="rule"></div>
-        <div class="sec-title">Contact</div>
-        <div class="contact-row"><div class="contact-label">Email</div><div class="contact-val">theshaguntyagi@gmail.com</div></div>
-        <div class="contact-row"><div class="contact-label">Phone</div><div class="contact-val">+91-8445692029</div></div>
-        <div class="contact-row"><div class="contact-label">Location</div><div class="contact-val" style="color:var(--ink-mid)">Noida, UP, India</div></div>
-        <div class="contact-row"><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/theshaguntyagi</div></div>
-        <div class="contact-row"><div class="contact-label">GitHub</div><div class="contact-val">github.com/theshaguntyagi</div></div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Skills Overview</span><span class="folio">03</span></div>
-        <div class="sec-title">Technical Skills</div>
-
-        <div class="skill-cat">
-          <div class="skill-cat-name">AI · ML · GenAI</div>
-          <div class="tag-row">
-            <span class="tag">LLM Agents</span><span class="tag">RAG Pipelines</span><span class="tag">OpenAI API</span><span class="tag">Prompt Engineering</span><span class="tag">NLP</span><span class="tag">Computer Vision</span><span class="tag">FAISS</span><span class="tag">ChromaDB</span><span class="tag">DeepFace</span><span class="tag">ArcFace</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-name">Languages &amp; Frameworks</div>
-          <div class="tag-row">
-            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">LangChain</span><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-Learn</span><span class="tag">JavaScript</span><span class="tag">C</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-name">Automation &amp; Scraping</div>
-          <div class="tag-row">
-            <span class="tag">Playwright</span><span class="tag">Browser Automation</span><span class="tag">Web Crawling</span><span class="tag">Lead Gen Pipelines</span><span class="tag">Email Automation</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-name">Cloud &amp; DevOps</div>
-          <div class="tag-row">
-            <span class="tag">AWS (EC2, S3, Lambda)</span><span class="tag">Azure</span><span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Linux</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-name">Data &amp; Databases</div>
-          <div class="tag-row">
-            <span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">SQLite</span><span class="tag">Vector DBs</span><span class="tag">Power BI</span><span class="tag">ETL Pipelines</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <div class="skill-cat-name">Frontend &amp; IoT</div>
-          <div class="tag-row">
-            <span class="tag">React 19</span><span class="tag">Vite</span><span class="tag">Three.js</span><span class="tag">Framer Motion</span><span class="tag">Firebase</span><span class="tag">React Native</span><span class="tag">Twilio</span><span class="tag">Raspberry Pi</span>
-          </div>
-        </div>
-        <div class="rule"></div>
-        <div class="sec-title">Speech &amp; Languages</div>
-        <p class="body">Hindi (native) · English (professional) · Urdu (reading)</p>
-      </div>`
-    }
-  },
-
-  /* ── 3: WHY HIRE ME ── */
-  {
-    chapter: 'Why Hire Me',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Why Hire Me</span><span class="folio">04</span></div>
-        <div class="chapter-num">Chapter II</div>
-        <h2 class="display">Why<br>Hire Me</h2>
-        <div class="double-rule"></div>
-
-        <div class="hire-row">
-          <div class="hire-icon">⚡</div>
-          <div>
-            <div class="hire-title">Production AI Systems</div>
-            <p class="hire-body">I don't build demos. Every system I've shipped runs in production — handling real data, real users, real failure modes.</p>
-          </div>
-        </div>
-        <div class="hire-row">
-          <div class="hire-icon">🤖</div>
-          <div>
-            <div class="hire-title">LLM Agents &amp; RAG</div>
-            <p class="hire-body">Deep hands-on experience with LangChain, OpenAI, FAISS, ChromaDB — built retrieval pipelines that return citations, not hallucinations.</p>
-          </div>
-        </div>
-        <div class="hire-row">
-          <div class="hire-icon">☁️</div>
-          <div>
-            <div class="hire-title">Cloud Deployment</div>
-            <p class="hire-body">AWS EC2, S3, Lambda; Azure; Docker containerisation; CI/CD pipelines — I own the full ML lifecycle from model to monitoring.</p>
-          </div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Why Hire Me</span><span class="folio">05</span></div>
-        <div style="height:40px"></div>
-
-        <div class="hire-row">
-          <div class="hire-icon">⚙️</div>
-          <div>
-            <div class="hire-title">Automation Pipelines</div>
-            <p class="hire-body">Playwright, SMTP, Google APIs — I build self-running pipelines that eliminate hours of manual work per week.</p>
-          </div>
-        </div>
-        <div class="hire-row">
-          <div class="hire-icon">🎯</div>
-          <div>
-            <div class="hire-title">Product Thinking</div>
-            <p class="hire-body">I translate ML outputs into business KPIs. I've delivered 40% effort reduction, 30% latency reduction, and 10+ hrs/week saved — not just accuracy benchmarks.</p>
-          </div>
-        </div>
-        <div class="hire-row">
-          <div class="hire-icon">📊</div>
-          <div>
-            <div class="hire-title">MBA + Engineering</div>
-            <p class="hire-body">Rare hybrid: deep engineering execution combined with business analytics, product strategy, and operations knowledge from an active MBA.</p>
-          </div>
-        </div>
-        <div class="hire-row" style="border-bottom:none">
-          <div class="hire-icon">🔬</div>
-          <div>
-            <div class="hire-title">Published Researcher</div>
-            <p class="hire-body">Peer-reviewed publication in health monitoring — demonstrates ability to document, validate, and communicate technical work rigorously.</p>
-          </div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 4: CAREER TIMELINE ── */
-  {
-    chapter: 'Career Timeline',
-    left: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Personal Story</span><span class="folio">06</span></div>
-        <div class="chapter-num">Chapter III</div>
-        <h2 class="display">The<br>Journey</h2>
-        <div class="double-rule"></div>
-        <p class="lead" style="margin-bottom:20px;">"Started with circuits, ended up training neural networks. The path was never linear — and that's the point."</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-year">2020</div>
-            <div class="tl-title">B.Tech CSE (IoT) — MIET</div>
-            <p class="tl-body">Began with IoT systems, embedded hardware, and network engineering. Built the foundation across hardware and software.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-year">2022</div>
-            <div class="tl-title">CXI ML Team Lead</div>
-            <p class="tl-body">Led university ML community. Organised 5+ workshops on ML, AI, and cloud for engineering students.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-year">2023</div>
-            <div class="tl-title">IoT Health Research Begins</div>
-            <p class="tl-body">Built the Raspberry Pi + PPG + ML health monitor — winner of Health-A-Thon hackathon. Research formalised for publication.</p>
-          </div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Career Timeline</span><span class="folio">07</span></div>
-        <div style="height:28px"></div>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-year">2024</div>
-            <div class="tl-title">Published Research</div>
-            <p class="tl-body">IJSRA Vol. 12, No. 1 — peer-reviewed publication on ECG/PPG health monitoring. National Hackathon winner, Django + MySQL Waste Management Portal.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="background:var(--accent-light)"></div>
-            <div class="tl-year">Apr 2025</div>
-            <div class="tl-title">Software Engineer — Airtel</div>
-            <p class="tl-body">FastAPI microservices, 30% latency reduction, 10+ hrs/week automation savings. Real production engineering at telecom scale.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="background:var(--gold)"></div>
-            <div class="tl-year">Aug 2025</div>
-            <div class="tl-title">AI/ML Engineer — Envigo</div>
-            <p class="tl-body">LangChain LLM agents, RAG systems, AWS/Azure ML pipelines. 40% manual processing reduction across core business workflows.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="background:var(--gold); box-shadow: 0 0 6px rgba(184,134,11,0.5)"></div>
-            <div class="tl-year">Jan 2026</div>
-            <div class="tl-title">MBA — Chandigarh University</div>
-            <p class="tl-body">Business Analytics · Product Strategy · Operations · Marketing Analytics. Engineering depth meets business breadth.</p>
-          </div>
-          <div class="tl-item" style="opacity:0.55">
-            <div class="tl-dot" style="background: var(--paper-shadow); border-style: dashed"></div>
-            <div class="tl-year">2027 →</div>
-            <div class="tl-title">MBA Complete</div>
-            <p class="tl-body">Targeting AI product leadership roles at the intersection of technology and business strategy.</p>
-          </div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 5: EXPERIENCE ── */
-  {
-    chapter: 'Experience',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Experience</span><span class="folio">08</span></div>
-        <div class="chapter-num">Chapter IV</div>
-        <h2 class="display">Professional<br>Experience</h2>
-        <div class="double-rule"></div>
-
-        <div class="exp-block">
-          <div class="exp-head">
-            <div class="exp-role">AI / ML Engineer</div>
-            <div class="exp-date">Aug 2025 – Present</div>
-          </div>
-          <div class="exp-company">Envigo — Gurugram, India</div>
-          <ul class="exp-bullets">
-            <li>Architect end-to-end ML pipelines on AWS &amp; Azure powering Envigo's SEO intelligence platform — ingesting client data, running AI-driven analysis, surfacing actionable recommendations at scale.</li>
-            <li>Built LangChain-based LLM agents integrated into backend APIs, reducing manual data processing by ~40% across core business workflows.</li>
-            <li>Own the full ML lifecycle: model training → Docker containerisation → cloud deployment → monitoring and optimisation.</li>
-            <li>Collaborate with product and data teams to translate ML output into measurable business KPIs, not just accuracy benchmarks.</li>
-          </ul>
-          <div class="tag-row" style="margin-top:8px"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">FastAPI</span><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Docker</span></div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Experience</span><span class="folio">09</span></div>
-        <div style="height:20px"></div>
-
-        <div class="exp-block">
-          <div class="exp-head">
-            <div class="exp-role">Software Engineer</div>
-            <div class="exp-date">Apr 2025 – Aug 2025</div>
-          </div>
-          <div class="exp-company">Airtel — Gurugram, India</div>
-          <ul class="exp-bullets">
-            <li>Designed and deployed FastAPI microservices powering Airtel's internal ops workflows, reducing API response latency by ~30%.</li>
-            <li>Built Python automation pipelines eliminating ~10 hours/week of manual tasks across the operations team.</li>
-            <li>Engineered real-time data pipelines feeding dashboards used daily by analytics and ML teams.</li>
-            <li>Optimised backend query performance and system architecture, improving throughput by ~25% within 3 months.</li>
-          </ul>
-          <div class="tag-row" style="margin-top:8px"><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">REST APIs</span><span class="tag">CI/CD</span></div>
-        </div>
-
-        <div class="rule"></div>
-        <div class="sec-title">Education</div>
-        <div class="exp-block" style="margin-bottom:12px">
-          <div class="exp-head">
-            <div class="exp-role">MBA</div>
-            <div class="exp-date">Jan 2026 – Dec 2027</div>
-          </div>
-          <div class="exp-company">Chandigarh University · In Progress</div>
-          <p class="body" style="font-size:12.5px;color:var(--ink-muted);margin-top:4px">Business Analytics · Product Strategy · Operations · Marketing Analytics</p>
-        </div>
-        <div class="exp-block">
-          <div class="exp-head">
-            <div class="exp-role">B.Tech, CSE (IoT)</div>
-            <div class="exp-date">Jul 2020 – Dec 2024</div>
-          </div>
-          <div class="exp-company">MIET, Meerut · CGPA 8.4 / 10</div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 6: IMPACT METRICS ── */
-  {
-    chapter: 'Impact Metrics',
-    left: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Impact Metrics</span><span class="folio">10</span></div>
-        <div class="chapter-num">Chapter V</div>
-        <h2 class="display">Impact<br>Metrics</h2>
-        <div class="double-rule"></div>
-        <p class="body" style="margin-bottom:20px;">Numbers that matter to business — not academic benchmarks.</p>
-        <div class="metric-grid">
-          <div class="metric-box">
-            <div class="metric-num" data-count="40">0%</div>
-            <div class="metric-label">Effort Reduction<br>via LLM Agents</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="30">0%</div>
-            <div class="metric-label">API Latency<br>Reduction at Airtel</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="10">0+</div>
-            <div class="metric-label">Hours / Week<br>Automated</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="60">0s</div>
-            <div class="metric-label">To Create AI<br>Knowledge Base</div>
-          </div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Impact Metrics</span><span class="folio">11</span></div>
-        <div style="height:48px"></div>
-        <div class="metric-grid" style="margin-bottom:20px">
-          <div class="metric-box">
-            <div class="metric-num" data-count="3">0h</div>
-            <div class="metric-label">Manual Audit Time<br>Cut to 5 Minutes</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="25">0%</div>
-            <div class="metric-label">Throughput<br>Improvement</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="9">0+</div>
-            <div class="metric-label">Professional<br>Certifications</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-num" data-count="1">0</div>
-            <div class="metric-label">Research<br>Publication</div>
-          </div>
-        </div>
-        <div class="rule"></div>
-        <p class="lead">"Every number here was earned by shipping real systems — not measured in notebooks."</p>
-      </div>`
-    }
-  },
-
-  /* ── 7: PITCHIQ CASE STUDY ── */
-  {
-    chapter: 'PitchIQ Case Study',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Case Study</span><span class="folio">12</span></div>
-        <div class="chapter-num">Chapter VI · Case Study 01</div>
-        <h2 class="display">PitchIQ</h2>
-        <div class="double-rule"></div>
-
-        <div class="case-section">
-          <div class="case-label">Problem</div>
-          <p class="case-body">Website auditing for lead generation takes 3–4 hours per prospect: manual SEO checks, Core Web Vitals, accessibility review, content scoring — then writing a personalised report. Consultancies can't scale this.</p>
-        </div>
-        <div class="case-section">
-          <div class="case-label">Solution</div>
-          <p class="case-body">Full-stack AI platform that crawls any website end-to-end and runs automated audits across SEO health, Core Web Vitals, accessibility, UI/UX quality, and content scoring. GPT synthesises raw data into plain-English recommendations.</p>
-        </div>
-        <div class="case-impact-box">
-          <div class="big-num">3–4h</div>
-          <div class="big-label">→ fully automated in minutes</div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>PitchIQ · Architecture</span><span class="folio">13</span></div>
-        <div style="height:20px"></div>
-
-        <div class="case-section">
-          <div class="case-label">Architecture</div>
-          <div class="arch-diagram">
-            <div class="arch-node">Website URL Input</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Playwright Crawler</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Audit Engine (SEO + CWV + A11y)</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">GPT Synthesis Layer</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">MongoDB (Trend Storage)</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Email Automation Pipeline</div>
-          </div>
-        </div>
-
-        <div class="case-section" style="margin-top:14px">
-          <div class="case-label">Tech Stack</div>
-          <div class="tag-row">
-            <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Playwright</span><span class="tag">MongoDB</span><span class="tag">SMTP</span><span class="tag">FastAPI</span>
-          </div>
-        </div>
-        <div class="proj-btns" style="margin-top:14px">
-          <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-          <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Demo</a>
-          <a class="proj-btn proj-btn-case" href="#" onclick="goTo(7);return false;">📖 Case Study</a>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 8: LEADGEN CASE STUDY ── */
-  {
-    chapter: 'LeadGen Case Study',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Case Study</span><span class="folio">14</span></div>
-        <div class="chapter-num">Chapter VI · Case Study 02</div>
-        <h2 class="display">LeadGen<br>AI</h2>
-        <div class="double-rule"></div>
-
-        <div class="case-section">
-          <div class="case-label">Problem</div>
-          <p class="case-body">B2B outreach is broken: generic cold emails get 1-3% open rates. Finding leads, researching them, and writing personalised messages at volume is impossible manually.</p>
-        </div>
-        <div class="case-section">
-          <div class="case-label">Solution</div>
-          <p class="case-body">End-to-end automated lead generation system. Scrapes Google Maps by niche and location, extracts contact details via Playwright, then uses GPT to write personalised outreach emails referencing each lead's specific business pain points.</p>
-        </div>
-        <div class="case-impact-box">
-          <div class="big-num">0</div>
-          <div class="big-label">Manual intervention — fully autonomous pipeline</div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>LeadGen · Architecture</span><span class="folio">15</span></div>
-        <div style="height:20px"></div>
-
-        <div class="case-section">
-          <div class="case-label">Architecture</div>
-          <div class="arch-diagram">
-            <div class="arch-node">Google Maps Query</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Playwright Scraper</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">AI Enrichment (GPT Analysis)</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Lead Scoring Module</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Personalised Email Generator</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">SMTP Outreach Engine</div>
-          </div>
-        </div>
-
-        <div class="case-section" style="margin-top:14px">
-          <div class="case-label">Tech Stack</div>
-          <div class="tag-row">
-            <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Playwright</span><span class="tag">MongoDB</span><span class="tag">SMTP</span>
-          </div>
-        </div>
-        <div class="proj-btns" style="margin-top:14px">
-          <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-          <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Demo</a>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 9: ENTERPRISE RAG CASE STUDY ── */
-  {
-    chapter: 'Enterprise RAG',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Case Study</span><span class="folio">16</span></div>
-        <div class="chapter-num">Chapter VI · Case Study 03</div>
-        <h2 class="display">Enterprise<br>RAG</h2>
-        <div class="double-rule"></div>
-
-        <div class="case-section">
-          <div class="case-label">Problem</div>
-          <p class="case-body">Enterprise knowledge is locked in PDFs, Word docs, SOPs, and manuals. Generic chatbots hallucinate. Employees spend hours searching documents manually.</p>
-        </div>
-        <div class="case-section">
-          <div class="case-label">Solution</div>
-          <p class="case-body">Production-grade RAG system that ingests, chunks, embeds, and indexes documents into FAISS/ChromaDB. LangChain QA pipeline delivers citation-backed answers referencing exact source document and page. Multi-turn memory via ConversationBufferWindowMemory.</p>
-        </div>
-        <div class="case-impact-box">
-          <div class="big-num">60s</div>
-          <div class="big-label">From document upload to queryable AI assistant</div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Enterprise RAG · Architecture</span><span class="folio">17</span></div>
-        <div style="height:20px"></div>
-
-        <div class="case-section">
-          <div class="case-label">Architecture</div>
-          <div class="arch-diagram">
-            <div class="arch-node">Documents (PDF, Word, SOP)</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">Chunking Pipeline</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">OpenAI Embeddings</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">FAISS / ChromaDB Vector Store</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">LangChain Retriever + Memory</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-node">GPT → Citation-Backed Answer</div>
-          </div>
-        </div>
-
-        <div class="case-section" style="margin-top:14px">
-          <div class="case-label">Tech Stack</div>
-          <div class="tag-row">
-            <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">LangChain</span><span class="tag">FAISS</span><span class="tag">ChromaDB</span><span class="tag">MongoDB</span>
-          </div>
-        </div>
-        <div class="proj-btns" style="margin-top:14px">
-          <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-          <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Demo</a>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 10: OTHER PROJECTS A ── */
-  {
-    chapter: 'Projects',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Projects</span><span class="folio">18</span></div>
-        <div class="chapter-num">Chapter VII</div>
-        <h2 class="display">Other<br>Projects</h2>
-        <div class="double-rule"></div>
-
-        <div class="proj">
-          <div class="proj-title">FaceGuard — AI Facial Recognition Attendance</div>
-          <div class="proj-stack">Python · OpenCV · DeepFace · ArcFace · SQLite · Tkinter</div>
-          <div class="proj-screenshot"><span>Screenshot · FaceGuard UI</span></div>
-          <p class="proj-body">Real-time face recognition replacing manual roll calls. ArcFace embeddings, one-shot enrolment. Multi-threaded ~30fps. Auto late/absent classification with audit trail and CSV export.</p>
-          <div class="proj-impact"><span>Impact:</span> Prevents proxy attendance fraud. Zero command-line knowledge required.</div>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Demo</a>
-          </div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Projects</span><span class="folio">19</span></div>
-
-        <div class="proj">
-          <div class="proj-title">ICD-10 AI Coder — Medical Coding Assistant</div>
-          <div class="proj-stack">Claude · GPT-4o · Tailwind · Single HTML · GitHub Pages</div>
-          <div class="proj-screenshot"><span>Screenshot · ICD-10 Coder</span></div>
-          <p class="proj-body">Browser-based AI assistant for medical coders. Paste clinical notes, receive ICD-10-CM codes with rationale. No backend — client-side for HIPAA-adjacent privacy. Dual model support: Claude + GPT-4o.</p>
-          <div class="proj-impact"><span>Impact:</span> 70,000+ code lookup reduced to seconds. Privacy-first — API key never touches an intermediate server.</div>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Live Demo</a>
-          </div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 11: OTHER PROJECTS B ── */
-  {
-    chapter: 'Projects',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Projects</span><span class="folio">20</span></div>
-
-        <div class="proj">
-          <div class="proj-title">Portfolio V2 — Full-Stack Personal Brand Platform</div>
-          <div class="proj-stack">React 19 · Three.js · Vite (rolldown) · Firebase · Gemini AI</div>
-          <div class="proj-screenshot"><span>Screenshot · Portfolio V2</span></div>
-          <p class="proj-body">Three.js 3D environment with custom WebGL shaders, Gemini 1.5 Flash AI chatbot via Firebase Cloud Functions. JSON-LD schema, OG meta, CI/CD via GitHub Actions.</p>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-demo" href="https://theshaguntyagi.github.io" target="_blank">▶ Live</a>
-          </div>
-        </div>
-
-        <div class="proj" style="margin-top:16px">
-          <div class="proj-title">CATCH-MASTER — Adaptive AI Arcade Game</div>
-          <div class="proj-stack">Vanilla JS · HTML5 Canvas · Zero Dependencies</div>
-          <div class="proj-screenshot"><span>Screenshot · CATCH-MASTER</span></div>
-          <p class="proj-body">DDA engine — same technique as Left 4 Dead's AI Director. 24-catch rolling window, combo ×20, particle system. Zero dependencies, one .html file.</p>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Play</a>
-          </div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Projects</span><span class="folio">21</span></div>
-
-        <div class="proj">
-          <div class="proj-title">Mario in Python — WebAssembly Platformer</div>
-          <div class="proj-stack">Python · Pygame · Pygbag · WebAssembly · GitHub Pages</div>
-          <div class="proj-screenshot"><span>Screenshot · Mario WASM</span></div>
-          <p class="proj-body">Pygame platformer compiled to WebAssembly via Pygbag. Rewritten async/await game loop, CORS COOP/COEP headers solved via COI service worker. Live in browser — no Python install.</p>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-demo" href="#" target="_blank">▶ Play</a>
-          </div>
-        </div>
-
-        <div class="proj" style="margin-top:16px">
-          <div class="proj-title">IoT Health Monitoring System</div>
-          <div class="proj-stack">Python · Raspberry Pi · Scikit-Learn · Firebase · React Native</div>
-          <div class="proj-screenshot"><span>Screenshot · IoT Health</span></div>
-          <p class="proj-body">Raspberry Pi + PPG sensors + ML anomaly detection + Firebase alerts + React Native caregiver app. Peer-reviewed publication, IJSRA 2024.</p>
-          <div class="proj-btns">
-            <a class="proj-btn proj-btn-gh" href="https://github.com/theshaguntyagi" target="_blank">⬡ GitHub</a>
-            <a class="proj-btn proj-btn-case" href="https://doi.org/10.30574/ijsra.2024.12.1.0781" target="_blank">📖 Publication</a>
-          </div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 12: SKILLS DEEP DIVE ── */
-  {
-    chapter: 'Skills',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Skills</span><span class="folio">22</span></div>
-        <div class="chapter-num">Chapter VIII</div>
-        <h2 class="display">Skills</h2>
-        <div class="double-rule"></div>
-
-        <div class="skill-cat-name" style="margin-bottom:10px">AI / ML</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div><span class="skill-bar-pct">95%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">LangChain</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div><span class="skill-bar-pct">88%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">OpenAI / GPT</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div><span class="skill-bar-pct">90%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">RAG Systems</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:87%"></div></div><span class="skill-bar-pct">87%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">TensorFlow</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div><span class="skill-bar-pct">78%</span></div>
-
-        <div class="rule"></div>
-        <div class="skill-cat-name" style="margin-bottom:10px">Backend</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">FastAPI</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div><span class="skill-bar-pct">90%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Flask</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div><span class="skill-bar-pct">82%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">REST APIs</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div><span class="skill-bar-pct">92%</span></div>
-
-        <div class="rule"></div>
-        <div class="skill-cat-name" style="margin-bottom:10px">Cloud</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">AWS</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div><span class="skill-bar-pct">80%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Azure</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:74%"></div></div><span class="skill-bar-pct">74%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Docker</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div><span class="skill-bar-pct">82%</span></div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Skills</span><span class="folio">23</span></div>
-        <div style="height:24px"></div>
-
-        <div class="skill-cat-name" style="margin-bottom:10px">Databases</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">MongoDB</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div><span class="skill-bar-pct">85%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">SQL / MySQL</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:83%"></div></div><span class="skill-bar-pct">83%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Vector DBs</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:86%"></div></div><span class="skill-bar-pct">86%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">SQLite</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div><span class="skill-bar-pct">80%</span></div>
-
-        <div class="rule"></div>
-        <div class="skill-cat-name" style="margin-bottom:10px">Frontend</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">React 19</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:76%"></div></div><span class="skill-bar-pct">76%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">JavaScript</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div><span class="skill-bar-pct">75%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Three.js</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div><span class="skill-bar-pct">65%</span></div>
-
-        <div class="rule"></div>
-        <div class="skill-cat-name" style="margin-bottom:10px">Automation</div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Playwright</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div><span class="skill-bar-pct">88%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Web Scraping</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div><span class="skill-bar-pct">90%</span></div>
-        <div class="skill-bar-row"><span class="skill-bar-label">Email Auto.</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div><span class="skill-bar-pct">85%</span></div>
-      </div>`
-    }
-  },
-
-  /* ── 13: EDUCATION + CERTIFICATIONS ── */
-  {
-    chapter: 'Education',
-    left: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Education</span><span class="folio">24</span></div>
-        <div class="chapter-num">Chapter IX</div>
-        <h2 class="display">Education</h2>
-        <div class="double-rule"></div>
-
-        <div class="exp-block">
-          <div class="exp-head">
-            <div class="exp-role">MBA</div>
-            <div class="exp-date">Jan 2026 – Dec 2027</div>
-          </div>
-          <div class="exp-company">Chandigarh University</div>
-          <ul class="exp-bullets" style="margin-top:6px">
-            <li>Business Analytics</li>
-            <li>Product Strategy</li>
-            <li>Operations Management</li>
-            <li>Marketing Analytics</li>
-          </ul>
-          <p class="body" style="margin-top:8px;font-size:12px;color:var(--ink-muted);font-style:italic">Expected 2027 · In Progress</p>
-        </div>
-
-        <div class="rule"></div>
-
-        <div class="exp-block">
-          <div class="exp-head">
-            <div class="exp-role">B.Tech, CSE (IoT)</div>
-            <div class="exp-date">Jul 2020 – Dec 2024</div>
-          </div>
-          <div class="exp-company">MIET, Meerut · CGPA 8.4 / 10</div>
-          <ul class="exp-bullets" style="margin-top:6px">
-            <li>IoT Systems &amp; Embedded Development</li>
-            <li>Machine Learning &amp; Data Science</li>
-            <li>Computer Networks &amp; Cybersecurity</li>
-            <li>CXI ML Team Lead — 5+ technical workshops</li>
-          </ul>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad-sm">
-        <div class="running-head"><span>Certifications</span><span class="folio">25</span></div>
-        <div class="chapter-num">Chapter X</div>
-        <h2 class="display">Certifications</h2>
-        <div class="rule"></div>
-        <div class="cert-count-badge">9+ Professional Certifications</div>
-
-        <div class="cert-item"><span>AWS Cloud Practitioner</span><span class="cert-org">AWS Academy</span></div>
-        <div class="cert-item"><span>Azure Fundamentals AZ-900</span><span class="cert-org">Microsoft</span></div>
-        <div class="cert-item"><span>Power Platform PL-900</span><span class="cert-org">Microsoft</span></div>
-        <div class="cert-item"><span>CyberOps Associate</span><span class="cert-org">Cisco</span></div>
-        <div class="cert-item"><span>CCNA: Intro to Networks</span><span class="cert-org">Cisco</span></div>
-        <div class="cert-item"><span>Cybersecurity Essentials</span><span class="cert-org">Cisco</span></div>
-        <div class="cert-item"><span>Python Certification</span><span class="cert-org">HackerRank</span></div>
-        <div class="cert-item"><span>SQL Certification</span><span class="cert-org">HackerRank</span></div>
-        <div class="cert-item" style="border-bottom:none"><span>TCS Youth Employment Program</span><span class="cert-org">TCS</span></div>
-      </div>`
-    }
-  },
-
-  /* ── 14: ACHIEVEMENTS + RESEARCH ── */
-  {
-    chapter: 'Achievements',
-    left: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Achievements</span><span class="folio">26</span></div>
-        <div class="chapter-num">Chapter XI</div>
-        <h2 class="display">Achievements</h2>
-        <div class="double-rule"></div>
-
-        <div class="ach-item">
-          <div class="ach-title">National Level Hackathon — Winner</div>
-          <p class="ach-body">Led team to build a Waste Management Portal (Django + MySQL), winning a national-level competition against university teams across India.</p>
-        </div>
-        <div class="rule"></div>
-        <div class="ach-item">
-          <div class="ach-title">Health-A-Thon — Runner-up</div>
-          <p class="ach-body">Developed an AI-powered health solution in 48 hours, recognised for innovation. Project formed the basis for the published IoT Health Monitoring research.</p>
-        </div>
-        <div class="rule"></div>
-        <div class="ach-item">
-          <div class="ach-title">CSS Battleground (MIET) — Runner-up</div>
-          <p class="ach-body">Ranked 2nd among 250 candidates in a competitive front-end coding contest.</p>
-        </div>
-        <div class="rule"></div>
-        <div class="ach-item">
-          <div class="ach-title">CXI Community ML Team Lead</div>
-          <p class="ach-body">Organised 5+ technical workshops on ML, AI, and cloud computing, building a community of engineering students around applied AI.</p>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Research</span><span class="folio">27</span></div>
-        <div class="chapter-num">Chapter XII</div>
-        <h2 class="display">Research<br>Publication</h2>
-        <div class="double-rule"></div>
-
-        <h3 class="sub" style="margin-bottom:8px">Health Monitoring System Using ECG and PPG Techniques</h3>
-        <p class="body" style="margin-bottom:6px;font-style:italic">Shagun Tyagi et al.</p>
-        <p class="body" style="margin-bottom:6px">International Journal of Science and Research Archive (IJSRA)</p>
-        <p class="body" style="margin-bottom:16px">Vol. 12, No. 1, 2024</p>
-        <p class="body" style="margin-bottom:16px;color:var(--accent-light)">DOI: 10.30574/ijsra.2024.12.1.0781</p>
-        <div class="rule"></div>
-        <p class="body">Raspberry Pi-based wearable health monitor integrating PPG sensors, real-time Python signal processing, Scikit-Learn anomaly detection, Firebase alerting, and a React Native caregiver app — the first peer-reviewed publication from an end-to-end IoT + ML + mobile system built entirely as student research.</p>
-      </div>`
-    }
-  },
-
-  /* ── 15: TESTIMONIALS ── */
-  {
-    chapter: 'Testimonials',
-    left: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Testimonials</span><span class="folio">28</span></div>
-        <div class="chapter-num">Chapter XIII</div>
-        <h2 class="display">What They<br>Say</h2>
-        <div class="double-rule"></div>
-
-        <div class="testimonial">
-          <div class="testimonial-text">Strong ownership and execution. Shagun consistently delivers systems that work in production, not just in development environments.</div>
-          <div class="testimonial-attr">— Engineering Lead · Envigo</div>
-        </div>
-
-        <div class="testimonial">
-          <div class="testimonial-text">Production-ready engineering mindset. Rare to find someone who thinks about scalability, monitoring, and business impact simultaneously.</div>
-          <div class="testimonial-attr">— Senior Engineer · Airtel</div>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: '',
-      html: `<div class="p-pad">
-        <div class="running-head"><span>Testimonials</span><span class="folio">29</span></div>
-        <div style="height:60px"></div>
-
-        <div class="testimonial">
-          <div class="testimonial-text">Consistently delivers AI solutions that non-technical stakeholders can understand and act on. The rarest kind of engineer.</div>
-          <div class="testimonial-attr">— Product Manager · Envigo</div>
-        </div>
-
-        <div class="testimonial" style="margin-top:28px">
-          <div class="testimonial-text">From IoT hardware to LLM agents — Shagun's range is extraordinary. Published researcher and production engineer, while still completing his MBA.</div>
-          <div class="testimonial-attr">— Faculty Advisor · MIET</div>
-        </div>
-      </div>`
-    }
-  },
-
-  /* ── 16: CONTACT ── */
-  {
-    chapter: 'Contact',
-    left: {
-      cls: '',
-      html: `<div class="p-pad" style="display:flex;flex-direction:column;justify-content:center;height:100%;">
-        <div class="sec-title">Thank you for reading</div>
-        <div class="double-rule"></div>
-        <p class="lead" style="margin-bottom:24px;">"Engineering is the art of making what you want from what you can get."</p>
-        <p class="body" style="margin-bottom:20px">I build at the intersection of AI, product, and real-world impact — systems that save hours, surface insights, and move businesses forward.</p>
-        <div class="rule"></div>
-        <div class="sec-title">Get In Touch</div>
-        <div class="contact-row"><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:theshaguntyagi@gmail.com" style="color:var(--accent-light);text-decoration:none">theshaguntyagi@gmail.com</a></div></div>
-        <div class="contact-row"><div class="contact-label">Phone</div><div class="contact-val">+91-8445692029</div></div>
-        <div class="contact-row"><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://linkedin.com/in/theshaguntyagi" target="_blank" style="color:var(--accent-light);text-decoration:none">linkedin.com/in/theshaguntyagi</a></div></div>
-        <div class="contact-row"><div class="contact-label">GitHub</div><div class="contact-val"><a href="https://github.com/theshaguntyagi" target="_blank" style="color:var(--accent-light);text-decoration:none">github.com/theshaguntyagi</a></div></div>
-        <div class="contact-icon-row">
-          <a class="contact-icon-link" href="https://github.com/theshaguntyagi" target="_blank" title="GitHub">⬡</a>
-          <a class="contact-icon-link" href="https://linkedin.com/in/theshaguntyagi" target="_blank" title="LinkedIn">in</a>
-          <a class="contact-icon-link" href="mailto:theshaguntyagi@gmail.com" title="Email">@</a>
-          <a class="contact-icon-link" href="tel:+918445692029" title="Phone">☏</a>
-          <a class="contact-icon-link" href="https://theshaguntyagi.github.io" target="_blank" title="Website">◎</a>
-        </div>
-        <div class="rule"></div>
-        <div class="proj-btns">
-          <a class="proj-btn proj-btn-gh" href="resume.pdf" download style="text-decoration:none">⬇ Download Resume</a>
-          <a class="proj-btn proj-btn-demo" href="mailto:theshaguntyagi@gmail.com" style="text-decoration:none">✉ Say Hello</a>
-        </div>
-      </div>`
-    },
-    right: {
-      cls: 'page-cover',
-      html: `<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-        <div style="width:1px;height:80px;background:rgba(184,150,106,0.3)"></div>
-        <div style="font-family:'EB Garamond',serif;font-size:14px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(184,150,106,0.5);">Shagun Tyagi</div>
-        <div style="font-family:'EB Garamond',serif;font-size:11px;letter-spacing:0.2em;color:rgba(184,150,106,0.35);">Portfolio Book · 2026</div>
-        <div style="width:1px;height:80px;background:rgba(184,150,106,0.3)"></div>
-      </div>`
-    }
-  }
-
-];
-
-/* ═══════════════════════════════════════
-   SEARCH INDEX
-═══════════════════════════════════════ */
-const SEARCH_INDEX = [
-  { term: 'pitchiq', spread: 7, label: 'PitchIQ Case Study' },
-  { term: 'leadgen', spread: 8, label: 'LeadGen Case Study' },
-  { term: 'rag', spread: 9, label: 'Enterprise RAG Case Study' },
-  { term: 'enterprise rag', spread: 9, label: 'Enterprise RAG' },
-  { term: 'aws', spread: 5, label: 'Experience — AWS' },
-  { term: 'mongodb', spread: 12, label: 'Skills — MongoDB' },
-  { term: 'research', spread: 14, label: 'Research Publication' },
-  { term: 'faceguard', spread: 10, label: 'FaceGuard Project' },
-  { term: 'icd', spread: 10, label: 'ICD-10 Coder Project' },
-  { term: 'mario', spread: 11, label: 'Mario WebAssembly' },
-  { term: 'catch', spread: 11, label: 'CATCH-MASTER Game' },
-  { term: 'airtel', spread: 5, label: 'Experience — Airtel' },
-  { term: 'envigo', spread: 5, label: 'Experience — Envigo' },
-  { term: 'langchain', spread: 12, label: 'Skills — LangChain' },
-  { term: 'timeline', spread: 4, label: 'Career Timeline' },
-  { term: 'metrics', spread: 6, label: 'Impact Metrics' },
-  { term: 'mba', spread: 13, label: 'Education — MBA' },
-  { term: 'certifications', spread: 13, label: 'Certifications' },
-  { term: 'portfolio', spread: 11, label: 'Portfolio V2 Project' },
-  { term: 'contact', spread: 16, label: 'Contact' },
-  { term: 'testimonials', spread: 15, label: 'Testimonials' },
-  { term: 'why', spread: 3, label: 'Why Hire Me' },
-];
-
-/* ═══════════════════════════════════════
-   BOOK ENGINE
-═══════════════════════════════════════ */
-const bookEl = document.getElementById('book');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const counter = document.getElementById('page-counter');
-
-let current = 0;
-let animating = false;
-const TOTAL = SPREADS.length;
-
-function isMobile(){ return window.innerWidth <= 760; }
-
-/* Build DOM pages */
-const pageEls = [];
-SPREADS.forEach((spread, i) => {
-  const pages = [];
-
-  if(spread.left){
-    const p = document.createElement('div');
-    p.className = 'page left-page ' + (spread.left.cls || '');
-    p.innerHTML = `<div class="page-shadow"></div><div class="page-content">${spread.left.html}</div>`;
-    bookEl.appendChild(p);
-    pages.push({el:p, side:'left'});
-  }
-
-  if(spread.right){
-    const p = document.createElement('div');
-    p.className = 'page right-page ' + (spread.right.cls || '');
-    p.innerHTML = `<div class="page-shadow"></div><div class="page-content">${spread.right.html}</div>`;
-    bookEl.appendChild(p);
-    pages.push({el:p, side:'right'});
-  }
-
-  pageEls.push(pages);
-});
-
-/* Build dots + page num label */
-const pageLbl = document.createElement('span');
-pageLbl.id = 'page-num-label';
-SPREADS.forEach((_,i) => {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i===0?' active':'');
-  d.addEventListener('click', () => goTo(i));
-  counter.appendChild(d);
-});
-counter.appendChild(pageLbl);
-
-/* Build nav links */
-const navLinksEl = document.getElementById('nav-links');
-SPREADS.forEach((s, i) => {
-  if(!s.chapter) return;
-  const div = document.createElement('div');
-  div.className = 'nav-link';
-  div.innerHTML = `<span class="nl-num">${String(i+1).padStart(2,'0')}</span>${s.chapter}`;
-  div.addEventListener('click', () => { goTo(i); closeSidebar(); });
-  navLinksEl.appendChild(div);
-});
-
-function updateDots(){
-  document.querySelectorAll('#page-counter .dot').forEach((d,i) => {
-    d.classList.toggle('active', i===current);
-  });
-  pageLbl.textContent = `Page ${String(current+1).padStart(2,'0')} / ${String(TOTAL).padStart(2,'0')}`;
-  updateProgress();
-  updateBookmark();
-}
-
-function updateProgress(){
-  const pct = Math.round((current / (TOTAL-1)) * 100);
-  document.getElementById('reading-progress').style.width = pct + '%';
-  document.getElementById('reading-pct').textContent = pct + '% Complete';
-}
-
-function updateBookmark(){
-  const ch = SPREADS[current].chapter || '';
-  document.getElementById('bookmark-chapter').textContent = ch;
-  document.getElementById('bookmark-ribbon').style.display = current > 0 ? 'block' : 'none';
-  document.getElementById('bookmark-chapter').style.display = current > 0 ? 'block' : 'none';
-}
-
-function setVisible(){
-  SPREADS.forEach((spread, i) => {
-    pageEls[i].forEach(({el, side}) => {
-      if(i < current){
-        if(side==='right'){
-          el.style.transform='rotateY(180deg)';
-          el.style.zIndex=i;
-        } else {
-          el.style.transform='none';
-          el.style.zIndex=i;
-        }
-        el.style.display='block';
-      } else if(i===current){
-        el.style.transform='none';
-        el.style.zIndex=50;
-        el.style.display='block';
+/* ══ DESKTOP BOOK ══ */
+(function(){
+  const ids = ['t1','t2','t3','t4','t5','t6'];
+
+  // All pages start pre-turned (hidden behind cover)
+  ids.forEach(id => document.getElementById(id).classList.add('turn'));
+
+  // Flip button handler
+  document.querySelectorAll('.flip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.t;
+      const page = document.getElementById(id);
+      if(!page) return;
+      if(page.classList.contains('turn')){
+        page.classList.remove('turn');
+        page.style.zIndex = 20 - ids.indexOf(id);
       } else {
-        if(side==='right'){
-          el.style.transform='none';
-          el.style.zIndex=TOTAL-i;
-          el.style.display='block';
-        } else {
-          el.style.transform='rotateY(-180deg)';
-          el.style.zIndex=TOTAL-i;
-          el.style.display='block';
-        }
+        page.classList.add('turn');
+        page.style.zIndex = 9 + ids.indexOf(id);
       }
     });
   });
-  /* Animate skill bars on skills page */
-  if(SPREADS[current].chapter === 'Skills'){
-    setTimeout(() => {
-      document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        const target = bar.style.width;
-        bar.style.width = '0';
-        requestAnimationFrame(() => { bar.style.width = target; });
-      });
-    }, 100);
-  }
-  /* Animate metric counters */
-  document.querySelectorAll('.metric-num[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count);
-    const suffix = el.textContent.replace(/\d+/,'').trim();
-    let count = 0;
-    const step = Math.ceil(target / 30);
-    const interval = setInterval(() => {
-      count = Math.min(count + step, target);
-      el.textContent = count + suffix;
-      if(count >= target) clearInterval(interval);
-    }, 40);
-  });
-}
 
-function goTo(idx, dir){
-  if(animating || idx===current || idx<0 || idx>=TOTAL) return;
-  animating = true;
-
-  const direction = (idx > current) ? 'forward' : 'backward';
-  const steps = Math.abs(idx-current);
-
-  if(steps > 1){
-    current = idx;
-    setVisible();
-    updateNav();
-    updateDots();
-    animating = false;
-    return;
-  }
-
-  if(direction==='forward'){
-    const turningPages = pageEls[current];
-    const rightPage = turningPages.find(p=>p.side==='right');
-    if(rightPage){
-      rightPage.el.style.transition=`transform 0.65s var(--ease-page)`;
-      rightPage.el.style.zIndex=100;
-      rightPage.el.style.transform='rotateY(180deg)';
-    }
-    const leftPage = turningPages.find(p=>p.side==='left');
-    if(leftPage){
-      leftPage.el.style.transition=`transform 0.65s var(--ease-page)`;
-      leftPage.el.style.zIndex=100;
-    }
-    const nextPages = pageEls[idx];
-    nextPages.forEach(({el, side}) => {
-      el.style.transition='none';
-      el.style.display='block';
-      el.style.zIndex=49;
-      el.style.transform=side==='left'?'rotateY(-180deg)':'none';
+  // "Contact Me" — jump to last spread
+  document.getElementById('goContact')?.addEventListener('click', e => {
+    e.preventDefault();
+    ids.forEach((id, i) => {
+      setTimeout(() => {
+        const p = document.getElementById(id);
+        p.classList.remove('turn');
+        p.style.zIndex = 20 - i;
+      }, i * 180);
     });
-    setTimeout(()=>{
-      current=idx;
-      setVisible();
-      [...pageEls[current], ...(pageEls[current-1]||[])].forEach(({el})=>{ el.style.transition='none'; });
-      updateNav();
-      updateDots();
-      animating=false;
-    }, 680);
-
-  } else {
-    const nextPages = pageEls[idx];
-    const leftPage = nextPages.find(p=>p.side==='left');
-    if(leftPage){
-      leftPage.el.style.transition='none';
-      leftPage.el.style.display='block';
-      leftPage.el.style.zIndex=100;
-      leftPage.el.style.transform='rotateY(-180deg)';
-      requestAnimationFrame(()=>{
-        leftPage.el.style.transition=`transform 0.65s var(--ease-page)`;
-        leftPage.el.style.transform='none';
-      });
-    }
-    const rightPage = nextPages.find(p=>p.side==='right');
-    if(rightPage){
-      rightPage.el.style.display='block';
-      rightPage.el.style.zIndex=99;
-      rightPage.el.style.transform='none';
-    }
-    setTimeout(()=>{
-      current=idx;
-      setVisible();
-      updateNav();
-      updateDots();
-      animating=false;
-    }, 680);
-  }
-}
-
-function updateNav(){
-  prevBtn.classList.toggle('hidden', current===0);
-  nextBtn.classList.toggle('hidden', current===TOTAL-1);
-}
-
-/* Dark mode */
-const dmBtn = document.getElementById('dm-toggle');
-let darkMode = localStorage.getItem('dm') === '1';
-function applyDark(){
-  document.documentElement.dataset.theme = darkMode ? 'dark' : '';
-  dmBtn.textContent = darkMode ? '☀ Light' : '🌙 Dark';
-  localStorage.setItem('dm', darkMode ? '1' : '0');
-}
-applyDark();
-dmBtn.addEventListener('click', () => { darkMode = !darkMode; applyDark(); });
-
-/* Sidebar */
-const menuBtn = document.getElementById('menu-btn');
-const sidebar = document.getElementById('nav-sidebar');
-const sidebarClose = document.getElementById('sidebar-close');
-function closeSidebar(){ sidebar.classList.remove('open'); }
-menuBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
-sidebarClose.addEventListener('click', closeSidebar);
-document.addEventListener('click', e => {
-  if(!sidebar.contains(e.target) && e.target !== menuBtn) closeSidebar();
-});
-
-/* Search */
-const searchInput = document.getElementById('search-input');
-const searchResultsEl = document.getElementById('search-results');
-searchInput.addEventListener('input', () => {
-  const q = searchInput.value.toLowerCase().trim();
-  searchResultsEl.innerHTML = '';
-  if(!q){ return; }
-  const hits = SEARCH_INDEX.filter(e => e.term.includes(q) || e.label.toLowerCase().includes(q));
-  if(!hits.length){ searchResultsEl.innerHTML = '<div style="padding:4px 0;opacity:0.4">No results</div>'; return; }
-  hits.slice(0,5).forEach(h => {
-    const d = document.createElement('div');
-    d.className = 'search-hit';
-    d.textContent = h.label;
-    d.addEventListener('click', () => { goTo(h.spread); closeSidebar(); searchInput.value=''; searchResultsEl.innerHTML=''; });
-    searchResultsEl.appendChild(d);
   });
-});
 
-/* Keyboard */
-document.addEventListener('keydown', e => {
-  if(e.key==='ArrowRight'||e.key==='ArrowDown') goTo(current+1);
-  if(e.key==='ArrowLeft'||e.key==='ArrowUp') goTo(current-1);
-  if(e.key==='Escape') closeSidebar();
-});
+  // "Back to Profile" — close all
+  document.getElementById('goHome')?.addEventListener('click', e => {
+    e.preventDefault();
+    [...ids].reverse().forEach((id, i) => {
+      setTimeout(() => {
+        const p = document.getElementById(id);
+        p.classList.add('turn');
+        p.style.zIndex = 9 + ids.indexOf(id);
+      }, i * 180);
+    });
+  });
 
-/* Buttons */
-prevBtn.addEventListener('click',()=>goTo(current-1));
-nextBtn.addEventListener('click',()=>goTo(current+1));
+  // Opening animation — cover flips, then pages unfurl last→first
+  const cover = document.getElementById('coverFront');
+  setTimeout(() => { cover.classList.add('turn'); }, 1500);
+  setTimeout(() => { cover.style.zIndex = -1; }, 2400);
 
-/* Swipe support */
-let touchStartX=0;
-document.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
-document.addEventListener('touchend',e=>{
-  const dx=e.changedTouches[0].clientX-touchStartX;
-  if(Math.abs(dx)>50){ if(dx<0) goTo(current+1); else goTo(current-1); }
-},{passive:true});
+  // Reveal pages in reverse order so page 1 ends on top
+  [...ids].reverse().forEach((id, i) => {
+    setTimeout(() => {
+      const p = document.getElementById(id);
+      p.classList.remove('turn');
+      p.style.zIndex = 20 - ids.indexOf(id);
+    }, 1600 + i * 200);
+  });
+})();
 
-/* Init */
-setVisible();
-updateNav();
-updateDots();
+
+/* ══ MOBILE READER ══ */
+(function(){
+  const track = document.getElementById('mobTrack');
+  const ctr   = document.getElementById('mobCtr');
+  const fill  = document.getElementById('mobFill');
+  const prev  = document.getElementById('mPrev');
+  const next  = document.getElementById('mNext');
+  const dots  = document.getElementById('mDots');
+  if(!track) return;
+
+  const pages = track.querySelectorAll('.mob-pg');
+  const N = pages.length;
+  let cur = 0, sx = 0, sy = 0, dragging = false;
+
+  // Build dots (max 13 shown)
+  for(let i=0;i<N;i++){
+    const d = document.createElement('div');
+    d.className = 'mob-dot' + (i===0?' on':'');
+    dots.appendChild(d);
+  }
+
+  function goTo(n, anim=true){
+    if(n<0||n>=N) return;
+    cur = n;
+    track.style.transition = anim ? 'transform .4s cubic-bezier(.4,0,.2,1)' : 'none';
+    track.style.transform = `translateX(-${cur*100}vw)`;
+    ctr.textContent = `${cur+1} / ${N}`;
+    fill.style.width = `${((cur+1)/N)*100}%`;
+    dots.querySelectorAll('.mob-dot').forEach((d,i) => d.classList.toggle('on', i===cur));
+    prev.classList.toggle('dis', cur===0);
+    next.classList.toggle('dis', cur===N-1);
+  }
+
+  prev.addEventListener('click', () => goTo(cur-1));
+  next.addEventListener('click', () => goTo(cur+1));
+
+  track.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; dragging = true;
+  }, {passive:true});
+
+  track.addEventListener('touchmove', e => {
+    if(!dragging) return;
+    const dx = e.touches[0].clientX - sx;
+    const dy = e.touches[0].clientY - sy;
+    if(Math.abs(dy) > Math.abs(dx)) return;
+    e.preventDefault();
+    track.style.transition = 'none';
+    track.style.transform = `translateX(calc(-${cur*100}vw + ${dx*.65}px))`;
+  }, {passive:false});
+
+  track.addEventListener('touchend', e => {
+    if(!dragging){dragging=false;return;}
+    dragging = false;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx)<Math.abs(dy)){goTo(cur);return;}
+    if(dx < -50) goTo(cur+1);
+    else if(dx > 50) goTo(cur-1);
+    else goTo(cur);
+  }, {passive:true});
+
+  document.addEventListener('keydown', e => {
+    if(e.key==='ArrowRight') goTo(cur+1);
+    if(e.key==='ArrowLeft')  goTo(cur-1);
+  });
+
+  goTo(0, false);
+})();
 </script>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 </body>
 </html>
